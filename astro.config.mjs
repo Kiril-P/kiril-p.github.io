@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://kiril-p.github.io',
+  site: 'https://kpetrovski.me',
   vite: {
     plugins: [tailwindcss()]
   },
