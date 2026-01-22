@@ -1,0 +1,253 @@
+---
+// Gradient swirls for left and right edges
+---
+
+<div class="background-swirls fixed inset-0 pointer-events-none z-0 overflow-hidden">
+  <!-- Left Edge Swirls -->
+  <svg class="absolute left-0 top-0 h-full w-64 opacity-30" viewBox="0 0 256 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="leftGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.4" />
+        <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.1" />
+      </linearGradient>
+      <linearGradient id="leftGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.3" />
+        <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.1" />
+      </linearGradient>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+
+    <!-- Flowing curves -->
+    <path class="swirl-path-1" d="M 0,100 Q 80,150 100,300 T 120,600 Q 100,800 50,1024" 
+          stroke="url(#leftGradient1)" 
+          stroke-width="3" 
+          fill="none" 
+          filter="url(#glow)"
+          opacity="0.6"/>
+    
+    <path class="swirl-path-2" d="M 30,0 Q 110,100 130,250 T 150,550 Q 130,750 80,1000" 
+          stroke="url(#leftGradient2)" 
+          stroke-width="2" 
+          fill="none" 
+          filter="url(#glow)"
+          opacity="0.4"/>
+    
+    <path class="swirl-path-3" d="M 60,50 Q 140,180 160,350 T 180,700 Q 160,900 110,1024" 
+          stroke="url(#leftGradient1)" 
+          stroke-width="1.5" 
+          fill="none" 
+          opacity="0.3"/>
+  </svg>
+
+  <!-- Right Edge Swirls (mirrored) -->
+  <svg class="absolute right-0 top-0 h-full w-64 opacity-30" viewBox="0 0 256 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="rightGradient1" x1="100%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.4" />
+        <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.1" />
+      </linearGradient>
+      <linearGradient id="rightGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.3" />
+        <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.1" />
+      </linearGradient>
+    </defs>
+
+    <!-- Mirrored flowing curves -->
+    <path class="swirl-path-1" d="M 256,100 Q 176,150 156,300 T 136,600 Q 156,800 206,1024" 
+          stroke="url(#rightGradient1)" 
+          stroke-width="3" 
+          fill="none" 
+          filter="url(#glow)"
+          opacity="0.6"/>
+    
+    <path class="swirl-path-2" d="M 226,0 Q 146,100 126,250 T 106,550 Q 126,750 176,1000" 
+          stroke="url(#rightGradient2)" 
+          stroke-width="2" 
+          fill="none" 
+          filter="url(#glow)"
+          opacity="0.4"/>
+    
+    <path class="swirl-path-3" d="M 196,50 Q 116,180 96,350 T 76,700 Q 96,900 146,1024" 
+          stroke="url(#rightGradient1)" 
+          stroke-width="1.5" 
+          fill="none" 
+          opacity="0.3"/>
+  </svg>
+
+  <!-- Top Gradient Orbs -->
+  <div class="absolute top-20 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-float-slow"></div>
+  <div class="absolute top-40 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float-slow-delayed"></div>
+
+  <!-- Concrete Background Grid -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="
+      background-image: 
+        linear-gradient(rgba(59, 130, 246, 0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.5) 1px, transparent 1px);
+      background-size: 100px 100px;
+    "></div>
+  </div>
+
+  <!-- Geometric Accent Shapes -->
+  <div class="geometric-shapes absolute inset-0 overflow-hidden">
+    <!-- Top Left Hexagon -->
+    <svg class="absolute top-32 left-32 w-20 h-20 opacity-5 animate-float-geometric" viewBox="0 0 100 100">
+      <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" 
+               fill="none" 
+               stroke="url(#leftGradient1)" 
+               stroke-width="2"/>
+    </svg>
+
+    <!-- Top Right Circle -->
+    <svg class="absolute top-48 right-48 w-16 h-16 opacity-5 animate-float-geometric-delayed" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="45" 
+              fill="none" 
+              stroke="url(#rightGradient1)" 
+              stroke-width="2"/>
+    </svg>
+
+    <!-- Middle Left Triangle -->
+    <svg class="absolute top-1/2 left-24 w-24 h-24 opacity-5 animate-float-geometric" viewBox="0 0 100 100">
+      <polygon points="50,10 90,90 10,90" 
+               fill="none" 
+               stroke="url(#leftGradient2)" 
+               stroke-width="2"/>
+    </svg>
+
+    <!-- Middle Right Square -->
+    <svg class="absolute top-2/3 right-32 w-20 h-20 opacity-5 animate-float-geometric-delayed rotate-12" viewBox="0 0 100 100">
+      <rect x="10" y="10" width="80" height="80" 
+            fill="none" 
+            stroke="url(#rightGradient2)" 
+            stroke-width="2"
+            transform="rotate(45 50 50)"/>
+    </svg>
+
+    <!-- Bottom Left Pentagon -->
+    <svg class="absolute bottom-48 left-48 w-18 h-18 opacity-5 animate-float-geometric" viewBox="0 0 100 100">
+      <polygon points="50,5 95,35 80,85 20,85 5,35" 
+               fill="none" 
+               stroke="url(#leftGradient1)" 
+               stroke-width="2"/>
+    </svg>
+
+    <!-- Bottom Right Hexagon -->
+    <svg class="absolute bottom-32 right-40 w-22 h-22 opacity-5 animate-float-geometric-delayed" viewBox="0 0 100 100">
+      <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" 
+               fill="none" 
+               stroke="url(#rightGradient1)" 
+               stroke-width="2"/>
+    </svg>
+  </div>
+
+  <!-- Code-like Dots Pattern (Subtle) -->
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="
+      background-image: radial-gradient(circle, rgba(59, 130, 246, 0.8) 1px, transparent 1px);
+      background-size: 50px 50px;
+    "></div>
+  </div>
+</div>
+
+<style>
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(30px, -30px) scale(1.1);
+    }
+  }
+
+  @keyframes float-slow-delayed {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(-30px, 30px) scale(1.1);
+    }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 20s ease-in-out infinite;
+  }
+
+  .animate-float-slow-delayed {
+    animation: float-slow-delayed 25s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .swirl-path-1 {
+    animation: dash 20s linear infinite;
+  }
+
+  .swirl-path-2 {
+    animation: dash 25s linear infinite;
+    animation-delay: 5s;
+  }
+
+  .swirl-path-3 {
+    animation: dash 30s linear infinite;
+    animation-delay: 10s;
+  }
+
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 0, 1000;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 1000, 0;
+      stroke-dashoffset: -1000;
+    }
+    100% {
+      stroke-dasharray: 0, 1000;
+      stroke-dashoffset: -2000;
+    }
+  }
+
+  @keyframes float-geometric {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(10px, -10px) rotate(5deg);
+    }
+    50% {
+      transform: translate(20px, 5px) rotate(-5deg);
+    }
+    75% {
+      transform: translate(5px, 15px) rotate(3deg);
+    }
+  }
+
+  @keyframes float-geometric-delayed {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(-10px, 10px) rotate(-5deg);
+    }
+    50% {
+      transform: translate(-20px, -5px) rotate(5deg);
+    }
+    75% {
+      transform: translate(-5px, -15px) rotate(-3deg);
+    }
+  }
+
+  .animate-float-geometric {
+    animation: float-geometric 30s ease-in-out infinite;
+  }
+
+  .animate-float-geometric-delayed {
+    animation: float-geometric-delayed 35s ease-in-out infinite;
+    animation-delay: 5s;
+  }
+</style>

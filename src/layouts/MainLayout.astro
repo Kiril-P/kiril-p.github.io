@@ -13,20 +13,136 @@ const { title, description = "Kiril-P // Software Engineer Portfolio" } = Astro.
 <html lang="en" class="bg-premium-black">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Primary Meta Tags -->
 		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="author" content="Kiril Petrovski" />
+		<meta name="keywords" content="Kiril Petrovski, Software Engineer, Full Stack Developer, Computer Science, AI, Web Development, React, TypeScript, Python, Game Development, Portfolio" />
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://kiril-p.github.io/" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:site_name" content="Kiril Petrovski - Software Engineer" />
+		<!-- Add og:image once you have a preview image -->
+		<!-- <meta property="og:image" content="https://kiril-p.github.io/og-image.png" /> -->
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://kiril-p.github.io/" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<!-- Add twitter:image once you have a preview image -->
+		<!-- <meta property="twitter:image" content="https://kiril-p.github.io/og-image.png" /> -->
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href="https://kiril-p.github.io/" />
+		
+		<!-- Theme Color -->
+		<meta name="theme-color" content="#050505" />
+		
 		<!-- Inter font for that premium look -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+		
+		<!-- JSON-LD Structured Data -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Kiril Petrovski",
+				"jobTitle": "Full Stack Developer & Cloud Solutions Engineer",
+				"description": "Computer Science & AI student specializing in full-stack development, cloud-based solutions on AWS, Azure, and Google Cloud Platform",
+				"url": "https://kiril-p.github.io",
+				"sameAs": [
+					"https://github.com/kiril-p",
+					"https://linkedin.com/in/kiril-petrovski",
+					"https://kirilp.itch.io"
+				],
+				"knowsAbout": [
+					"Full Stack Development",
+					"Cloud Computing",
+					"Cloud Architecture",
+					"AWS",
+					"Azure",
+					"Google Cloud Platform",
+					"TypeScript",
+					"React",
+					"Python",
+					"Web Development",
+					"Artificial Intelligence"
+				],
+				"alumniOf": {
+					"@type": "EducationalOrganization",
+					"name": "IE University",
+					"address": {
+						"@type": "PostalAddress",
+						"addressLocality": "Madrid",
+						"addressCountry": "Spain"
+					}
+				},
+				"email": "kirilpetrovski2005@gmail.com",
+				"address": {
+					"@type": "PostalAddress",
+					"addressLocality": "Madrid",
+					"addressCountry": "Spain"
+				}
+			}
+		</script>
 	</head>
 	<body class="selection:bg-accent selection:text-premium-black">
 		<slot />
 	</body>
 </html>
+
+<script>
+	import Lenis from 'lenis';
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	// Register GSAP plugins
+	gsap.registerPlugin(ScrollTrigger);
+
+	// Initialize Lenis smooth scrolling
+	const lenis = new Lenis({
+		duration: 1.0,
+		easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo
+		orientation: 'vertical',
+		gestureOrientation: 'vertical',
+		smoothWheel: true,
+		wheelMultiplier: 1,
+		smoothTouch: false,
+		touchMultiplier: 2,
+		infinite: false,
+	});
+
+	// Integrate Lenis with GSAP ScrollTrigger
+	lenis.on('scroll', ScrollTrigger.update);
+
+	// Use GSAP ticker for smooth integration
+	gsap.ticker.add((time) => {
+		lenis.raf(time * 1000);
+	});
+
+	// Disable lag smoothing for better performance
+	gsap.ticker.lagSmoothing(0);
+
+	// Optional: Stop Lenis when GSAP animations are running
+	// This prevents conflicts during ScrollTrigger animations
+	lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
+		// You can add custom scroll callbacks here if needed
+	});
+</script>
 
 <style is:global>
 	:root {
@@ -34,6 +150,21 @@ const { title, description = "Kiril-P // Software Engineer Portfolio" } = Astro.
 	}
 	html {
 		font-family: 'Inter', system-ui, sans-serif;
-		scroll-behavior: smooth;
+		/* Removed scroll-behavior: smooth - Lenis handles this now */
+	}
+	html.lenis {
+		height: auto;
+	}
+	.lenis.lenis-smooth {
+		scroll-behavior: auto;
+	}
+	.lenis.lenis-smooth [data-lenis-prevent] {
+		overscroll-behavior: contain;
+	}
+	.lenis.lenis-stopped {
+		overflow: hidden;
+	}
+	.lenis.lenis-scrolling iframe {
+		pointer-events: none;
 	}
 </style>

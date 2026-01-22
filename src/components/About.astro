@@ -1,0 +1,315 @@
+---
+import { Code2, Briefcase, Target, Trophy, Dumbbell, BookOpen, Music, GraduationCap } from 'lucide-react';
+// About section with info from CV
+---
+
+<section id="about" class="py-24">
+  <div class="mb-16">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4">About Me</h2>
+    <div class="h-1 w-20 bg-blue-accent rounded-full"></div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Bio Card -->
+    <div class="group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 p-8 transition-all duration-500 hover:border-blue-accent/40">
+      <!-- Gradient overlay on hover -->
+      <div class="gradient-overlay absolute inset-0 bg-gradient-to-br from-blue-accent/0 to-blue-accent/10 opacity-0 transition-opacity duration-700"></div>
+      
+      <!-- Border glow effect -->
+      <div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);"></div>
+
+      <div class="relative z-10">
+        <div class="flex items-center gap-3 mb-6">
+          <Code2 className="w-7 h-7 text-blue-accent" />
+          <h3 class="text-2xl font-bold group-hover:text-blue-accent transition-colors duration-300">Bio</h3>
+        </div>
+        
+        <p class="text-white/70 leading-relaxed mb-4">
+          I'm a 20-year-old Computer Science & Artificial Intelligence student at <span class="text-blue-accent font-medium">IE University in Madrid</span>, currently pursuing my Bachelor's degree with an expected graduation in July 2028. I specialize in <span class="text-blue-accent font-medium">full-stack development</span> and <span class="text-blue-accent font-medium">cloud-based solutions</span>, building scalable applications on AWS, Azure, and Google Cloud Platform.
+        </p>
+        
+        <p class="text-white/70 leading-relaxed mb-4">
+          Originally from Macedonia, I completed my International Baccalaureate at SEK International School in Qatar before moving to Spain. I'm passionate about creating end-to-end solutions with modern cloud architecture, containerization, and serverless technologies.
+        </p>
+
+        <p class="text-white/70 leading-relaxed">
+          I speak <span class="text-white font-medium">Macedonian</span> and <span class="text-white font-medium">English</span> natively, with intermediate Spanish and beginner German.
+        </p>
+      </div>
+    </div>
+
+    <!-- Experience Card -->
+    <div class="group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 p-8 transition-all duration-500 hover:border-blue-accent/40">
+      <div class="gradient-overlay absolute inset-0 bg-gradient-to-br from-blue-accent/0 to-blue-accent/10 opacity-0 transition-opacity duration-700"></div>
+      <div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);"></div>
+
+      <div class="relative z-10">
+        <div class="flex items-center gap-3 mb-6">
+          <Briefcase className="w-7 h-7 text-blue-accent" />
+          <h3 class="text-2xl font-bold group-hover:text-blue-accent transition-colors duration-300">Experience</h3>
+        </div>
+
+        <div class="max-h-[400px] overflow-y-auto experience-scroll pr-2 space-y-6" data-lenis-prevent>
+          <!-- Experience Item 1: Newest First -->
+          <div class="experience-item">
+            <div class="flex items-start gap-3 mb-2">
+              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-green-500/10 text-green-400 text-sm font-bold mt-1">
+                M
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-white">Renewable Energy Intern</h4>
+                <p class="text-sm text-white/50">MACEF</p>
+                <p class="text-xs text-white/40 mt-1">Aug 2023 • Skopje, Macedonia</p>
+              </div>
+            </div>
+            <p class="text-sm text-white/60 ml-11">
+              Conducted research on solar panel optimization techniques, analyzing efficiency improvements of up to 30% through automated tracking systems. Assisted in preparing technical documentation for 5+ renewable energy proposals. Gained hands-on experience with energy monitoring software and data analysis tools.
+            </p>
+          </div>
+
+          <!-- Experience Item 2 -->
+          <div class="experience-item">
+            <div class="flex items-start gap-3 mb-2">
+              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 text-sm font-bold mt-1">
+                A
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-white">IT Solutions Intern</h4>
+                <p class="text-sm text-white/50">Accent Computers</p>
+                <p class="text-xs text-white/40 mt-1">July 2022 • Skopje, Macedonia</p>
+              </div>
+            </div>
+            <p class="text-sm text-white/60 ml-11">
+              Resolved 50+ hardware and software support tickets, achieving 95% customer satisfaction rating. Assisted in troubleshooting network connectivity issues, system diagnostics, and software installations. Learned IT infrastructure management and gained practical experience in Windows Server administration and database backup procedures.
+            </p>
+          </div>
+
+          <!-- Experience Item 3 -->
+          <div class="experience-item">
+            <div class="flex items-start gap-3 mb-2">
+              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-orange-500/10 text-orange-400 text-sm font-bold mt-1">
+                D
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-white">Marketing Intern</h4>
+                <p class="text-sm text-white/50">Duris MK</p>
+                <p class="text-xs text-white/40 mt-1">June 2022 • Skopje, Macedonia</p>
+              </div>
+            </div>
+            <p class="text-sm text-white/60 ml-11">
+              Developed social media content strategy that increased Instagram engagement by 40% in one month. Created promotional materials and assisted in organizing product demonstrations for 100+ potential customers. Analyzed market trends and competitor strategies to inform marketing decisions.
+            </p>
+          </div>
+
+          <!-- Experience Item 4: Oldest -->
+          <div class="experience-item">
+            <div class="flex items-start gap-3 mb-2">
+              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-accent/10 text-blue-accent text-sm font-bold mt-1">
+                T
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-white">Student Assistant</h4>
+                <p class="text-sm text-white/50">Texas A&M University</p>
+                <p class="text-xs text-white/40 mt-1">Oct 2021 - Apr 2022 • Doha, Qatar</p>
+              </div>
+            </div>
+            <p class="text-sm text-white/60 ml-11">
+              Developed Python applications including interactive tic-tac-toe game and calculator with GUI using Tkinter. Provided customer service to 50+ daily visitors, achieving 10% increase in program enrollment. Managed appointment scheduling system and maintained organized records for 200+ student interactions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interests Card -->
+    <div class="group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 p-8 transition-all duration-500 hover:border-blue-accent/40">
+      <div class="gradient-overlay absolute inset-0 bg-gradient-to-br from-blue-accent/0 to-blue-accent/10 opacity-0 transition-opacity duration-700"></div>
+      <div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);"></div>
+
+      <div class="relative z-10">
+        <div class="flex items-center gap-3 mb-6">
+          <Target className="w-7 h-7 text-blue-accent" />
+          <h3 class="text-2xl font-bold group-hover:text-blue-accent transition-colors duration-300">Beyond Code</h3>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="interest-card group/interest p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
+            <Trophy className="w-6 h-6 mb-2 text-orange-400" />
+            <h4 class="font-semibold text-sm mb-1 group-hover/interest:text-blue-accent transition-colors duration-300">Basketball</h4>
+            <p class="text-xs text-white/50">Training since second grade</p>
+          </div>
+
+          <div class="interest-card group/interest p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
+            <Dumbbell className="w-6 h-6 mb-2 text-green-400" />
+            <h4 class="font-semibold text-sm mb-1 group-hover/interest:text-blue-accent transition-colors duration-300">Running</h4>
+            <p class="text-xs text-white/50">Half-marathons, 10km races</p>
+          </div>
+
+          <div class="interest-card group/interest p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
+            <BookOpen className="w-6 h-6 mb-2 text-blue-400" />
+            <h4 class="font-semibold text-sm mb-1 group-hover/interest:text-blue-accent transition-colors duration-300">Reading</h4>
+            <p class="text-xs text-white/50">Avid book reader</p>
+          </div>
+
+          <div class="interest-card group/interest p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
+            <Music className="w-6 h-6 mb-2 text-purple-400" />
+            <h4 class="font-semibold text-sm mb-1 group-hover/interest:text-blue-accent transition-colors duration-300">Cello</h4>
+            <p class="text-xs text-white/50">6 years, live performances</p>
+          </div>
+        </div>
+
+        <div class="mt-6 p-4 rounded-2xl bg-blue-accent/5 border border-blue-accent/20">
+          <h4 class="font-semibold text-sm mb-2 text-blue-accent">Volunteer Work</h4>
+          <ul class="text-xs text-white/60 space-y-1">
+            <li>• FIFA World Cup 2024: Flag bearer (Canada vs Morocco)</li>
+            <li>• Skateboard ramp renovation project leader</li>
+            <li>• Olkoroi Wilderness Camp community volunteer (Kenya)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education Card -->
+    <div class="group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 p-8 transition-all duration-500 hover:border-blue-accent/40">
+      <div class="gradient-overlay absolute inset-0 bg-gradient-to-br from-blue-accent/0 to-blue-accent/10 opacity-0 transition-opacity duration-700"></div>
+      <div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);"></div>
+
+      <div class="relative z-10">
+        <div class="flex items-center gap-3 mb-6">
+          <GraduationCap className="w-7 h-7 text-blue-accent" />
+          <h3 class="text-2xl font-bold group-hover:text-blue-accent transition-colors duration-300">Education</h3>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Current Education -->
+          <div class="education-item relative">
+            <div class="flex items-start gap-3 mb-2">
+              <div class="flex items-center justify-center min-w-8 w-8 h-8 rounded-lg bg-blue-accent/20 border border-blue-accent/40 text-sm font-bold mt-1">
+                <span class="text-blue-accent">IE</span>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-1">
+                  <h4 class="font-semibold text-white">Bachelor's in Computer Science & AI</h4>
+                  <span class="px-2 py-0.5 text-xs rounded-full bg-green-500/10 text-green-400 border border-green-500/30">Current</span>
+                </div>
+                <p class="text-sm text-white/50">IE University, Madrid</p>
+                <p class="text-xs text-white/40 mt-1">2024 - 2028 (Expected)</p>
+              </div>
+            </div>
+            <p class="text-sm text-white/60 ml-11">
+              Pursuing a comprehensive degree in Computer Science and Artificial Intelligence, focusing on software engineering, machine learning, and modern development practices.
+            </p>
+          </div>
+
+          <!-- IB Education -->
+          <div class="education-item relative">
+            <div class="flex items-start gap-3 mb-2">
+              <div class="flex items-center justify-center min-w-8 w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 text-sm font-bold mt-1">
+                IB
+              </div>
+              <div class="flex-1">
+                <h4 class="font-semibold text-white">International Baccalaureate Diploma</h4>
+                <p class="text-sm text-white/50">SEK International School, Qatar</p>
+                <p class="text-xs text-white/40 mt-1">2022 - 2024</p>
+              </div>
+            </div>
+            <p class="text-sm text-white/60 ml-11">
+              Completed rigorous IB curriculum with focus on sciences, mathematics, and technology. Developed strong analytical and research skills.
+            </p>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="mt-6 pt-6 border-t border-white/5">
+          <h4 class="text-xs uppercase tracking-widest text-white/50 mb-3">Certifications & Courses</h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 hover:border-blue-accent/30 hover:text-blue-accent transition-colors duration-300">Python Bootcamp</span>
+            <span class="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 hover:border-blue-accent/30 hover:text-blue-accent transition-colors duration-300">Brain Camp '23</span>
+            <span class="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 hover:border-blue-accent/30 hover:text-blue-accent transition-colors duration-300">Qatar Hackathon</span>
+            <span class="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 hover:border-blue-accent/30 hover:text-blue-accent transition-colors duration-300">STEM Academy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gradient-overlay,
+  .border-glow {
+    transition: opacity 0.5s ease;
+  }
+
+  .group:hover .gradient-overlay {
+    opacity: 1;
+  }
+
+  .group:hover .border-glow {
+    opacity: 1;
+  }
+
+  .experience-item {
+    position: relative;
+    padding-left: 0;
+  }
+
+  .experience-item::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 45px;
+    bottom: -20px;
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(59, 130, 246, 0.3), transparent);
+  }
+
+  .experience-item:last-child::before {
+    display: none;
+  }
+
+  /* Education timeline connector */
+  .education-item {
+    position: relative;
+    padding-left: 0;
+    margin-bottom: 2rem;
+  }
+
+  .education-item::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 45px;
+    bottom: -20px;
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(59, 130, 246, 0.3), transparent);
+  }
+
+  .education-item:last-child::before {
+    display: none;
+  }
+
+  /* Custom scrollbar for experience section */
+  .experience-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .experience-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+
+  .experience-scroll::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.3);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+  }
+
+  .experience-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(59, 130, 246, 0.5);
+  }
+
+  /* Smooth scroll behavior */
+  .experience-scroll {
+    scroll-behavior: smooth;
+  }
+</style>

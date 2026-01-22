@@ -1,0 +1,183 @@
+---
+import { 
+  FileCode2, 
+  FileJson, 
+  Code2, 
+  Settings, 
+  Gamepad2, 
+  Database, 
+  Atom, 
+  Rocket, 
+  Triangle, 
+  Smartphone, 
+  Target, 
+  GitBranch, 
+  Container, 
+  Cloud, 
+  Flame, 
+  Zap, 
+  CreditCard,
+  Monitor
+} from 'lucide-react';
+
+const technologies = {
+  languages: [
+    { name: 'TypeScript', icon: FileCode2, color: '#3178c6' },
+    { name: 'JavaScript', icon: FileJson, color: '#f7df1e' },
+    { name: 'Python', icon: Code2, color: '#3776ab' },
+    { name: 'C', icon: Settings, color: '#a8b9cc' },
+    { name: 'GDScript', icon: Gamepad2, color: '#478cbf' },
+    { name: 'SQL', icon: Database, color: '#cc2927' },
+  ],
+  frameworks: [
+    { name: 'React', icon: Atom, color: '#61dafb' },
+    { name: 'Astro', icon: Rocket, color: '#ff5d01' },
+    { name: 'Next.js', icon: Triangle, color: '#000000' },
+    { name: 'React Native', icon: Smartphone, color: '#61dafb' },
+    { name: 'Godot', icon: Target, color: '#478cbf' },
+  ],
+  tools: [
+    { name: 'Git', icon: GitBranch, color: '#f05032' },
+    { name: 'Docker', icon: Container, color: '#2496ed' },
+    { name: 'AWS', icon: Cloud, color: '#ff9900' },
+    { name: 'Google Cloud', icon: Cloud, color: '#4285f4' },
+    { name: 'Azure', icon: Cloud, color: '#0078d4' },
+    { name: 'Firebase', icon: Flame, color: '#ffca28' },
+    { name: 'Supabase', icon: Zap, color: '#3ecf8e' },
+    { name: 'Stripe', icon: CreditCard, color: '#635bff' },
+  ],
+};
+---
+
+<div class="tech-stack-card group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 p-8 transition-all duration-500 hover:border-blue-accent/40 h-full flex flex-col">
+  <!-- Gradient overlay on hover -->
+  <div class="gradient-overlay absolute inset-0 bg-gradient-to-br from-blue-accent/0 to-blue-accent/10 opacity-0 transition-opacity duration-700"></div>
+  
+  <!-- Border glow effect -->
+  <div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);"></div>
+
+  <div class="relative z-10">
+    <!-- Header -->
+    <div class="mb-6">
+      <div class="flex items-center gap-2 mb-2">
+        <Monitor className="w-6 h-6 text-blue-accent" />
+        <h3 class="text-2xl font-bold group-hover:text-blue-accent transition-colors duration-300">Tech Stack</h3>
+      </div>
+      <p class="text-sm text-white/50">Technologies I work with</p>
+    </div>
+
+    <!-- Languages -->
+    <div class="mb-6">
+      <h4 class="text-xs uppercase tracking-widest text-blue-accent/60 mb-3 font-mono">Languages</h4>
+      <div class="flex flex-wrap gap-2">
+        {technologies.languages.map((tech) => (
+          <div class="tech-badge group/badge flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300">
+            <tech.icon className="w-4 h-4 group-hover/badge:scale-110 transition-transform duration-300" style={{ color: tech.color }} />
+            <span class="text-xs font-medium text-white/70 group-hover/badge:text-blue-accent transition-colors">{tech.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Frameworks -->
+    <div class="mb-6">
+      <h4 class="text-xs uppercase tracking-widest text-blue-accent/60 mb-3 font-mono">Frameworks</h4>
+      <div class="flex flex-wrap gap-2">
+        {technologies.frameworks.map((tech) => (
+          <div class="tech-badge group/badge flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300">
+            <tech.icon className="w-4 h-4 group-hover/badge:scale-110 transition-transform duration-300" style={{ color: tech.color }} />
+            <span class="text-xs font-medium text-white/70 group-hover/badge:text-blue-accent transition-colors">{tech.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="mb-6">
+      <h4 class="text-xs uppercase tracking-widest text-blue-accent/60 mb-3 font-mono">Tools & Services</h4>
+      <div class="flex flex-wrap gap-2">
+        {technologies.tools.map((tech) => (
+          <div class="tech-badge group/badge flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300">
+            <tech.icon className="w-4 h-4 group-hover/badge:scale-110 transition-transform duration-300" style={{ color: tech.color }} />
+            <span class="text-xs font-medium text-white/70 group-hover/badge:text-blue-accent transition-colors">{tech.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Core Competencies -->
+    <div>
+      <h4 class="text-xs uppercase tracking-widest text-blue-accent/60 mb-3 font-mono">Core Competencies</h4>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="competency-item group/comp p-3 rounded-xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
+          <div class="text-xs font-medium text-white/90 mb-1 group-hover/comp:text-blue-accent transition-colors duration-300">Full-Stack Development</div>
+          <div class="text-xs text-white/50">End-to-end web solutions</div>
+        </div>
+        <div class="competency-item group/comp p-3 rounded-xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
+          <div class="text-xs font-medium text-white/90 mb-1 group-hover/comp:text-blue-accent transition-colors duration-300">Cloud Architecture</div>
+          <div class="text-xs text-white/50">AWS, Azure, GCP</div>
+        </div>
+        <div class="competency-item group/comp p-3 rounded-xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
+          <div class="text-xs font-medium text-white/90 mb-1 group-hover/comp:text-blue-accent transition-colors duration-300">Game Development</div>
+          <div class="text-xs text-white/50">Interactive experiences</div>
+        </div>
+        <div class="competency-item group/comp p-3 rounded-xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
+          <div class="text-xs font-medium text-white/90 mb-1 group-hover/comp:text-blue-accent transition-colors duration-300">AI Integration</div>
+          <div class="text-xs text-white/50">Smart applications</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .tech-stack-card:hover .gradient-overlay {
+    opacity: 1;
+  }
+
+  .tech-stack-card:hover .border-glow {
+    opacity: 1;
+  }
+
+  .tech-badge {
+    cursor: default;
+  }
+
+  .tech-badge:hover {
+    transform: translateY(-2px) scale(1.05);
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  // Magnetic effect for all tech badges
+  const techBadges = document.querySelectorAll('.tech-badge');
+  
+  techBadges.forEach((badge) => {
+    badge.addEventListener('mousemove', (e) => {
+      const rect = badge.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      const deltaX = (e.clientX - centerX) * 0.2;
+      const deltaY = (e.clientY - centerY) * 0.2;
+
+      gsap.to(badge, {
+        x: deltaX,
+        y: deltaY,
+        duration: 0.3,
+        ease: 'power2.out',
+      });
+    });
+
+    badge.addEventListener('mouseleave', () => {
+      gsap.to(badge, {
+        x: 0,
+        y: 0,
+        duration: 0.5,
+        ease: 'elastic.out(1, 0.5)',
+      });
+    });
+  });
+</script>

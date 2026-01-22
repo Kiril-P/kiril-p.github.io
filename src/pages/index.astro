@@ -1,62 +1,323 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import { getTopRepos } from '../lib/github';
+import { getProjectsFromConfig } from '../lib/github';
+import TechStack from '../components/TechStack.astro';
+import ContactCard from '../components/ContactCard.astro';
+import Navigation from '../components/Navigation.astro';
+import About from '../components/About.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Footer from '../components/Footer.astro';
+import BackgroundSwirls from '../components/BackgroundSwirls.astro';
+import NetworkGlobe from '../components/NetworkGlobe';
+import { Star } from 'lucide-react';
 
-const repos = await getTopRepos('kiril-p');
+const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays the same for API
 ---
 
-<MainLayout title="Kiril-P // Software Engineer">
-	<main class="max-w-7xl mx-auto px-6 py-24 md:py-32">
+<MainLayout 
+	title="Kiril Petrovski - Full Stack Developer & Cloud Solutions Engineer" 
+	description="Computer Science & AI student at IE University specializing in full-stack development and cloud-based solutions. Expert in React, TypeScript, Python, AWS, Azure, and Google Cloud Platform. Building scalable, high-performance web applications."
+>
+	<BackgroundSwirls />
+	<Navigation />
+	
+	<main class="max-w-7xl mx-auto px-6 pt-32 pb-24 md:pt-40 relative">
 		<!-- Hero Section -->
-		<section id="hero" class="min-h-[60vh] flex flex-col justify-center">
-			<h2 class="text-sm uppercase tracking-[0.3em] text-white/50 mb-4 overflow-hidden">
-				<span class="hero-sub block translate-y-full">Available for new opportunities</span>
-			</h2>
-			<h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-tight mb-8 overflow-hidden">
-				<span class="hero-title block translate-y-full">Kiril-P //</span>
-				<span class="hero-title block translate-y-full text-white/30">Software Engineer</span>
+		<section id="hero" class="min-h-[60vh] flex flex-col justify-center relative">
+			<!-- Gradient Glow Effect -->
+			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-accent/10 rounded-full blur-[120px] pointer-events-none"></div>
+			
+			<!-- Network Globe -->
+			<NetworkGlobe client:load />
+			
+			<!-- Availability Status Badge -->
+			<div class="mb-6 relative z-10">
+				<div class="hero-badge inline-flex items-center gap-3 px-5 py-3 rounded-full bg-green-500/10 border border-green-500/30 backdrop-blur-sm">
+					<div class="flex items-center gap-2">
+						<span class="relative flex h-2.5 w-2.5">
+							<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+							<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+						</span>
+						<span class="text-xs font-semibold text-green-400">Available for Summer 2026 Internships</span>
+					</div>
+					<div class="h-4 w-px bg-green-500/20"></div>
+					<div class="flex items-center gap-1.5 text-xs text-white/50">
+						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+						<span>Madrid, Spain</span>
+					</div>
+					<div class="h-4 w-px bg-white/10"></div>
+					<div class="text-xs text-white/50">CS + AI Student @ IE University</div>
+				</div>
+			</div>
+			
+			<h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-tight mb-8 overflow-hidden relative z-10">
+				<span class="hero-title block translate-y-full">Kiril Petrovski //</span>
+				<span class="hero-title block translate-y-full text-white/30">
+					<span id="typed-text"></span><span class="typing-cursor">|</span>
+				</span>
 			</h1>
-			<p class="max-w-xl text-lg text-white/60 leading-relaxed mb-12 overflow-hidden">
+			<p class="max-w-xl text-lg text-white/60 leading-relaxed mb-10 overflow-hidden relative z-10">
 				<span class="hero-desc block translate-y-full">
-					Building high-performance web applications and premium digital experiences with a focus on clean architecture and modern motion design.
+					Full-stack developer specializing in scalable cloud solutions. Building high-performance web applications with modern architecture on AWS, Azure, and Google Cloud.
 				</span>
 			</p>
+
+			<!-- CTA Buttons -->
+			<div class="hero-cta flex flex-wrap items-center gap-4 relative z-10 opacity-0">
+				<a 
+					href="#projects" 
+					class="cta-primary group px-8 py-4 rounded-full bg-blue-accent hover:bg-blue-accent-dark text-white font-medium transition-all duration-300 flex items-center gap-2 shadow-lg shadow-blue-accent/30 hover:shadow-blue-accent/50 hover:scale-105"
+				>
+					<span>View My Work</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-y-1">
+						<line x1="12" y1="5" x2="12" y2="19"></line>
+						<polyline points="19 12 12 19 5 12"></polyline>
+					</svg>
+				</a>
+				<a 
+					href="/Kiril-Petrovski-CV.pdf" 
+					target="_blank"
+					class="cta-secondary group px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-accent/40 text-white font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-y-1">
+						<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+						<polyline points="7 10 12 15 17 10"></polyline>
+						<line x1="12" y1="15" x2="12" y2="3"></line>
+					</svg>
+					<span>Download Resume</span>
+				</a>
+				<a 
+					href="#get-in-touch" 
+					class="cta-tertiary px-8 py-4 text-white/70 hover:text-blue-accent font-medium transition-all duration-300 flex items-center gap-2"
+				>
+					<span>Get in Touch</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="5" y1="12" x2="19" y2="12"></line>
+						<polyline points="12 5 19 12 12 19"></polyline>
+					</svg>
+				</a>
+			</div>
 		</section>
 
 		<!-- Bento Grid Section -->
 		<section id="projects" class="py-24">
 			<h3 class="text-2xl font-bold mb-12">Featured Projects</h3>
-			<div class="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[200px]">
-				{repos.map((repo, index) => (
-					<a 
-						href={repo.html_url} 
-						target="_blank" 
-						class={`group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 p-8 flex flex-col justify-between hover:border-white/20 transition-all duration-500 ${
-							index === 0 ? 'md:col-span-8 md:row-span-2' : 
-							index === 1 ? 'md:col-span-4 md:row-span-2' : 
-							'md:col-span-4'
-						}`}
-					>
-						<div>
-							<div class="flex justify-between items-start mb-4">
-								<span class="text-xs font-mono text-white/40 uppercase tracking-widest">{repo.language || 'Project'}</span>
-								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/20 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+			<div class="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[250px]">
+				{repos.map((repo, index) => {
+					const isFeatured = index === 0 || index === 1;
+					return (
+						<a 
+							href={repo.html_url} 
+							target="_blank"
+							rel="noopener noreferrer" 
+							class={`bento-card group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 p-8 pb-10 flex flex-col justify-between ${
+								index === 0 ? 'md:col-span-8 md:row-span-2' : 
+								index === 1 ? 'md:col-span-4 md:row-span-2' : 
+								'md:col-span-4'
+							}`}
+						>
+							<!-- Subtle gradient overlay on hover -->
+							<div class="gradient-overlay absolute inset-0 bg-gradient-to-br from-blue-accent/0 to-blue-accent/10 opacity-0 transition-opacity duration-700"></div>
+							
+							<!-- Border glow effect -->
+							<div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);"></div>
+							
+							<!-- Featured Badge -->
+							{isFeatured && (
+								<div class="featured-badge absolute top-4 right-4 z-20 transition-transform duration-300">
+									<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-accent/10 border border-blue-accent/30 backdrop-blur-sm">
+										<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon text-blue-accent transition-transform duration-500">
+											<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+										</svg>
+										<span class="text-xs font-medium text-blue-accent">Featured</span>
+									</div>
+								</div>
+							)}
+							
+							<div class="relative z-10">
+								<div class="flex justify-between items-start mb-4">
+									<span class="language-badge text-xs font-mono text-blue-accent/60 uppercase tracking-widest transition-all duration-300">{repo.language || 'Project'}</span>
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon text-white/20 transition-all duration-300">
+										<line x1="7" y1="17" x2="17" y2="7"></line>
+										<polyline points="7 7 17 7 17 17"></polyline>
+									</svg>
+								</div>
+								
+							<h4 class={`title font-bold mb-2 transition-all duration-300 leading-tight ${isFeatured ? 'text-3xl md:text-4xl' : 'text-xl'}`}>
+								{repo.name}
+							</h4>
+								
+							<p class={`text-white/50 leading-relaxed ${isFeatured ? 'text-base line-clamp-3 md:line-clamp-4' : 'text-xs line-clamp-3'}`}>
+								{repo.description || 'Check out this project on GitHub'}
+							</p>
+								
+								{repo.tags && (
+									<div class="flex gap-2 mt-4 flex-wrap">
+										{repo.tags.map(tag => (
+											<span class="tag text-xs px-2.5 py-1 rounded-full bg-blue-accent/10 text-blue-accent border border-blue-accent/20 font-medium transition-all duration-300">
+												{tag}
+											</span>
+										))}
+									</div>
+								)}
 							</div>
-							<h4 class="text-2xl font-bold mb-2">{repo.name}</h4>
-							<p class="text-white/50 text-sm line-clamp-2">{repo.description}</p>
-						</div>
-						
-						<div class="flex items-center gap-4 mt-auto">
-							<div class="flex items-center gap-1 text-xs text-white/40">
-								<span>★</span> {repo.stargazers_count}
+							
+							<div class="flex items-center gap-4 mt-auto mb-2 relative z-10">
+								{repo.stargazers_count !== undefined && (
+									<div class="stars flex items-center gap-1.5 text-sm text-white/40 transition-all duration-300">
+										<Star className="star-icon-svg w-4 h-4 inline-block transition-transform duration-500" />
+										<span>{repo.stargazers_count}</span>
+									</div>
+								)}
+								
+								{isFeatured && (
+									<div class="view-project ml-auto flex items-center gap-2 text-sm text-white/40 transition-all duration-300">
+										<span>View Project</span>
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="project-arrow transition-transform duration-300">
+											<line x1="5" y1="12" x2="19" y2="12"></line>
+											<polyline points="12 5 19 12 12 19"></polyline>
+										</svg>
+									</div>
+								)}
 							</div>
-						</div>
-					</a>
-				))}
+						</a>
+					);
+				})}
+			</div>
+		</section>
+
+		<!-- About Section -->
+		<About />
+
+		<!-- Tech Stack & Contact Section -->
+		<section id="contact" class="py-12">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+				<div id="tech-stack" class="md:col-span-2">
+					<TechStack />
+				</div>
+				<div class="md:col-span-1">
+					<ContactCard 
+						email="kirilpetrovski2005@gmail.com"
+						linkedin="https://linkedin.com/in/kiril-petrovski"
+						github="https://github.com/kiril-p"
+						itch="https://kirilp.itch.io/"
+						resume="/Kiril-Petrovski-CV.pdf"
+					/>
+				</div>
 			</div>
 		</section>
 	</main>
+
+	<ContactForm />
+	<Footer />
 </MainLayout>
+
+<style>
+	/* Premium hover animations for Bento cards */
+	.bento-card {
+		transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.4s ease;
+	}
+
+	.bento-card:hover {
+		transform: scale(1.02) translateY(-4px);
+		border-color: rgba(59, 130, 246, 0.3);
+	}
+
+	.bento-card:hover .gradient-overlay {
+		opacity: 1;
+	}
+
+	.bento-card:hover .border-glow {
+		opacity: 1;
+	}
+
+	.bento-card:hover .language-badge {
+		color: rgb(59, 130, 246);
+		transform: translateX(3px);
+	}
+
+	.bento-card:hover .arrow-icon {
+		color: rgb(59, 130, 246);
+		transform: translate(5px, -5px) scale(1.1);
+	}
+
+	.bento-card:hover .title {
+		color: rgb(59, 130, 246);
+		transform: translateX(2px);
+	}
+
+	.bento-card:hover .tag {
+		background-color: rgba(59, 130, 246, 0.15);
+		border-color: rgba(59, 130, 246, 0.4);
+		transform: scale(1.05);
+	}
+
+	.bento-card:hover .stars {
+		color: rgba(59, 130, 246, 0.7);
+		transform: scale(1.1);
+	}
+
+	.bento-card:hover .view-project {
+		color: rgb(59, 130, 246);
+	}
+
+	.bento-card:hover .project-arrow {
+		transform: translateX(4px);
+	}
+
+	.bento-card:hover .featured-badge {
+		transform: scale(1.05);
+	}
+
+	.bento-card:hover .star-icon {
+		animation: spin 0.6s ease-in-out;
+	}
+
+	.bento-card:hover .star-icon-svg {
+		animation: spin 0.6s ease-in-out;
+	}
+
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	/* Smooth transitions for all interactive elements */
+	.bento-card * {
+		transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+	}
+
+	/* Typing cursor animation */
+	.typing-cursor {
+		display: inline-block;
+		margin-left: 4px;
+		animation: blink 0.8s step-end infinite;
+		color: currentColor;
+		font-weight: 300;
+	}
+
+	@keyframes blink {
+		0%, 50% {
+			opacity: 1;
+		}
+		51%, 100% {
+			opacity: 0;
+		}
+	}
+
+	/* Typed text container */
+	#typed-text {
+		display: inline-block;
+		min-height: 1em;
+	}
+</style>
 
 <script>
 	import { gsap } from 'gsap';
@@ -67,20 +328,122 @@ const repos = await getTopRepos('kiril-p');
 	// Hero Animation
 	const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.5 } });
 
-	tl.to(".hero-sub", { y: 0, stagger: 0.1 })
-	  .to(".hero-title", { y: 0, stagger: 0.2 }, "-=1.2")
-	  .to(".hero-desc", { y: 0 }, "-=1.2");
+	// Animate status badge from left
+	tl.from(".hero-badge", { 
+		x: -100, 
+		opacity: 0, 
+		duration: 0.8, 
+		ease: "back.out(1.5)" 
+	})
+	  .to(".hero-title", { y: 0, stagger: 0.2 }, "-=0.5")
+	  .to(".hero-desc", { y: 0 }, "-=1")
+	  .to(".hero-cta", { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.5");
 
-	// Project Grid Animations
+	// Typewriter effect for roles
+	const roles = [
+		"Full Stack Developer",
+		"Cloud Solutions Engineer",
+		"CS & AI Student",
+		"Web Developer",
+		"Game Developer",
+		"Building the Future"
+	];
+
+	let roleIndex = 0;
+	let charIndex = 0;
+	let isDeleting = false;
+	let typingSpeed = 100;
+
+	function typeRole() {
+		const typedTextElement = document.getElementById('typed-text');
+		if (!typedTextElement) return;
+
+		const currentRole = roles[roleIndex];
+
+		if (isDeleting) {
+			// Deleting characters
+			typedTextElement.textContent = currentRole.substring(0, charIndex - 1);
+			charIndex--;
+			typingSpeed = 50; // Faster when deleting
+		} else {
+			// Typing characters
+			typedTextElement.textContent = currentRole.substring(0, charIndex + 1);
+			charIndex++;
+			typingSpeed = 100; // Normal typing speed
+		}
+
+		// When word is complete
+		if (!isDeleting && charIndex === currentRole.length) {
+			typingSpeed = 2000; // Pause at end
+			isDeleting = true;
+		} 
+		// When word is fully deleted
+		else if (isDeleting && charIndex === 0) {
+			isDeleting = false;
+			roleIndex = (roleIndex + 1) % roles.length; // Move to next role
+			typingSpeed = 500; // Pause before typing next word
+		}
+
+		setTimeout(typeRole, typingSpeed);
+	}
+
+	// Start typing after hero animation completes
+	tl.call(() => {
+		typeRole();
+	});
+
+	// Project Grid Animations - Each project falls individually with proper scroll trigger
+	gsap.set("#projects a", { opacity: 1, y: 0 }); // Ensure cards are visible by default
+	
 	gsap.from("#projects a", {
 		scrollTrigger: {
 			trigger: "#projects",
-			start: "top 80%",
+			start: "top 60%", // Trigger later so you see the animation
+			toggleActions: "play none none none",
+			once: true // Only animate once, don't reset on scroll
 		},
-		y: 50,
+		y: 80,
 		opacity: 0,
-		stagger: 0.1,
+		stagger: {
+			amount: 0.6,
+			from: "start",
+			each: 0.12 // Each card waits 0.12s after the previous
+		},
 		duration: 1,
-		ease: "power3.out"
+		ease: "back.out(1.2)" // Adds a subtle bounce effect
+	});
+
+	// About Section - All cards animate together like Tech Stack
+	gsap.set("#about .grid > div", { opacity: 1, y: 0 });
+	
+	gsap.from("#about .grid > div", {
+		scrollTrigger: {
+			trigger: "#about",
+			start: "top 80%",
+			toggleActions: "play none none none",
+			once: true // Only animate once, don't reset on scroll
+		},
+		y: 60,
+		opacity: 0,
+		stagger: 0.15,
+		duration: 0.9,
+		ease: "back.out(1.1)"
+	});
+
+	// Tech Stack & Contact Section - Fall down together
+	gsap.set("#contact > div > *", { opacity: 1, y: 0 }); // Ensure cards are visible by default
+	
+	gsap.from("#contact > div > *", {
+		scrollTrigger: {
+			trigger: "#contact",
+			start: "top 80%",
+			toggleActions: "play none none none",
+			once: true // Only animate once, don't reset on scroll
+		},
+		y: 60,
+		opacity: 0,
+		stagger: 0.15,
+		duration: 0.9,
+		ease: "back.out(1.1)"
 	});
 </script>
