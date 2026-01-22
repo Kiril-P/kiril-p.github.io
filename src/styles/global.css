@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-premium-black: #050505;
+  --color-premium-gray: #111111;
+  --color-accent: #ffffff;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-premium-black text-white font-sans antialiased;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom GSAP reveal classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+}

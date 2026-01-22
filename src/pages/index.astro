@@ -1,0 +1,86 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { getTopRepos } from '../lib/github';
+
+const repos = await getTopRepos('kiril-p');
+---
+
+<MainLayout title="Kiril-P // Software Engineer">
+	<main class="max-w-7xl mx-auto px-6 py-24 md:py-32">
+		<!-- Hero Section -->
+		<section id="hero" class="min-h-[60vh] flex flex-col justify-center">
+			<h2 class="text-sm uppercase tracking-[0.3em] text-white/50 mb-4 overflow-hidden">
+				<span class="hero-sub block translate-y-full">Available for new opportunities</span>
+			</h2>
+			<h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-tight mb-8 overflow-hidden">
+				<span class="hero-title block translate-y-full">Kiril-P //</span>
+				<span class="hero-title block translate-y-full text-white/30">Software Engineer</span>
+			</h1>
+			<p class="max-w-xl text-lg text-white/60 leading-relaxed mb-12 overflow-hidden">
+				<span class="hero-desc block translate-y-full">
+					Building high-performance web applications and premium digital experiences with a focus on clean architecture and modern motion design.
+				</span>
+			</p>
+		</section>
+
+		<!-- Bento Grid Section -->
+		<section id="projects" class="py-24">
+			<h3 class="text-2xl font-bold mb-12">Featured Projects</h3>
+			<div class="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[200px]">
+				{repos.map((repo, index) => (
+					<a 
+						href={repo.html_url} 
+						target="_blank" 
+						class={`group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 p-8 flex flex-col justify-between hover:border-white/20 transition-all duration-500 ${
+							index === 0 ? 'md:col-span-8 md:row-span-2' : 
+							index === 1 ? 'md:col-span-4 md:row-span-2' : 
+							'md:col-span-4'
+						}`}
+					>
+						<div>
+							<div class="flex justify-between items-start mb-4">
+								<span class="text-xs font-mono text-white/40 uppercase tracking-widest">{repo.language || 'Project'}</span>
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/20 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+							</div>
+							<h4 class="text-2xl font-bold mb-2">{repo.name}</h4>
+							<p class="text-white/50 text-sm line-clamp-2">{repo.description}</p>
+						</div>
+						
+						<div class="flex items-center gap-4 mt-auto">
+							<div class="flex items-center gap-1 text-xs text-white/40">
+								<span>★</span> {repo.stargazers_count}
+							</div>
+						</div>
+					</a>
+				))}
+			</div>
+		</section>
+	</main>
+</MainLayout>
+
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	// Hero Animation
+	const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.5 } });
+
+	tl.to(".hero-sub", { y: 0, stagger: 0.1 })
+	  .to(".hero-title", { y: 0, stagger: 0.2 }, "-=1.2")
+	  .to(".hero-desc", { y: 0 }, "-=1.2");
+
+	// Project Grid Animations
+	gsap.from("#projects a", {
+		scrollTrigger: {
+			trigger: "#projects",
+			start: "top 80%",
+		},
+		y: 50,
+		opacity: 0,
+		stagger: 0.1,
+		duration: 1,
+		ease: "power3.out"
+	});
+</script>
