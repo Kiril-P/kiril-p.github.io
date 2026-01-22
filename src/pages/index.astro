@@ -66,10 +66,10 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 			</p>
 
 			<!-- CTA Buttons -->
-			<div class="hero-cta flex flex-wrap items-center gap-4 relative z-10 opacity-0">
+			<div class="hero-cta flex flex-wrap items-center gap-4 relative z-10">
 				<a 
 					href="#projects" 
-					class="cta-primary group px-8 py-4 rounded-full bg-blue-accent hover:bg-blue-accent-dark text-white font-medium transition-all duration-300 flex items-center gap-2 shadow-lg shadow-blue-accent/30 hover:shadow-blue-accent/50 hover:scale-105"
+					class="cta-primary group px-8 py-4 rounded-full bg-blue-accent hover:bg-blue-accent-dark text-white font-medium transition-all duration-300 flex items-center gap-2 shadow-lg shadow-blue-accent/30 hover:shadow-blue-accent/50 hover:scale-105 opacity-0"
 				>
 					<span>View My Work</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-y-1">
@@ -80,7 +80,7 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 				<a 
 					href="/Kiril-Petrovski-CV.pdf" 
 					target="_blank"
-					class="cta-secondary group px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-accent/40 text-white font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105"
+					class="cta-secondary group px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-accent/40 text-white font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105 opacity-0"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-y-1">
 						<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -91,7 +91,7 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 				</a>
 				<a 
 					href="#get-in-touch" 
-					class="cta-tertiary px-8 py-4 text-white/70 hover:text-blue-accent font-medium transition-all duration-300 flex items-center gap-2"
+					class="cta-tertiary px-8 py-4 text-white/70 hover:text-blue-accent font-medium transition-all duration-300 flex items-center gap-2 opacity-0"
 				>
 					<span>Get in Touch</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -337,7 +337,13 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 	})
 	  .to(".hero-title", { y: 0, stagger: 0.2 }, "-=0.5")
 	  .to(".hero-desc", { y: 0 }, "-=1")
-	  .to(".hero-cta", { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.5");
+	  .to(".hero-cta a", { 
+		opacity: 1, 
+		y: 0, 
+		stagger: 0.15, 
+		duration: 0.8, 
+		ease: "back.out(1.7)" 
+	  }, "-=0.5");
 
 	// Typewriter effect for roles
 	const roles = [
