@@ -1,8 +1,4 @@
-# Portfolio Website
-
-A modern, high-performance portfolio website showcasing my work as a Full Stack Developer and Cloud Solutions Engineer. Built with cutting-edge web technologies for optimal performance and user experience.
-
-[![Deployed on GitHub Pages](https://img.shields.io/badge/Deployed%20on-GitHub%20Pages-181717?style=flat&logo=github)](https://kiril-p.github.io)
+[![Deployed on GitHub Pages](https://img.shields.io/badge/Deployed%20on-GitHub%20Pages-181717?style=flat&logo=github)](https://kpetrovski.me)
 [![Built with Astro](https://img.shields.io/badge/Built%20with-Astro-FF5D01?style=flat&logo=astro)](https://astro.build)
 [![Lighthouse Score](https://img.shields.io/badge/Lighthouse-95%2B-brightgreen?style=flat&logo=lighthouse)](https://developers.google.com/web/tools/lighthouse)
 
@@ -48,7 +44,7 @@ A modern, high-performance portfolio website showcasing my work as a Full Stack 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/kiril-p/kiril-p.github.io.git
+   git clone https://github.com/Kiril-P/kiril-p.github.io.git
    cd kiril-p.github.io
    ```
 
@@ -163,8 +159,8 @@ This project is open source and available for personal and educational use. Feel
 ## 📧 Contact
 
 **Kiril Petrovski**
-- Website: [kiril-p.github.io](https://kiril-p.github.io)
-- GitHub: [@kiril-p](https://github.com/kiril-p)
+- Website: [kpetrovski.me](https://kpetrovski.me)
+- GitHub: [@kiril-p](https://github.com/Kiril-P)
 - LinkedIn: [kiril-petrovski](https://linkedin.com/in/kiril-petrovski)
 - Email: kirilpetrovski2005@gmail.com
 
