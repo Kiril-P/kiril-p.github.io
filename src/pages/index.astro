@@ -138,6 +138,15 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 							<!-- Border glow effect -->
 							<div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: inset 0 0 50px rgba(59, 130, 246, 0.2);"></div>
 							
+							<!-- Language Badge -->
+							<div class="absolute top-4 left-4 z-20">
+								<div class="language-badge inline-flex items-center px-3 py-1.5 rounded-full bg-blue-accent/10 border border-blue-accent/20 backdrop-blur-md">
+									<span class="text-xs font-medium text-blue-accent">
+										{repo.language}
+									</span>
+								</div>
+							</div>
+							
 							<!-- Source Badge -->
 							<div class="absolute top-4 right-4 z-20">
 								{repo.sourceType === 'open-source' ? (
@@ -161,7 +170,6 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 							<div class="relative z-10 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
 								<div class="flex justify-between items-end mb-2">
 									<div>
-										<span class="text-xs font-mono text-blue-accent/80 uppercase tracking-widest mb-1 block">{repo.language}</span>
 										<h4 class={`font-bold text-white transition-colors duration-300 ${isLarge ? 'text-3xl' : 'text-xl'}`}>
 											{repo.name}
 										</h4>
