@@ -8,7 +8,7 @@ import ThemeToggle from './ThemeToggle';
     <!-- Desktop Layout with Grid for proper centering -->
     <div class="hidden md:grid grid-cols-3 items-center">
       <!-- Logo/Name (Left) with expand on hover -->
-      <a href="#hero" class="nav-logo group/logo relative text-xl font-bold tracking-tight justify-self-start">
+      <a href="/#hero" class="nav-logo group/logo relative text-xl font-bold tracking-tight justify-self-start">
         <span class="logo-short inline-block transition-opacity duration-300 group-hover/logo:opacity-0">
           KP <span class="text-white/30">//</span>
         </span>
@@ -19,16 +19,16 @@ import ThemeToggle from './ThemeToggle';
 
       <!-- Desktop Navigation (Center) -->
       <div class="flex items-center gap-8 justify-self-center">
-        <a href="#projects" class="nav-link text-sm text-white/70 hover:text-white transition-colors duration-300">
+        <a href="/#projects" class="nav-link text-sm text-white/70 hover:text-white transition-colors duration-300">
           Projects
         </a>
-        <a href="#about" class="nav-link text-sm text-white/70 hover:text-white transition-colors duration-300">
+        <a href="/#about" class="nav-link text-sm text-white/70 hover:text-white transition-colors duration-300">
           About
         </a>
-        <a href="#tech-stack" class="nav-link text-sm text-white/70 hover:text-white transition-colors duration-300">
+        <a href="/#tech-stack" class="nav-link text-sm text-white/70 hover:text-white transition-colors duration-300">
           Tech Stack
         </a>
-        <a href="#contact" class="nav-link text-sm text-white/70 hover:text-white transition-colors duration-300">
+        <a href="/#contact" class="nav-link text-sm text-white/70 hover:text-white transition-colors duration-300">
           Contact
         </a>
       </div>
@@ -37,7 +37,7 @@ import ThemeToggle from './ThemeToggle';
       <div class="flex items-center gap-3 justify-self-end">
         <MagneticButton 
           client:load
-          href="#get-in-touch" 
+          href="/#get-in-touch" 
           className="px-5 py-2.5 rounded-full bg-blue-accent/10 border border-blue-accent/20 text-sm font-medium text-blue-accent hover:bg-blue-accent/20 hover:border-blue-accent/40 transition-all duration-300"
           strength={0.4}
         >
@@ -54,7 +54,7 @@ import ThemeToggle from './ThemeToggle';
     <!-- Mobile Layout -->
     <div class="md:hidden flex items-center justify-between">
       <!-- Logo/Name with expand on hover (mobile) -->
-      <a href="#hero" class="nav-logo group/logo relative text-xl font-bold tracking-tight">
+      <a href="/#hero" class="nav-logo group/logo relative text-xl font-bold tracking-tight">
         <span class="logo-short inline-block transition-opacity duration-300 group-hover/logo:opacity-0">
           KP <span class="text-white/30">//</span>
         </span>
@@ -89,20 +89,20 @@ import ThemeToggle from './ThemeToggle';
   <div id="mobile-menu" class="mobile-menu md:hidden overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
     <div class="px-6 py-4 border-t border-white/5 bg-premium-gray/50 backdrop-blur-lg">
       <div class="flex flex-col gap-4">
-        <a href="#projects" class="mobile-link text-white/70 hover:text-white transition-colors duration-300 py-2">
+        <a href="/#projects" class="mobile-link text-white/70 hover:text-white transition-colors duration-300 py-2">
           Projects
         </a>
-        <a href="#about" class="mobile-link text-white/70 hover:text-white transition-colors duration-300 py-2">
+        <a href="/#about" class="mobile-link text-white/70 hover:text-white transition-colors duration-300 py-2">
           About
         </a>
-        <a href="#tech-stack" class="mobile-link text-white/70 hover:text-white transition-colors duration-300 py-2">
+        <a href="/#tech-stack" class="mobile-link text-white/70 hover:text-white transition-colors duration-300 py-2">
           Tech Stack
         </a>
-        <a href="#contact" class="mobile-link text-white/70 hover:text-white transition-colors duration-300 py-2">
+        <a href="/#contact" class="mobile-link text-white/70 hover:text-white transition-colors duration-300 py-2">
           Contact
         </a>
         <a 
-          href="#get-in-touch" 
+          href="/#get-in-touch" 
           class="mobile-link flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-blue-accent/10 border border-blue-accent/20 text-sm font-medium text-blue-accent hover:bg-blue-accent/20 transition-all duration-300 mt-2"
         >
           <span>Get in Touch</span>

@@ -50,7 +50,7 @@
 
 2. **Install dependencies**
    ```bash
-   npm install
+   bun install
    ```
 
 3. **Configure environment (optional)**
@@ -60,7 +60,7 @@
 
 4. **Start development server**
    ```bash
-   npm run dev
+   bun run dev
    ```
    The site will be available at `http://localhost:4321`
 
@@ -70,11 +70,11 @@
 
 | Command | Action |
 |---------|--------|
-| `npm install` | Install dependencies |
-| `npm run dev` | Start dev server at `localhost:4321` |
-| `npm run build` | Build production site to `./dist/` |
-| `npm run preview` | Preview production build locally |
-| `npm run astro` | Run Astro CLI commands |
+| `bun install` | Install dependencies |
+| `bun run dev` | Start dev server at `localhost:4321` |
+| `bun run build` | Build production site to `./dist/` |
+| `bun run preview` | Preview production build locally |
+| `bun run astro` | Run Astro CLI commands |
 
 ### Project Structure
 

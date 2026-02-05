@@ -9,6 +9,11 @@
   --color-blue-glow: rgba(59, 130, 246, 0.2);
 }
 
+/* Smooth scrolling for all anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Dark Theme (Default) */
 :root,
 [data-theme="dark"] {

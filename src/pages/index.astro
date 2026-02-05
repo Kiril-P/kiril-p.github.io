@@ -9,7 +9,7 @@ import ContactForm from '../components/ContactForm.astro';
 import Footer from '../components/Footer.astro';
 import BackgroundSwirls from '../components/BackgroundSwirls.astro';
 import NetworkGlobe from '../components/NetworkGlobe';
-import { Star } from 'lucide-react';
+import { Star, Lock, Github, Globe, ArrowUpRight } from 'lucide-react';
 
 const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays the same for API
 ---
@@ -104,84 +104,76 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 
 		<!-- Bento Grid Section -->
 		<section id="projects" class="py-24">
-			<h3 class="text-2xl font-bold mb-12">Featured Projects</h3>
-			<div class="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[250px]">
-				{repos.map((repo, index) => {
-					const isFeatured = index === 0 || index === 1;
+			<div class="flex items-center justify-between mb-12">
+				<h3 class="text-2xl font-bold">Featured Exhibition</h3>
+				<div class="hidden md:flex items-center gap-2 text-sm text-white/40">
+					<span class="w-2 h-2 rounded-full bg-green-400"></span> Open Source
+					<span class="w-2 h-2 rounded-full bg-red-400 ml-4"></span> Closed Source
+				</div>
+			</div>
+			
+			<div class="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[300px]">
+				{repos.slice(0, 6).map((repo, index) => {
+					// Layout Logic: First 2 items are large (Hero)
+					const isLarge = index === 0 || index === 1;
 					return (
 						<a 
-							href={repo.html_url} 
-							target="_blank"
-							rel="noopener noreferrer" 
-							class={`bento-card group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 p-8 pb-10 flex flex-col justify-between ${
+							href={`/projects/${repo.slug}`}
+							class={`bento-card group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 flex flex-col justify-end p-6 ${
 								index === 0 ? 'md:col-span-8 md:row-span-2' : 
 								index === 1 ? 'md:col-span-4 md:row-span-2' : 
 								'md:col-span-4'
 							}`}
 						>
-							<!-- Subtle gradient overlay on hover -->
-							<div class="gradient-overlay absolute inset-0 bg-gradient-to-br from-blue-accent/0 to-blue-accent/10 opacity-0 transition-opacity duration-700"></div>
+							<!-- Background Image -->
+							<div class="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-105">
+								<img 
+									src={repo.thumbnail} 
+									alt={repo.name} 
+									class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-500"
+								/>
+								<div class="absolute inset-0 bg-gradient-to-t from-premium-black/40 via-transparent to-transparent"></div>
+							</div>
 							
 							<!-- Border glow effect -->
-							<div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);"></div>
+							<div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: inset 0 0 50px rgba(59, 130, 246, 0.2);"></div>
 							
-							<!-- Featured Badge -->
-							{isFeatured && (
-								<div class="featured-badge absolute top-4 right-4 z-20 transition-transform duration-300">
-									<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-accent/10 border border-blue-accent/30 backdrop-blur-sm">
-										<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="star-icon text-blue-accent transition-transform duration-500">
-											<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-										</svg>
-										<span class="text-xs font-medium text-blue-accent">Featured</span>
+							<!-- Source Badge -->
+							<div class="absolute top-4 right-4 z-20">
+								{repo.sourceType === 'open-source' ? (
+									<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 backdrop-blur-md">
+										<Github className="w-3.5 h-3.5 text-green-400" />
+										<span class="text-xs font-medium text-green-400">Open Source</span>
 									</div>
-								</div>
-							)}
-							
-							<div class="relative z-10">
-								<div class="flex justify-between items-start mb-4">
-									<span class="language-badge text-xs font-mono text-blue-accent/60 uppercase tracking-widest transition-all duration-300">{repo.language || 'Project'}</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon text-white/20 transition-all duration-300">
-										<line x1="7" y1="17" x2="17" y2="7"></line>
-										<polyline points="7 7 17 7 17 17"></polyline>
-									</svg>
-								</div>
-								
-							<h4 class={`title font-bold mb-2 transition-all duration-300 leading-tight ${isFeatured ? 'text-3xl md:text-4xl' : 'text-xl'}`}>
-								{repo.name}
-							</h4>
-								
-							<p class={`text-white/50 leading-relaxed ${isFeatured ? 'text-base line-clamp-3 md:line-clamp-4' : 'text-xs line-clamp-3'}`}>
-								{repo.description || 'Check out this project on GitHub'}
-							</p>
-								
-								{repo.tags && (
-									<div class="flex gap-2 mt-4 flex-wrap">
-										{repo.tags.map(tag => (
-											<span class="tag text-xs px-2.5 py-1 rounded-full bg-blue-accent/10 text-blue-accent border border-blue-accent/20 font-medium transition-all duration-300">
-												{tag}
-											</span>
-										))}
+								) : repo.sourceType === 'closed-source' ? (
+									<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 backdrop-blur-md">
+										<Lock className="w-3.5 h-3.5 text-red-400" />
+										<span class="text-xs font-medium text-red-400">Closed Source</span>
+									</div>
+								) : (
+									<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 backdrop-blur-md">
+										<Lock className="w-3.5 h-3.5 text-orange-400" />
+										<span class="text-xs font-medium text-orange-400">Proprietary</span>
 									</div>
 								)}
 							</div>
 							
-							<div class="flex items-center gap-4 mt-auto mb-2 relative z-10">
-								{repo.stargazers_count !== undefined && (
-									<div class="stars flex items-center gap-1.5 text-sm text-white/40 transition-all duration-300">
-										<Star className="star-icon-svg w-4 h-4 inline-block transition-transform duration-500" />
-										<span>{repo.stargazers_count}</span>
+							<div class="relative z-10 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+								<div class="flex justify-between items-end mb-2">
+									<div>
+										<span class="text-xs font-mono text-blue-accent/80 uppercase tracking-widest mb-1 block">{repo.language}</span>
+										<h4 class={`font-bold text-white transition-colors duration-300 ${isLarge ? 'text-3xl' : 'text-xl'}`}>
+											{repo.name}
+										</h4>
 									</div>
-								)}
+									<div class="p-2 rounded-full bg-white/5 border border-white/10 group-hover:bg-blue-accent group-hover:border-blue-accent transition-colors duration-300">
+										<ArrowUpRight className="w-5 h-5 text-white" />
+									</div>
+								</div>
 								
-								{isFeatured && (
-									<div class="view-project ml-auto flex items-center gap-2 text-sm text-white/40 transition-all duration-300">
-										<span>View Project</span>
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="project-arrow transition-transform duration-300">
-											<line x1="5" y1="12" x2="19" y2="12"></line>
-											<polyline points="12 5 19 12 12 19"></polyline>
-										</svg>
-									</div>
-								)}
+								<p class="text-white/60 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
+									{repo.description}
+								</p>
 							</div>
 						</a>
 					);

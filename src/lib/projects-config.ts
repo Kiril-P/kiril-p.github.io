@@ -1,78 +1,149 @@
 /**
  * Project Configuration
  * Define which projects to feature in your Bento grid.
- * 
- * Options:
- * - Use 'github:repoName' to automatically fetch from GitHub API
- * - Use custom objects for non-GitHub projects (game dev, etc.)
  */
 
 export interface CustomProject {
+  slug: string; // Unique URL identifier
   name: string;
   description: string;
-  html_url: string;
+  html_url?: string; // External link (GitHub or Live Demo) - deprecated, use github_url or demo_url
+  github_url?: string; // GitHub repository link
+  demo_url?: string; // Live demo or playable link (e.g., itch.io)
+  website_url?: string; // Product website (e.g., company landing page)
   language: string;
+  category: 'professional' | 'university' | 'personal';
+  sourceType: 'open-source' | 'closed-source' | 'proprietary';
+  priority: number;
   stargazers_count?: number;
-  tags?: string[]; // e.g., ['Game Dev', 'Unity', 'C#']
-  thumbnail?: string; // Optional image URL
+  tags?: string[];
+  thumbnail: string; // Primary image for Bento grid
+  gallery_images?: string[]; // Additional images for deep-dive page
+  video_url?: string; // YouTube loop URL
+  hasInternalPage: boolean;
 }
 
-export type ProjectSource = `github:${string}` | CustomProject;
+export type ProjectSource = CustomProject;
 
-// TEMPORARY: Manual project list to avoid GitHub API rate limits during development
-export const featuredProjects: ProjectSource[] = [
+// Featured Projects Configuration
+// Priority: Cleanr -> Polygon -> Chess -> Starburst -> Battleship
+export const featuredProjects: CustomProject[] = [
   {
+    slug: 'cleanr',
+    name: 'Cleanr',
+    description: 'Leading the development of a cloud-native SaaS platform for commercial cleaning management. Built with robust serverless architecture.',
+    website_url: 'https://www.getcleanr.io/',
+    language: 'Cloud/SaaS',
+    category: 'professional',
+    sourceType: 'closed-source', // Displays as "Closed Source"
+    priority: 1,
+    tags: ['SaaS', 'Cloud Native', 'Enterprise'],
+    thumbnail: '/assets/projects/cleanr pic.png',
+    hasInternalPage: true,
+  },
+  {
+    slug: 'polygon-protocol',
     name: 'Polygon Protocol',
-    description: 'A high-octane geometric roguelite built in Godot Engine where your shape is your weapon. Evolve from a circle into complex polygons, defeat challenging bosses, and survive the digital void. Features permanent meta-progression system, dynamic difficulty scaling, and procedurally generated encounters. Published on itch.io with full controller support.',
-    html_url: 'https://kirilp.itch.io/polygon-protocol',
+    description: 'A high-octane geometric roguelite built in Godot Engine. Evolve from a simple shape into a complex polygon weapon system.',
+    github_url: 'https://github.com/Kiril-P/Polygon-Protocol',
+    demo_url: 'https://kirilp.itch.io/polygon-protocol',
     language: 'Godot',
+    category: 'personal',
+    sourceType: 'open-source',
+    priority: 2,
     stargazers_count: 0,
     tags: ['Game Dev', 'Roguelite', 'Bullet Hell'],
+    thumbnail: '/assets/projects/polygonprotocol.png',
+    video_url: 'https://youtu.be/Yu9m_tLXc84',
+    hasInternalPage: true,
   },
   {
-    name: 'The-Sundering-of-Arkhon',
-    description: 'Interactive CLI adventure game with 500+ lines of C code, featuring a dynamic turn-based combat system, procedural dungeon generation, and persistent save states. Built for Advanced Programming course, demonstrating strong fundamentals in memory management, data structures, and algorithm design. Includes enemy AI, inventory system, and multiple story paths.',
-    html_url: 'https://github.com/Kiril-P/The-Sundering-of-Arkhon',
-    language: 'C',
-    stargazers_count: 1,
-    tags: ['CLI', 'Game Dev', 'Data Structures'],
+    slug: 'chess-engine',
+    name: 'Chess Engine',
+    description: 'Advanced chess engine implementing minimax algorithm with alpha-beta pruning. Features move validation, AI opponent, and game state management.',
+    language: 'C++',
+    category: 'university',
+    sourceType: 'open-source',
+    priority: 3,
+    stargazers_count: 12,
+    tags: ['AI', 'Algorithms', 'C++'],
+    thumbnail: '/assets/projects/chess pic1.png',
+    gallery_images: ['/assets/projects/chess pic2.png'],
+    video_url: 'https://youtu.be/g9J_QGgzTGg',
+    hasInternalPage: true,
   },
   {
-    name: 'starburst',
-    description: 'Fast-paced bullet hell game built with JavaScript and HTML5 Canvas. Features smooth 60 FPS gameplay, particle effects system, progressive difficulty curve, and boss battles. Implemented collision detection, enemy AI patterns, and score tracking with local storage persistence. Showcases strong understanding of game loops and rendering optimization.',
-    html_url: 'https://github.com/Kiril-P/starburst',
+    slug: 'starburst',
+    name: 'Starburst',
+    description: 'High-performance browser-based bullet hell shooter. Optimized 60FPS rendering loop using HTML5 Canvas and vanilla JavaScript.',
+    github_url: 'https://github.com/Kiril-P/starburst',
+    demo_url: 'https://kirilp.itch.io/starburst',
     language: 'JavaScript',
-    stargazers_count: 0,
-    tags: ['Game Dev', 'Canvas', 'Browser'],
+    category: 'personal',
+    sourceType: 'open-source',
+    priority: 4,
+    stargazers_count: 5,
+    tags: ['Canvas', 'Game Dev', 'Performance'],
+    thumbnail: '/assets/projects/starburst1.png',
+    gallery_images: [
+      '/assets/projects/starburst2.png',
+      '/assets/projects/starburst3.png',
+      '/assets/projects/starburst4.png',
+      '/assets/projects/starburst5.png'
+    ],
+    hasInternalPage: true,
   },
   {
-    name: 'Cloud-Computing-Final-Project',
-    description: 'Full-stack serverless web application leveraging AWS Lambda, API Gateway, and DynamoDB. Built with TypeScript, featuring RESTful API endpoints, JWT authentication, and automatic scaling. Implements infrastructure as code with CloudFormation, CI/CD pipeline with GitHub Actions, and comprehensive error handling. Achieved 99.9% uptime with sub-100ms response times.',
-    html_url: 'https://github.com/Kiril-P/Cloud-Computing-Final-Project',
-    language: 'TypeScript',
-    stargazers_count: 1,
-    tags: ['AWS', 'Serverless', 'TypeScript'],
-  },
-  {
-    name: 'Battleship-Multiplayer-Game',
-    description: 'Real-time multiplayer Battleship game implemented in C with socket programming. Features TCP/IP networking, concurrent client handling with multithreading, lobby system, and turn-based gameplay synchronization. Demonstrates proficiency in network protocols, thread safety, and low-level system programming. Supports multiple simultaneous games with matchmaking.',
-    html_url: 'https://github.com/Kiril-P/Battleship-Multiplayer-Game',
+    slug: 'battleship',
+    name: 'Battleship Multiplayer',
+    description: 'Networked multiplayer game built in C using low-level socket programming. Handles concurrent connections and game state synchronization.',
+    github_url: 'https://github.com/Kiril-P/Battleship-Multiplayer-Game',
     language: 'C',
-    stargazers_count: 1,
-    tags: ['Networking', 'Multiplayer', 'Sockets'],
+    category: 'university',
+    sourceType: 'open-source',
+    priority: 5,
+    stargazers_count: 8,
+    tags: ['Networking', 'C', 'Sockets'],
+    thumbnail: '/assets/projects/Battleship.png',
+    gallery_images: [
+      '/assets/projects/Battleship (1).png',
+      '/assets/projects/Battleship (2).png',
+      '/assets/projects/Battleship (3).png',
+      '/assets/projects/Battleship (4).png'
+    ],
+    hasInternalPage: true,
   },
   {
-    name: 'kiril-p.github.io',
-    description: 'Modern, high-performance portfolio website built with Astro 5, React, and Three.js. Features smooth GSAP animations, 3D interactive globe visualization, glassmorphic UI design, and optimized Lighthouse scores (95+). Implements responsive Bento grid layout, client-side form validation with Web3Forms integration, and dark mode theming. Deployed on GitHub Pages with custom domain.',
-    html_url: 'https://github.com/Kiril-P/kiril-p.github.io',
-    language: 'Astro',
-    stargazers_count: 0,
-    tags: ['Astro', 'React', 'Three.js'],
+    // NomNomNow - Included for deep-dive access even if not in top 5 featured grid
+    slug: 'nomnomnow',
+    name: 'NomNomNow',
+    description: 'Serverless cloud computing project leveraging AWS Lambda and DynamoDB for scalable food delivery architecture.',
+    language: 'TypeScript',
+    category: 'university',
+    sourceType: 'open-source',
+    priority: 6,
+    tags: ['AWS', 'Serverless', 'Cloud'],
+    thumbnail: '/assets/projects/nomnomnow pic.png',
+    video_url: 'https://youtu.be/CGYAp0squuc',
+    hasInternalPage: true,
   },
+  {
+    // Solitaire - Included for deep-dive access
+    slug: 'solitaire',
+    name: 'Solitaire',
+    description: 'Classic card game implementation with drag-and-drop mechanics and win-state detection.',
+    language: 'Java',
+    category: 'university',
+    sourceType: 'open-source',
+    priority: 7,
+    tags: ['Java', 'GUI', 'Logic'],
+    thumbnail: '/assets/projects/solitaire.png',
+    gallery_images: [
+      '/assets/projects/solitaire2.png',
+      '/assets/projects/solitaire3.png'
+    ],
+    hasInternalPage: true,
+  }
 ];
 
-/**
- * If this array is empty, the site will fall back to fetching
- * your top repos automatically by star count.
- */
 export const shouldUseFeaturedProjects = featuredProjects.length > 0;

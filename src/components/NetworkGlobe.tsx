@@ -6,8 +6,8 @@ function Globe() {
   const meshRef = useRef<THREE.Group>(null);
   const particlesRef = useRef<THREE.Points>(null);
 
-  // Generate globe particles
-  const particles = useMemo(() => {
+  // Generate globe particles geometry
+  const particlesGeometry = useMemo(() => {
     const positions = [];
     const particleCount = 1000;
     const radius = 2;
@@ -15,22 +15,24 @@ function Globe() {
     for (let i = 0; i < particleCount; i++) {
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(Math.random() * 2 - 1);
-      
+
       const x = radius * Math.sin(phi) * Math.cos(theta);
       const y = radius * Math.sin(phi) * Math.sin(theta);
       const z = radius * Math.cos(phi);
-      
+
       positions.push(x, y, z);
     }
 
-    return new Float32Array(positions);
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    return geometry;
   }, []);
 
-  // Generate connection lines
-  const lines = useMemo(() => {
-    const lineGeometries = [];
+  // Generate connection lines in a single geometry
+  const linesGeometry = useMemo(() => {
     const connectionCount = 50;
     const radius = 2;
+    const points = [];
 
     for (let i = 0; i < connectionCount; i++) {
       const theta1 = Math.random() * Math.PI * 2;
@@ -38,24 +40,19 @@ function Globe() {
       const theta2 = Math.random() * Math.PI * 2;
       const phi2 = Math.acos(Math.random() * 2 - 1);
 
-      const x1 = radius * Math.sin(phi1) * Math.cos(theta1);
-      const y1 = radius * Math.sin(phi1) * Math.sin(theta1);
-      const z1 = radius * Math.cos(phi1);
-
-      const x2 = radius * Math.sin(phi2) * Math.cos(theta2);
-      const y2 = radius * Math.sin(phi2) * Math.sin(theta2);
-      const z2 = radius * Math.cos(phi2);
-
-      const points = [
-        new THREE.Vector3(x1, y1, z1),
-        new THREE.Vector3(x2, y2, z2),
-      ];
-
-      const geometry = new THREE.BufferGeometry().setFromPoints(points);
-      lineGeometries.push(geometry);
+      points.push(
+        radius * Math.sin(phi1) * Math.cos(theta1),
+        radius * Math.sin(phi1) * Math.sin(theta1),
+        radius * Math.cos(phi1),
+        radius * Math.sin(phi2) * Math.cos(theta2),
+        radius * Math.sin(phi2) * Math.sin(theta2),
+        radius * Math.cos(phi2)
+      );
     }
 
-    return lineGeometries;
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(points, 3));
+    return geometry;
   }, []);
 
   // Rotation animation
@@ -64,7 +61,7 @@ function Globe() {
       meshRef.current.rotation.y += 0.001;
       meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
     }
-    
+
     if (particlesRef.current) {
       particlesRef.current.rotation.y += 0.001;
     }
@@ -73,15 +70,7 @@ function Globe() {
   return (
     <group ref={meshRef}>
       {/* Particles */}
-      <points ref={particlesRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            count={particles.length / 3}
-            array={particles}
-            itemSize={3}
-          />
-        </bufferGeometry>
+      <points ref={particlesRef} geometry={particlesGeometry}>
         <pointsMaterial
           size={0.02}
           color="#3b82f6"
@@ -91,17 +80,15 @@ function Globe() {
         />
       </points>
 
-      {/* Connection lines */}
-      {lines.map((geometry, index) => (
-        <line key={index} geometry={geometry}>
-          <lineBasicMaterial
-            color="#8b5cf6"
-            transparent
-            opacity={0.15}
-            linewidth={1}
-          />
-        </line>
-      ))}
+      {/* Connection lines as a single unit */}
+      <lineSegments geometry={linesGeometry}>
+        <lineBasicMaterial
+          color="#8b5cf6"
+          transparent
+          opacity={0.15}
+          linewidth={1}
+        />
+      </lineSegments>
 
       {/* Removed pulsing nodes - they didn't fit the aesthetic */}
 
@@ -131,10 +118,9 @@ export default function NetworkGlobe() {
   }, []);
 
   return (
-    <div 
-      className={`network-globe-container absolute -right-20 top-1/2 -translate-y-1/2 w-[550px] h-[550px] pointer-events-none hidden lg:block transition-opacity duration-700 ${
-        isLoaded ? 'opacity-100' : 'opacity-0'
-      }`}
+    <div
+      className={`network-globe-container absolute -right-20 top-1/2 -translate-y-1/2 w-[550px] h-[550px] pointer-events-none hidden lg:block transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
       style={{ background: 'transparent' }}
     >
       <Canvas

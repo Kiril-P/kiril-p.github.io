@@ -1,0 +1,33 @@
+$ astro check
+15:05:50 [content] Syncing content
+15:05:50 [content] Synced content
+15:05:50 [types] Generated 27ms
+15:05:50 [check] Getting diagnostics for Astro files in /Users/kirilpetrovski/Documents/Coding/Portfolio Website...
+[96msrc/components/Navigation.astro[0m:[93m183[0m:[93m68[0m - [91merror[0m[90m ts(2339): [0mProperty 'offsetHeight' does not exist on type 'Element'.
+
+[7m183[0m           const navHeight = document.querySelector('.nav-header')?.offsetHeight || 0;
+[7m   [0m [91m                                                                   ~~~~~~~~~~~~[0m
+[96msrc/components/Navigation.astro[0m:[93m197[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'lastScroll' is declared but its value is never read.
+
+[7m197[0m   let lastScroll = 0;
+[7m   [0m [93m      ~~~~~~~~~~[0m
+
+[96msrc/layouts/MainLayout.astro[0m:[93m141[0m:[93m22[0m - [93mwarning[0m[90m ts(6198): [0mAll destructured elements are unused.
+
+[7m141[0m  lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
+[7m   [0m [93m                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/layouts/MainLayout.astro[0m:[93m59[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m59[0m   <script type="application/ld+json">
+[7m  [0m [93m          ~~~~[0m
+
+Result (18 files): 
+- 1 error
+- 0 warnings
+- 3 hints
+
+error: script "astro" exited with code 1
