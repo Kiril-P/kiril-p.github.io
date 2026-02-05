@@ -39,6 +39,7 @@ export const featuredProjects: CustomProject[] = [
     priority: 1,
     tags: ['SaaS', 'Cloud Native', 'Enterprise'],
     thumbnail: '/assets/projects/cleanr pic.png',
+    video_url: 'https://youtu.be/81EEbJNf314',
     hasInternalPage: true,
   },
   {
