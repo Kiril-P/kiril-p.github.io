@@ -103,7 +103,7 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 		</section>
 
 		<!-- Bento Grid Section -->
-		<section id="projects" class="py-24">
+		<section id="projects" class="py-24 featured-exhibition">
 			<div class="flex items-center justify-between mb-12">
 				<h3 class="text-2xl font-bold">Featured Exhibition</h3>
 				<div class="hidden md:flex items-center gap-2 text-sm text-white/40">
@@ -132,7 +132,7 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 									alt={repo.name} 
 									class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-500"
 								/>
-								<div class="absolute inset-0 bg-gradient-to-t from-premium-black/40 via-transparent to-transparent"></div>
+								<div class="project-overlay absolute inset-0 bg-gradient-to-t from-premium-black/40 via-transparent to-transparent"></div>
 							</div>
 							
 							<!-- Border glow effect -->
@@ -170,16 +170,16 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 							<div class="relative z-10 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
 								<div class="flex justify-between items-end mb-2">
 									<div>
-										<h4 class={`font-bold text-white transition-colors duration-300 ${isLarge ? 'text-3xl' : 'text-xl'}`}>
+										<h4 class={`project-title font-bold text-white transition-colors duration-300 ${isLarge ? 'text-3xl' : 'text-xl'}`}>
 											{repo.name}
 										</h4>
 									</div>
 									<div class="p-2 rounded-full bg-white/5 border border-white/10 group-hover:bg-blue-accent group-hover:border-blue-accent transition-colors duration-300">
-										<ArrowUpRight className="w-5 h-5 text-white" />
+										<ArrowUpRight className="project-action-icon w-5 h-5 text-white" />
 									</div>
 								</div>
 								
-								<p class="text-white/60 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
+								<p class="project-desc text-white/60 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
 									{repo.description}
 								</p>
 							</div>
