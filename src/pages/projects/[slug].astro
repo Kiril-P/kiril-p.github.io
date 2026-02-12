@@ -131,6 +131,8 @@ const StatusIcon = status.icon;
                  <img 
                     src={project.thumbnail} 
                     alt={project.name} 
+                    decoding="async"
+                    fetchpriority="high"
                     class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" 
                  />
                  <div class="absolute inset-0 bg-gradient-to-t from-premium-black/30 via-transparent to-transparent"></div>
@@ -268,6 +270,8 @@ const StatusIcon = status.icon;
                         <img 
                             src={img} 
                             alt={`${project.name} Screenshot ${index + 1}`} 
+                            loading="lazy"
+                            decoding="async"
                             class="w-full h-auto object-contain rounded-lg" 
                         />
                     </div>

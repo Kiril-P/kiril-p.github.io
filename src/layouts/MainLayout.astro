@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '@fontsource-variable/inter';
 
 interface Props {
 	title: string;
@@ -49,11 +50,6 @@ const { title, description = "Kiril-P // Software Engineer Portfolio" } = Astro.
 		
 		<!-- Theme Color -->
 		<meta name="theme-color" content="#050505" />
-		
-		<!-- Inter font for that premium look -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
 		
 		<!-- JSON-LD Structured Data -->
 		<script type="application/ld+json">
@@ -149,7 +145,7 @@ const { title, description = "Kiril-P // Software Engineer Portfolio" } = Astro.
 		--accent: 255, 255, 255;
 	}
 	html {
-		font-family: 'Inter', system-ui, sans-serif;
+		font-family: 'Inter Variable', 'Inter', system-ui, sans-serif;
 		/* Removed scroll-behavior: smooth - Lenis handles this now */
 	}
 	html.lenis {

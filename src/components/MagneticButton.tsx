@@ -6,13 +6,21 @@ interface MagneticButtonProps {
   className?: string;
   href?: string;
   strength?: number;
+  ariaLabel?: string;
+  title?: string;
+  target?: '_blank' | '_self' | '_parent' | '_top';
+  rel?: string;
 }
 
 export default function MagneticButton({ 
   children, 
   className = '', 
   href,
-  strength = 0.3 
+  strength = 0.3,
+  ariaLabel,
+  title,
+  target,
+  rel
 }: MagneticButtonProps) {
   const buttonRef = useRef<HTMLAnchorElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
@@ -68,6 +76,7 @@ export default function MagneticButton({
     return () => {
       button.removeEventListener('mousemove', handleMouseMove);
       button.removeEventListener('mouseleave', handleMouseLeave);
+      gsap.killTweensOf([button, text]);
     };
   }, [strength]);
 
@@ -77,6 +86,10 @@ export default function MagneticButton({
       href={href}
       className={`magnetic-button ${className}`}
       style={{ display: 'inline-flex' }}
+      aria-label={ariaLabel}
+      title={title}
+      target={target}
+      rel={rel}
     >
       <span ref={textRef} className="flex items-center gap-2">
         {children}

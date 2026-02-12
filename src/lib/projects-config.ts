@@ -38,7 +38,7 @@ export const featuredProjects: CustomProject[] = [
     sourceType: 'closed-source', // Displays as "Closed Source"
     priority: 1,
     tags: ['SaaS', 'Cloud Native', 'Enterprise'],
-    thumbnail: '/assets/projects/cleanr pic.png',
+    thumbnail: '/assets/projects/cleanr pic.webp',
     video_url: 'https://youtu.be/81EEbJNf314',
     hasInternalPage: true,
   },
@@ -54,7 +54,7 @@ export const featuredProjects: CustomProject[] = [
     priority: 2,
     stargazers_count: 0,
     tags: ['Game Dev', 'Roguelite', 'Bullet Hell'],
-    thumbnail: '/assets/projects/polygonprotocol.png',
+    thumbnail: '/assets/projects/polygonprotocol.webp',
     video_url: 'https://youtu.be/Yu9m_tLXc84',
     hasInternalPage: true,
   },
@@ -69,8 +69,8 @@ export const featuredProjects: CustomProject[] = [
     priority: 3,
     stargazers_count: 12,
     tags: ['AI', 'Algorithms', 'C++'],
-    thumbnail: '/assets/projects/chess pic1.png',
-    gallery_images: ['/assets/projects/chess pic2.png'],
+    thumbnail: '/assets/projects/chess pic1.webp',
+    gallery_images: ['/assets/projects/chess pic2.webp'],
     video_url: 'https://youtu.be/g9J_QGgzTGg',
     hasInternalPage: true,
   },
@@ -86,12 +86,12 @@ export const featuredProjects: CustomProject[] = [
     priority: 4,
     stargazers_count: 5,
     tags: ['Canvas', 'Game Dev', 'Performance'],
-    thumbnail: '/assets/projects/starburst1.png',
+    thumbnail: '/assets/projects/starburst1.webp',
     gallery_images: [
-      '/assets/projects/starburst2.png',
-      '/assets/projects/starburst3.png',
-      '/assets/projects/starburst4.png',
-      '/assets/projects/starburst5.png'
+      '/assets/projects/starburst2.webp',
+      '/assets/projects/starburst3.webp',
+      '/assets/projects/starburst4.webp',
+      '/assets/projects/starburst5.webp'
     ],
     hasInternalPage: true,
   },
@@ -106,12 +106,12 @@ export const featuredProjects: CustomProject[] = [
     priority: 5,
     stargazers_count: 8,
     tags: ['Networking', 'C', 'Sockets'],
-    thumbnail: '/assets/projects/Battleship.png',
+    thumbnail: '/assets/projects/Battleship.webp',
     gallery_images: [
-      '/assets/projects/Battleship (1).png',
-      '/assets/projects/Battleship (2).png',
-      '/assets/projects/Battleship (3).png',
-      '/assets/projects/Battleship (4).png'
+      '/assets/projects/Battleship (1).webp',
+      '/assets/projects/Battleship (2).webp',
+      '/assets/projects/Battleship (3).webp',
+      '/assets/projects/Battleship (4).webp'
     ],
     hasInternalPage: true,
   },
@@ -127,7 +127,7 @@ export const featuredProjects: CustomProject[] = [
     sourceType: 'open-source',
     priority: 6,
     tags: ['AWS', 'Serverless', 'Cloud'],
-    thumbnail: '/assets/projects/nomnomnow pic.png',
+    thumbnail: '/assets/projects/nomnomnow pic.webp',
     video_url: 'https://youtu.be/CGYAp0squuc',
     hasInternalPage: true,
   },
@@ -141,10 +141,10 @@ export const featuredProjects: CustomProject[] = [
     sourceType: 'open-source',
     priority: 7,
     tags: ['Java', 'GUI', 'Logic'],
-    thumbnail: '/assets/projects/solitaire.png',
+    thumbnail: '/assets/projects/solitaire.webp',
     gallery_images: [
-      '/assets/projects/solitaire2.png',
-      '/assets/projects/solitaire3.png'
+      '/assets/projects/solitaire2.webp',
+      '/assets/projects/solitaire3.webp'
     ],
     hasInternalPage: true,
   }
