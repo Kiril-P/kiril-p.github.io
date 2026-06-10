@@ -117,12 +117,13 @@ The public value is the operating pattern: identify a repeated developer pain po
         slug: 'streamscope',
         longDescription: `StreamScope is a real-time chat intelligence MVP for live streamers, built from a blank slate in 10 days and awarded 2nd place at IE Tech Venture Bootcamp 2026. The product direction was simple: help creators understand and manage fast-moving communities while the stream is happening.
 
-The project is strongest as a startup execution signal. It combines problem validation, product scoping, technical architecture, and full-stack MVP delivery under a compressed deadline.`,
+The project is strongest as a startup execution signal. It combines problem validation, product scoping, technical architecture, and full-stack MVP delivery under a compressed deadline. The case study now includes the product logo, an analytics dashboard view, and the IE Tech Venture Bootcamp award photo so reviewers can see both the shipped interface and the venture validation context.`,
         features: [
             'Real-time chat intelligence concept for live streamers',
             'MVP shipped in 10 days under startup-style constraints',
             'Community signal detection for fast-moving chat environments',
             'Product scoped around creator workflow, not just raw analytics',
+            'Dashboard view showing engagement, opportunity, uncertainty, reliability, latency, and tag-mix metrics',
             '2nd place at IE Tech Venture Bootcamp 2026',
             'Public-safe summary of a private/collaborative repository'
         ],
@@ -158,6 +159,102 @@ The project is strongest as a startup execution signal. It combines problem vali
             'Communicating the product as a business, not only a dashboard'
         ],
         techStack: ['Real-Time Systems', 'Full-Stack MVP', 'Product Strategy', 'Dashboard UX', 'Startup Prototyping']
+    },
+
+    'iberdrola-datathon': {
+        slug: 'iberdrola-datathon',
+        longDescription: `The Iberdrola Datathon project is a public-safe case study from the IE x Iberdrola challenge on interurban EV charging network planning in Spain. The work focused on building a 2027 rollout strategy that did more than minimize charger count: it connected projected EV demand, existing charger coverage, road corridors, grid hosting capacity, and deployability constraints into a phased business plan.
+
+The project is strongest as a data-to-strategy signal. It turns raw infrastructure datasets into reproducible outputs, map visuals, required competition CSVs, a final report narrative, and a pitch-ready recommendation that separates deploy-now sites from monitor and reinforcement-first locations.`,
+        features: [
+            'Spain 2027 interurban EV charging rollout strategy for an IE x Iberdrola challenge',
+            'Existing interurban charger baseline removed before proposing new sites',
+            'Road-segment, grid-node, EV-growth, and friction-point evidence combined into one story',
+            'Phased recommendation across deploy-now, phase-with-monitoring, and reinforcement-first sites',
+            'Self-contained map, required CSV outputs, written report, and slide assets',
+            'Public-safe summary of private competition work'
+        ],
+        technicalHighlights: [
+            '6,895 eligible road segments modeled',
+            '2,336 existing interurban chargers normalized after the tightened baseline filter',
+            '1,839 grid nodes incorporated into deployment-readiness reasoning',
+            '727,696 projected EVs used for the 2027 planning frame',
+            '10 candidate network sites and 9 friction points converted into a phased rollout plan',
+            'One-command rebuild path for processed data, maps, CSVs, and report assets'
+        ],
+        architecture: [
+            {
+                title: 'Data Pipeline',
+                items: [
+                    'Load and clean raw public infrastructure and EV-growth data',
+                    'Normalize processed tables and generated map-ready outputs',
+                    'Validate the required File 1, File 2, and File 3 CSV deliverables'
+                ]
+            },
+            {
+                title: 'Strategy Layer',
+                items: [
+                    'Identify corridor pain points and visible coverage wins',
+                    'Cross-check candidate sites against grid-readiness signals',
+                    'Translate infrastructure mismatch into a phased Iberdrola rollout narrative'
+                ]
+            }
+        ],
+        challenges: [
+            'Keeping assumptions explicit enough for judges and teammates to audit',
+            'Avoiding a naive charger-count answer when deployability and grid readiness matter',
+            'Making messy geospatial and infrastructure data pitchable',
+            'Representing private challenge work publicly without exposing internal repo details'
+        ],
+        techStack: ['Python', 'Jupyter', 'Pandas', 'Parquet', 'CSV Validation', 'HTML Maps', 'Data Storytelling']
+    },
+
+    'aura-voice-assistant': {
+        slug: 'aura-voice-assistant',
+        longDescription: `AURA Voice Assistant is a private AI automation webhook service built around Vapi.ai tool calls. The backend receives structured voice-agent actions, returns a quick success response so the call experience does not stall, then completes the real work in the background.
+
+The public value is practical AI integration. Instead of a chatbot demo, AURA connects a voice assistant to transactional onboarding email through Postmark and calendar scheduling through Google Calendar, with secrets and service credentials isolated through environment configuration.`,
+        features: [
+            'Express webhook endpoint for Vapi.ai tool-call payloads',
+            'Immediate JSON response path to avoid blocking the voice assistant',
+            'Background processing for real email and calendar actions',
+            'Postmark onboarding email flow for send_link intent',
+            'Google Calendar invite creation for book_call intent',
+            'Health endpoint and environment-driven service configuration'
+        ],
+        technicalHighlights: [
+            'Node.js and Express service with JSON middleware',
+            'Vapi tool-call parsing and response formatting',
+            'Postmark ServerClient integration for transactional email',
+            'Google Calendar API service-account flow for event creation',
+            'process.nextTick used to decouple webhook acknowledgement from slower side effects',
+            'Public-safe architecture representation for private automation work'
+        ],
+        architecture: [
+            {
+                title: 'Voice-Agent Webhook',
+                items: [
+                    'Receive a Vapi message payload',
+                    'Extract tool call ID, business name, email, phone, and intent',
+                    'Return the tool result immediately to keep the call moving'
+                ]
+            },
+            {
+                title: 'Automation Actions',
+                items: [
+                    'send_link routes to the Postmark onboarding email path',
+                    'book_call routes to Google Calendar event creation',
+                    'Background errors are logged without breaking the initial voice response'
+                ]
+            }
+        ],
+        challenges: [
+            'Designing AI voice automation around latency-sensitive webhooks',
+            'Keeping external side effects out of the synchronous response path',
+            'Handling transactional email and calendar credentials responsibly',
+            'Explaining private automation work without exposing sensitive deployment details'
+        ],
+        techStack: ['Node.js', 'Express', 'Vapi.ai', 'Postmark', 'Google Calendar API', 'dotenv', 'Webhooks']
     },
 
     'chess-anomaly-detection': {
@@ -259,7 +356,54 @@ The project is a technical-art proof point: it shows taste, WebGL fluency, perfo
             'Balancing cinematic quality with export and runtime controls',
             'Providing graceful fallback when WebGL is unavailable'
         ],
-        techStack: ['Three.js', 'Vite', 'TypeScript', 'WebGL', 'Shaders', 'Playwright']
+        techStack: ['Three.js', 'Vite', 'JavaScript', 'WebGL', 'Shaders', 'Playwright']
+    },
+
+    'archmage-brolo-card-battle': {
+        slug: 'archmage-brolo-card-battle',
+        longDescription: `Archmage Brolo: Card Battle is a static browser card battler inspired by the tactile feel of deckbuilding roguelikes. It centers on one fight: Archmage Brolo versus Skelly Steve, with a focus on card feel, readable combat feedback, and a complete title-to-result loop.
+
+The portfolio value is interaction polish. Cards fan from the bottom of the screen, lift on hover, drag smoothly, target enemies with a magical aiming line, and resolve through animated discard/projectile/floating-text feedback instead of abrupt state changes.`,
+        features: [
+            'Playable title screen, replay flow, combat screen, and result screen',
+            'Smooth card hover, drag, play, return, and discard interactions',
+            'Targeted attack cards with magical aiming line feedback',
+            'Defensive, healing, attack, and special spell cards',
+            'Animated combat feedback through floating text, sparkles, trails, and impact bursts',
+            'Static deployment with no framework, bundler, or runtime dependency'
+        ],
+        technicalHighlights: [
+            'Vanilla JavaScript game state and turn-flow architecture',
+            'Canvas effects for targeting lines, particles, projectiles, and magic feedback',
+            'CSS-driven fantasy UI for title, result, card, and combat layouts',
+            'Separated modules for app state, game lifecycle, cards, input, animation, characters, enemies, and deck logic',
+            'Responsive layout for desktop and mobile-sized screens'
+        ],
+        architecture: [
+            {
+                title: 'Game Flow',
+                items: [
+                    'AppController manages title, play, and result screens',
+                    'GameManager controls rounds, turns, card effects, and UI updates',
+                    'Deck and Card modules manage draw, play, return, and discard behavior'
+                ]
+            },
+            {
+                title: 'Interaction Layer',
+                items: [
+                    'InputManager handles pointer drag and release routing',
+                    'AnimationManager handles spell feedback and motion',
+                    'Canvas renders targeting lines and effect particles'
+                ]
+            }
+        ],
+        challenges: [
+            'Making static DOM cards feel tactile and physical',
+            'Keeping a no-framework JavaScript codebase readable as systems grew',
+            'Balancing fantasy presentation with responsive browser constraints',
+            'Turning a single encounter into a complete playable loop'
+        ],
+        techStack: ['HTML', 'CSS', 'Vanilla JavaScript', 'Canvas', 'Vercel']
     },
 
     'typing-wizard-duel': {

@@ -9,7 +9,7 @@ export async function getProjectsFromConfig(username: string): Promise<CustomPro
   // If we have manual featured projects, use them directly
   if (shouldUseFeaturedProjects && featuredProjects.length > 0) {
     console.log(`Loading ${featuredProjects.length} featured projects from config...`);
-    return featuredProjects;
+    return [...featuredProjects].sort((a, b) => a.priority - b.priority);
   }
 
   // Fallback: This part is actually less relevant now since we have a fixed list,

@@ -19,14 +19,14 @@ const projectGroups = [
 		projects: repos.filter((repo) => repo.group === 'professional'),
 	},
 	{
-		title: 'Game Dev',
-		description: 'Playable games, jam submissions, and interactive systems.',
-		projects: repos.filter((repo) => repo.group === 'game-dev'),
-	},
-	{
 		title: 'Technical Projects',
 		description: 'ML, systems, cloud, and algorithmic projects with deeper engineering proof.',
 		projects: repos.filter((repo) => repo.group === 'technical'),
+	},
+	{
+		title: 'Game Dev',
+		description: 'Playable games, jam submissions, and interactive systems.',
+		projects: repos.filter((repo) => repo.group === 'game-dev'),
 	},
 ].filter((group) => group.projects.length > 0);
 ---
