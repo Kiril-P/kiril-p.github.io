@@ -121,13 +121,14 @@ const projectGroups = [
 
 		<!-- Project Showcase Section -->
 		<section id="projects" class="py-24 featured-exhibition">
+			<h2 class="sr-only">Projects</h2>
 			<div class="space-y-14">
 				{projectGroups.map((group) => (
 					<div class="project-lane">
 						<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-5">
 							<div>
 								<h3 class="text-lg md:text-xl font-semibold text-white">{group.title}</h3>
-								<p class="text-sm text-white/45 mt-1">{group.description}</p>
+								<p class="text-sm text-white/60 mt-1">{group.description}</p>
 							</div>
 							<div class="flex items-center gap-2">
 								<button
@@ -146,7 +147,7 @@ const projectGroups = [
 								>
 									<ChevronRight className="w-4 h-4" />
 								</button>
-								<div class="text-xs uppercase tracking-widest text-white/30">Scroll horizontally</div>
+								<div class="text-xs uppercase tracking-widest text-white/70">Scroll horizontally</div>
 							</div>
 						</div>
 
