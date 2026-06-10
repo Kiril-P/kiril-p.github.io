@@ -117,7 +117,6 @@ export const featuredProjects: CustomProject[] = [
       '/assets/projects/streamscope-analytics.jpg',
       '/assets/projects/streamscope-linkedin-demo.jpg',
       '/assets/projects/streamscope-linkedin-stage.jpg',
-      '/assets/projects/streamscope-linkedin-award.jpg',
       '/assets/projects/streamscope-bootcamp.jpg'
     ],
     hasInternalPage: true,

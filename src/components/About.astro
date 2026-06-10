@@ -1,390 +1,260 @@
 ---
-import { Code2, Briefcase, Target, Trophy, Dumbbell, BookOpen, Music, GraduationCap } from 'lucide-react';
-// About section with info from CV
+import { BookOpen, Briefcase, Dumbbell, GraduationCap, Music, Target, Trophy } from 'lucide-react';
+
+const currentWork = [
+  {
+    company: 'Naiss Ride Company',
+    role: 'Mobile Software Engineer',
+    period: 'June 2026 - Present',
+    summary: 'Engineering production React Native / Expo features across ride flows, feed, camera, gamification, auth, payments, reliability, analytics, testing, and release workflows.',
+  },
+  {
+    company: 'EaseAccess24',
+    role: 'Software Engineering Intern',
+    period: 'June 2026 - Present',
+    summary: 'Building developer productivity and AI automation tooling, including CLI workflows for staging and production environment switching with Vercel and Psono integrations.',
+  },
+  {
+    company: 'Cleanr + StreamScope',
+    role: 'Startup product builds',
+    period: '2025 - 2026',
+    summary: 'Led Cleanr mobile product execution and shipped StreamScope from zero in 10 days, earning 2nd place at IE Tech Venture Bootcamp 2026.',
+  },
+];
+
+const experience = [
+  {
+    company: 'Naiss Ride Company',
+    role: 'Mobile Software Engineer',
+    period: 'June 2026 - Present',
+    location: 'Madrid, Spain',
+    summary: 'Engineering production features across ride flows, feed, camera, gamification, auth, and payments in a live React Native / Expo / TypeScript app.',
+    current: true,
+  },
+  {
+    company: 'EaseAccess24',
+    role: 'Software Engineering Intern',
+    period: 'June 2026 - Present',
+    location: 'Remote',
+    summary: 'Building developer productivity and AI automation workflows that reduce fragile manual setup and speed up engineering context switches.',
+    current: true,
+  },
+  {
+    company: 'Cleanr',
+    role: 'Tech Lead & Full-Stack Developer',
+    period: 'March 2025 - April 2026',
+    location: 'Madrid, Spain',
+    summary: 'Led a three-developer team building an Uber-like apartment-cleaning marketplace with React Native, Expo, Firebase, Stripe, and Google Maps.',
+  },
+  {
+    company: 'Kanamoh Solutions',
+    role: 'Front-End Developer',
+    period: 'April 2025 - June 2025',
+    summary: 'Built React front-end surfaces for an AI-powered 3D printing platform and helped integrate LLM-driven natural-language workflows.',
+  },
+  {
+    company: 'Boston University',
+    role: 'Summer Student - CS & Creative Writing',
+    period: 'June 2023 - July 2023',
+    location: 'Boston, MA',
+    summary: 'Completed intensive coursework in Python and creative writing, strengthening both technical problem-solving and communication.',
+  },
+  {
+    company: 'MACEF - Macedonian Center for Energy Efficiency',
+    role: 'Intern',
+    period: 'July 2022 - August 2022',
+    location: 'North Macedonia',
+    summary: 'Worked on renewable energy and energy-efficiency initiatives, including photovoltaic system performance and panel-orientation optimization.',
+  },
+  {
+    company: 'Accent On Computers LLC',
+    role: 'IT Intern - Software & Hardware',
+    period: 'June 2022 - August 2022',
+    summary: 'Assisted with software setup, troubleshooting, system configuration, PC diagnostics, repairs, and component replacement.',
+  },
+  {
+    company: 'Texas A&M University at Qatar',
+    role: 'Non-Affiliated Student Assistant',
+    period: 'Oct 2021 - Apr 2022',
+    location: 'Doha, Qatar',
+    summary: 'Supported Python projects, helped with client engagement, and developed early technical support and communication habits.',
+  },
+];
+
+const beyondCode = [
+  { label: 'Basketball', detail: 'Training since second grade', icon: Trophy, color: 'text-orange-400' },
+  { label: 'Running', detail: 'Half-marathons and 10km races', icon: Dumbbell, color: 'text-green-400' },
+  { label: 'Reading', detail: 'Avid book reader', icon: BookOpen, color: 'text-blue-400' },
+  { label: 'Cello', detail: '6 years with live performances', icon: Music, color: 'text-purple-400' },
+];
 ---
 
-<section id="about" class="py-24">
-  <div class="mb-16">
-    <h2 class="text-4xl md:text-5xl font-bold mb-4">About Me</h2>
-    <div class="h-1 w-20 bg-blue-accent rounded-full"></div>
+<section id="about" class="py-24" aria-labelledby="about-heading">
+  <div class="mb-14 grid gap-6 lg:grid-cols-[0.72fr_1fr] lg:items-end">
+    <div>
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-blue-accent/80">About me</p>
+      <h2 id="about-heading" class="text-4xl font-extrabold tracking-tight text-white md:text-5xl">The longer version.</h2>
+    </div>
+    <p class="max-w-3xl text-base leading-relaxed text-white/60 lg:justify-self-end">
+      I&apos;m a Computer Science & Artificial Intelligence student at IE University in Madrid, expected to graduate in May 2028. I build production mobile systems, AI automation, startup MVPs, games, and technical experiments, with a bias toward shipping things people can actually use.
+    </p>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-    <!-- Bio Card -->
-    <div class="group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 p-8 transition-all duration-500 hover:border-blue-accent/40">
-      <!-- Gradient overlay on hover -->
-      <div class="gradient-overlay absolute inset-0 bg-gradient-to-br from-blue-accent/0 to-blue-accent/10 opacity-0 transition-opacity duration-700"></div>
-      
-      <!-- Border glow effect -->
-      <div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);"></div>
-
-      <div class="relative z-10">
-        <div class="flex items-center gap-3 mb-6">
-          <Code2 className="w-7 h-7 text-blue-accent" />
-          <h3 class="text-2xl font-bold group-hover:text-blue-accent transition-colors duration-300">Bio</h3>
+  <div class="space-y-16">
+    <section aria-labelledby="current-work-heading" class="rounded-3xl border border-white/10 bg-premium-gray/55 p-6 md:p-8">
+      <div class="mb-7 flex items-center gap-3">
+        <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-accent/25 bg-blue-accent/10 text-blue-accent">
+          <Briefcase className="h-5 w-5" />
         </div>
-        
-	        <p class="text-white/70 leading-relaxed mb-4">
-	          I'm a Computer Science & Artificial Intelligence student at <span class="text-blue-accent font-medium">IE University in Madrid</span>, currently pursuing my Bachelor's degree with an expected graduation in May 2028. I build <span class="text-blue-accent font-medium">production mobile systems, AI automation, and fast-shipped product experiments</span>.
-	        </p>
-	        
-	        <p class="text-white/70 leading-relaxed mb-4">
-	          Right now I work across startup mobile engineering at <span class="text-blue-accent font-medium">Naiss Ride Company</span> and developer productivity / AI automation at <span class="text-blue-accent font-medium">EaseAccess24</span>. I care about the full loop: finding a real user problem, shipping the smallest credible product, instrumenting it, and tightening the system until it holds up.
-	        </p>
-
-        <p class="text-white/70 leading-relaxed">
-          I speak <span class="text-white font-medium">Macedonian</span> and <span class="text-white font-medium">English</span> natively, with <span class="text-white font-medium">professional working proficiency in Spanish</span>.
-        </p>
-      </div>
-    </div>
-
-    <!-- Experience Card -->
-    <div class="group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 p-8 transition-all duration-500 hover:border-blue-accent/40">
-      <div class="gradient-overlay absolute inset-0 bg-gradient-to-br from-blue-accent/0 to-blue-accent/10 opacity-0 transition-opacity duration-700"></div>
-      <div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);"></div>
-
-      <div class="relative z-10">
-        <div class="flex items-center gap-3 mb-6">
-          <Briefcase className="w-7 h-7 text-blue-accent" />
-          <h3 class="text-2xl font-bold group-hover:text-blue-accent transition-colors duration-300">Experience</h3>
-        </div>
-
-        <div class="max-h-[400px] overflow-y-auto experience-scroll pr-2 space-y-6" data-lenis-prevent tabindex="0" role="region" aria-label="Experience timeline">
-	          <!-- Experience Item 1: Naiss - Current -->
-	          <div class="experience-item">
-	            <div class="flex items-start gap-3 mb-2">
-	              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-accent/20 border border-blue-accent/40 text-sm font-bold mt-1">
-	                <span class="text-blue-accent">N</span>
-	              </div>
-	              <div class="flex-1">
-	                <div class="flex items-center gap-2 mb-1">
-	                  <h4 class="font-semibold text-white">Mobile Software Engineer</h4>
-	                  <span class="px-2 py-0.5 text-xs rounded-full bg-green-500/10 text-green-400 border border-green-500/30">Current</span>
-	                </div>
-	                <p class="text-sm text-white/50">Naiss Ride Company</p>
-	                <p class="text-xs text-white/60 mt-1">June 2026 - Present • Madrid, Spain</p>
-	              </div>
-	            </div>
-	            <p class="text-sm text-white/60 ml-11">
-	              Engineering production features across ride flows, feed, camera, gamification, auth, and payments in a live React Native / Expo / TypeScript app. Improving reliability and product visibility through Sentry, PostHog, Jest, Detox, and EAS release workflows.
-	            </p>
-	          </div>
-
-	          <!-- Experience Item 2: EaseAccess24 - Current -->
-	          <div class="experience-item">
-	            <div class="flex items-start gap-3 mb-2">
-	              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 text-sm font-bold mt-1">
-	                EA
-	              </div>
-	              <div class="flex-1">
-	                <div class="flex items-center gap-2 mb-1">
-	                  <h4 class="font-semibold text-white">Software Engineering Intern</h4>
-	                  <span class="px-2 py-0.5 text-xs rounded-full bg-green-500/10 text-green-400 border border-green-500/30">Current</span>
-	                </div>
-	                <p class="text-sm text-white/50">EaseAccess24</p>
-	                <p class="text-xs text-white/60 mt-1">June 2026 - Present • Remote</p>
-	              </div>
-	            </div>
-	            <p class="text-sm text-white/60 ml-11">
-	              Building developer productivity and AI automation tooling, including CLI workflows for staging and production environment switching with Vercel and Psono integrations. Focused on reducing fragile manual setup and speeding up engineering context switches.
-	            </p>
-	          </div>
-
-	          <!-- Experience Item 3: Cleanr -->
-	          <div class="experience-item">
-	            <div class="flex items-start gap-3 mb-2">
-	              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-orange-500/10 text-orange-400 text-sm font-bold mt-1">
-	                C
-	              </div>
-	              <div class="flex-1">
-	                <div class="flex items-center gap-2 mb-1">
-	                  <h4 class="font-semibold text-white">Tech Lead & Full-Stack Developer</h4>
-	                </div>
-	                <p class="text-sm text-white/50">Cleanr</p>
-	                <p class="text-xs text-white/60 mt-1">March 2025 - April 2026 • Madrid, Spain</p>
-	              </div>
-	            </div>
-	            <p class="text-sm text-white/60 ml-11">
-	              Led a three-developer team building an Uber-like apartment-cleaning marketplace with React Native, Expo, TypeScript, Firebase, Stripe, and Google Maps. Architected booking, cleaner matching, scheduled and on-demand flows, cancellation logic, and mobile release execution.
-	            </p>
-	          </div>
-
-          <!-- Experience Item 4: Kanamoh Solutions -->
-          <div class="experience-item">
-            <div class="flex items-start gap-3 mb-2">
-              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 text-sm font-bold mt-1">
-                K
-              </div>
-              <div class="flex-1">
-                <h4 class="font-semibold text-white">Front-End Developer</h4>
-                <p class="text-sm text-white/50">Kanamoh Solutions</p>
-                <p class="text-xs text-white/60 mt-1">April 2025 - June 2025</p>
-              </div>
-            </div>
-            <p class="text-sm text-white/60 ml-11">
-              Built a clean and intuitive React front-end for an AI-powered 3D printing platform. Collaborated with backend engineers to integrate LLM-driven natural language workflows. Helped translate text prompts into sliceable, 3D-print-ready models. Improved usability and accessibility of advanced CAD functionality for non-technical users.
-            </p>
-          </div>
-
-          <!-- Experience Item 5: Boston University -->
-          <div class="experience-item">
-            <div class="flex items-start gap-3 mb-2">
-              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-red-500/10 text-red-400 text-sm font-bold mt-1">
-                BU
-              </div>
-              <div class="flex-1">
-                <h4 class="font-semibold text-white">Summer Student – CS & Creative Writing</h4>
-                <p class="text-sm text-white/50">Boston University</p>
-                <p class="text-xs text-white/60 mt-1">June 2023 - July 2023 • Boston, MA</p>
-              </div>
-            </div>
-            <p class="text-sm text-white/60 ml-11">
-              Completed an intensive summer program including coursework in Computer Science (Python) and Creative Writing. Developed foundational programming skills through hands-on Python exercises and small projects, strengthening logical thinking and problem-solving abilities. Complemented technical learning with creative writing seminars, enhancing communication skills and structured thinking.
-            </p>
-          </div>
-
-          <!-- Experience Item 6: MACEF -->
-          <div class="experience-item">
-            <div class="flex items-start gap-3 mb-2">
-              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-green-500/10 text-green-400 text-sm font-bold mt-1">
-                M
-              </div>
-              <div class="flex-1">
-                <h4 class="font-semibold text-white">Intern</h4>
-                <p class="text-sm text-white/50">MACEF - Macedonian Center for Energy Efficiency</p>
-                <p class="text-xs text-white/60 mt-1">July 2022 - August 2022 • North Macedonia</p>
-              </div>
-            </div>
-            <p class="text-sm text-white/60 ml-11">
-              Worked on renewable energy and energy efficiency initiatives with a focus on solar panel systems. Gained hands-on exposure to how photovoltaic systems operate, including performance factors and efficiency constraints. Assisted in analyzing optimization methods such as panel orientation and rotational adjustments to maximize energy output.
-            </p>
-          </div>
-
-          <!-- Experience Item 7: Accent On Computers -->
-          <div class="experience-item">
-            <div class="flex items-start gap-3 mb-2">
-              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 text-sm font-bold mt-1">
-                A
-              </div>
-              <div class="flex-1">
-                <h4 class="font-semibold text-white">IT Intern – Software & Hardware</h4>
-                <p class="text-sm text-white/50">Accent On Computers LLC</p>
-                <p class="text-xs text-white/60 mt-1">June 2022 - August 2022</p>
-              </div>
-            </div>
-            <p class="text-sm text-white/60 ml-11">
-              Assisted with basic software setup, troubleshooting, and system configuration for small and medium business clients. Shadowed a hardware engineer during PC diagnostics, repairs, and component replacement. Gained early hands-on exposure to IT support workflows, customer interaction, and technical problem-solving.
-            </p>
-          </div>
-
-          <!-- Experience Item 8: Texas A&M -->
-          <div class="experience-item">
-            <div class="flex items-start gap-3 mb-2">
-              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-yellow-500/10 text-yellow-400 text-sm font-bold mt-1">
-                T
-              </div>
-              <div class="flex-1">
-                <h4 class="font-semibold text-white">Non-Affiliated Student Assistant</h4>
-                <p class="text-sm text-white/50">Texas A&M University at Qatar</p>
-                <p class="text-xs text-white/60 mt-1">Oct 2021 - Apr 2022 • Doha, Qatar</p>
-              </div>
-            </div>
-            <p class="text-sm text-white/60 ml-11">
-              Supported Python programming projects, including game logic and utility applications. Assisted clients and contributed to a 10% increase in sales through improved engagement. Developed organizational and communication skills while managing front-desk operations.
-            </p>
-          </div>
+        <div>
+          <h3 id="current-work-heading" class="text-2xl font-bold text-white">Current Work</h3>
+          <p class="text-sm text-white/50">What I&apos;m actively building or recently shipped.</p>
         </div>
       </div>
-    </div>
 
-    <!-- Interests Card -->
-    <div class="group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 p-8 transition-all duration-500 hover:border-blue-accent/40">
-      <div class="gradient-overlay absolute inset-0 bg-gradient-to-br from-blue-accent/0 to-blue-accent/10 opacity-0 transition-opacity duration-700"></div>
-      <div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);"></div>
+      <div class="grid gap-4 lg:grid-cols-3">
+        {currentWork.map((item) => (
+          <article class="rounded-2xl border border-white/10 bg-white/[0.035] p-5 transition duration-300 hover:border-blue-accent/35 hover:bg-blue-accent/10">
+            <p class="text-xs uppercase tracking-[0.2em] text-blue-accent/70">{item.period}</p>
+            <h4 class="mt-3 text-lg font-semibold text-white">{item.role}</h4>
+            <p class="mt-1 text-sm text-white/50">{item.company}</p>
+            <p class="mt-4 text-sm leading-relaxed text-white/60">{item.summary}</p>
+          </article>
+        ))}
+      </div>
+    </section>
 
-      <div class="relative z-10">
-        <div class="flex items-center gap-3 mb-6">
-          <Target className="w-7 h-7 text-blue-accent" />
-          <h3 class="text-2xl font-bold group-hover:text-blue-accent transition-colors duration-300">Beyond Code</h3>
+    <section aria-labelledby="timeline-heading">
+      <div class="mb-8 flex items-center gap-3">
+        <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-accent/25 bg-blue-accent/10 text-blue-accent">
+          <Target className="h-5 w-5" />
+        </div>
+        <div>
+          <h3 id="timeline-heading" class="text-2xl font-bold text-white">Experience Timeline</h3>
+          <p class="text-sm text-white/50">A clearer path through the work, without hiding it in a scroll box.</p>
+        </div>
+      </div>
+
+      <ol class="timeline space-y-7">
+        {experience.map((item) => (
+          <li class="timeline-item relative pl-12">
+            <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-xl border border-blue-accent/30 bg-blue-accent/10 text-xs font-bold text-blue-accent">
+              {item.company.split(' ')[0].slice(0, 2).toUpperCase()}
+            </div>
+            <article class="border-b border-white/10 pb-7">
+              <div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+                <div>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <h4 class="text-lg font-semibold text-white">{item.role}</h4>
+                    {item.current && (
+                      <span class="rounded-full border border-green-500/30 bg-green-500/10 px-2 py-0.5 text-xs text-green-400">Current</span>
+                    )}
+                  </div>
+                  <p class="mt-1 text-sm text-white/50">{item.company}</p>
+                </div>
+                <p class="text-sm text-white/45 md:text-right">
+                  {item.period}{item.location ? ` - ${item.location}` : ''}
+                </p>
+              </div>
+              <p class="mt-4 max-w-4xl text-sm leading-relaxed text-white/60">{item.summary}</p>
+            </article>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+      <div class="rounded-3xl border border-white/10 bg-premium-gray/55 p-6 md:p-8">
+        <div class="mb-6 flex items-center gap-3">
+          <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-accent/25 bg-blue-accent/10 text-blue-accent">
+            <Target className="h-5 w-5" />
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-white">Beyond Code</h3>
+            <p class="text-sm text-white/50">The parts that shape how I work.</p>
+          </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-4">
-          <div class="interest-card group/interest p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
-            <Trophy className="w-6 h-6 mb-2 text-orange-400" />
-            <h4 class="font-semibold text-sm mb-1 group-hover/interest:text-blue-accent transition-colors duration-300">Basketball</h4>
-            <p class="text-xs text-white/50">Training since second grade</p>
-          </div>
-
-          <div class="interest-card group/interest p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
-            <Dumbbell className="w-6 h-6 mb-2 text-green-400" />
-            <h4 class="font-semibold text-sm mb-1 group-hover/interest:text-blue-accent transition-colors duration-300">Running</h4>
-            <p class="text-xs text-white/50">Half-marathons, 10km races</p>
-          </div>
-
-          <div class="interest-card group/interest p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
-            <BookOpen className="w-6 h-6 mb-2 text-blue-400" />
-            <h4 class="font-semibold text-sm mb-1 group-hover/interest:text-blue-accent transition-colors duration-300">Reading</h4>
-            <p class="text-xs text-white/50">Avid book reader</p>
-          </div>
-
-          <div class="interest-card group/interest p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
-            <Music className="w-6 h-6 mb-2 text-purple-400" />
-            <h4 class="font-semibold text-sm mb-1 group-hover/interest:text-blue-accent transition-colors duration-300">Cello</h4>
-            <p class="text-xs text-white/50">6 years, live performances</p>
-          </div>
+        <div class="grid grid-cols-2 gap-3">
+          {beyondCode.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div class="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
+                <Icon className={`mb-3 h-6 w-6 ${item.color}`} />
+                <h4 class="text-sm font-semibold text-white">{item.label}</h4>
+                <p class="mt-1 text-xs leading-relaxed text-white/50">{item.detail}</p>
+              </div>
+            );
+          })}
         </div>
 
-        <div class="mt-6 p-4 rounded-2xl bg-blue-accent/5 border border-blue-accent/20">
-          <h4 class="font-semibold text-sm mb-2 text-blue-accent">Volunteer Work</h4>
-          <ul class="text-xs text-white/60 space-y-1">
-	            <li>• FIFA World Cup Qatar 2022: Flag bearer</li>
-            <li>• Skateboard ramp renovation project leader</li>
-            <li>• Olkoroi Wilderness Camp community volunteer (Kenya)</li>
+        <div class="mt-5 rounded-2xl border border-blue-accent/20 bg-blue-accent/5 p-4">
+          <h4 class="mb-2 text-sm font-semibold text-blue-accent">Volunteer Work</h4>
+          <ul class="space-y-1 text-xs leading-relaxed text-white/60">
+            <li>FIFA World Cup Qatar 2022: flag bearer</li>
+            <li>Skateboard ramp renovation project leader</li>
+            <li>Olkoroi Wilderness Camp community volunteer in Kenya</li>
           </ul>
         </div>
       </div>
-    </div>
 
-    <!-- Education Card -->
-    <div class="group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 p-8 transition-all duration-500 hover:border-blue-accent/40">
-      <div class="gradient-overlay absolute inset-0 bg-gradient-to-br from-blue-accent/0 to-blue-accent/10 opacity-0 transition-opacity duration-700"></div>
-      <div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);"></div>
-
-      <div class="relative z-10">
-        <div class="flex items-center gap-3 mb-6">
-          <GraduationCap className="w-7 h-7 text-blue-accent" />
-          <h3 class="text-2xl font-bold group-hover:text-blue-accent transition-colors duration-300">Education</h3>
+      <div class="rounded-3xl border border-white/10 bg-premium-gray/55 p-6 md:p-8">
+        <div class="mb-6 flex items-center gap-3">
+          <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-accent/25 bg-blue-accent/10 text-blue-accent">
+            <GraduationCap className="h-5 w-5" />
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-white">Education</h3>
+            <p class="text-sm text-white/50">The technical foundation behind the product work.</p>
+          </div>
         </div>
 
         <div class="space-y-6">
-          <!-- Current Education -->
-          <div class="education-item relative">
-            <div class="flex items-start gap-3 mb-2">
-              <div class="flex items-center justify-center min-w-8 w-8 h-8 rounded-lg bg-blue-accent/20 border border-blue-accent/40 text-sm font-bold mt-1">
-                <span class="text-blue-accent">IE</span>
-              </div>
-              <div class="flex-1">
-                <div class="flex items-center gap-2 mb-1">
-                  <h4 class="font-semibold text-white">Bachelor's in Computer Science & AI</h4>
-                  <span class="px-2 py-0.5 text-xs rounded-full bg-green-500/10 text-green-400 border border-green-500/30">Current</span>
-                </div>
-                <p class="text-sm text-white/50">IE University, Madrid</p>
-                <p class="text-xs text-white/60 mt-1">2024 - 2028 (Expected)</p>
-              </div>
+          <article>
+            <div class="flex flex-wrap items-center gap-2">
+              <h4 class="text-lg font-semibold text-white">Bachelor&apos;s in Computer Science & AI</h4>
+              <span class="rounded-full border border-green-500/30 bg-green-500/10 px-2 py-0.5 text-xs text-green-400">Current</span>
             </div>
-	            <p class="text-sm text-white/60 ml-11">
-	              Pursuing Computer Science and Artificial Intelligence with strong focus on software engineering, machine learning, algorithms, and product-oriented technical execution. ML final project: chess behavioral anomaly detection, 100/100.
+            <p class="mt-1 text-sm text-white/50">IE University, Madrid - 2024 to 2028 expected</p>
+            <p class="mt-3 text-sm leading-relaxed text-white/60">
+              Focused on software engineering, machine learning, algorithms, and product-oriented technical execution. ML final project: chess behavioral anomaly detection, 100/100.
             </p>
-          </div>
+          </article>
 
-          <!-- IB Education -->
-          <div class="education-item relative">
-            <div class="flex items-start gap-3 mb-2">
-              <div class="flex items-center justify-center min-w-8 w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 text-sm font-bold mt-1">
-                IB
-              </div>
-              <div class="flex-1">
-                <h4 class="font-semibold text-white">International Baccalaureate Diploma</h4>
-                <p class="text-sm text-white/50">SEK International School, Qatar</p>
-                <p class="text-xs text-white/60 mt-1">2022 - 2024</p>
-              </div>
+          <article class="border-t border-white/10 pt-6">
+            <h4 class="text-lg font-semibold text-white">International Baccalaureate Diploma</h4>
+            <p class="mt-1 text-sm text-white/50">SEK International School, Qatar - 2022 to 2024</p>
+            <p class="mt-3 text-sm leading-relaxed text-white/60">
+              Completed Higher Level Mathematics and Physics, building the analytical base behind my current CS and AI work.
+            </p>
+          </article>
+
+          <div class="border-t border-white/10 pt-6">
+            <h4 class="mb-3 text-xs uppercase tracking-[0.22em] text-white/50">Certifications & Signals</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/60">AWS Educate Compute - Oct 2025</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/60">Machine Learning Final - 100/100</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/60">IE Tech Venture Bootcamp - 2nd Place</span>
             </div>
-	            <p class="text-sm text-white/60 ml-11">
-	              Completed rigorous IB curriculum with Higher Level Mathematics and Physics, developing the analytical base behind my current CS and AI work.
-            </p>
-          </div>
-        </div>
-
-        <!-- Certifications -->
-        <div class="mt-6 pt-6 border-t border-white/5">
-          <h4 class="text-xs uppercase tracking-widest text-white/50 mb-3">Certifications & Courses</h4>
-          <div class="flex flex-wrap gap-2">
-	            <span class="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 hover:border-blue-accent/30 hover:text-blue-accent transition-colors duration-300">AWS Educate Compute - Oct 2025</span>
-	            <span class="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 hover:border-blue-accent/30 hover:text-blue-accent transition-colors duration-300">Machine Learning Final - 100/100</span>
-	            <span class="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 hover:border-blue-accent/30 hover:text-blue-accent transition-colors duration-300">IE Tech Venture Bootcamp - 2nd Place</span>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </section>
 
 <style>
-  .gradient-overlay,
-  .border-glow {
-    transition: opacity 0.5s ease;
-  }
-
-  .group:hover .gradient-overlay {
-    opacity: 1;
-  }
-
-  .group:hover .border-glow {
-    opacity: 1;
-  }
-
-  .experience-item {
-    position: relative;
-    padding-left: 0;
-  }
-
-  .experience-item::before {
+  .timeline-item::before {
     content: '';
     position: absolute;
     left: 15px;
-    top: 45px;
-    bottom: -20px;
+    top: 42px;
+    bottom: -28px;
     width: 1px;
-    background: linear-gradient(to bottom, rgba(59, 130, 246, 0.3), transparent);
+    background: linear-gradient(to bottom, rgba(59, 130, 246, 0.36), rgba(59, 130, 246, 0));
   }
 
-  .experience-item:last-child::before {
+  .timeline-item:last-child::before {
     display: none;
-  }
-
-  /* Education timeline connector */
-  .education-item {
-    position: relative;
-    padding-left: 0;
-    margin-bottom: 2rem;
-  }
-
-  .education-item::before {
-    content: '';
-    position: absolute;
-    left: 15px;
-    top: 45px;
-    bottom: -20px;
-    width: 1px;
-    background: linear-gradient(to bottom, rgba(59, 130, 246, 0.3), transparent);
-  }
-
-  .education-item:last-child::before {
-    display: none;
-  }
-
-  /* Custom scrollbar for experience section */
-  .experience-scroll::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .experience-scroll::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-  }
-
-  .experience-scroll::-webkit-scrollbar-thumb {
-    background: rgba(59, 130, 246, 0.3);
-    border-radius: 10px;
-    transition: background 0.3s ease;
-  }
-
-  .experience-scroll::-webkit-scrollbar-thumb:hover {
-    background: rgba(59, 130, 246, 0.5);
-  }
-
-  /* Smooth scroll behavior */
-  .experience-scroll {
-    scroll-behavior: smooth;
   }
 </style>
