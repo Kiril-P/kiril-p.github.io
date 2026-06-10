@@ -115,6 +115,9 @@ export const featuredProjects: CustomProject[] = [
     thumbnailPosition: 'center',
     gallery_images: [
       '/assets/projects/streamscope-analytics.jpg',
+      '/assets/projects/streamscope-linkedin-demo.jpg',
+      '/assets/projects/streamscope-linkedin-stage.jpg',
+      '/assets/projects/streamscope-linkedin-award.jpg',
       '/assets/projects/streamscope-bootcamp.jpg'
     ],
     hasInternalPage: true,
@@ -158,9 +161,10 @@ export const featuredProjects: CustomProject[] = [
     confidential: true,
     group: 'professional',
     tags: ['Vapi.ai', 'Express', 'Postmark', 'Google Calendar', 'Webhooks'],
-    thumbnail: '/assets/projects/aura-voice-assistant.svg',
+    thumbnail: '/assets/projects/aura-voice-assistant-cover.png',
     thumbnailFit: 'cover',
     thumbnailPosition: 'center',
+    gallery_images: ['/assets/projects/aura-voice-assistant.svg'],
     hasInternalPage: true,
   },
   {
