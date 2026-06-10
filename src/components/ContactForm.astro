@@ -397,6 +397,8 @@ import { Hand } from 'lucide-react';
 			const result = await response.json();
 
 			if (result.success) {
+				(window as unknown as { plausible?: (eventName: string) => void }).plausible?.('Contact Form Submitted');
+
 				// Show success message
 				form.classList.add('hidden');
 				if (successMessage) {

@@ -50,6 +50,18 @@ const { title, description = "Kiril-P // Software Engineer Portfolio" } = Astro.
 		
 		<!-- Theme Color -->
 		<meta name="theme-color" content="#050505" />
+
+		<!-- Privacy-friendly analytics by Plausible -->
+		<script is:inline async src="https://plausible.io/js/pa-tbOEvswPuTsG0DD7WPc6K.js"></script>
+		<script is:inline>
+			window.plausible = window.plausible || function () {
+				(plausible.q = plausible.q || []).push(arguments);
+			};
+			plausible.init = plausible.init || function (i) {
+				plausible.o = i || {};
+			};
+			plausible.init();
+		</script>
 		
 		<!-- JSON-LD Structured Data -->
 		<script type="application/ld+json">

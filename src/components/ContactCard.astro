@@ -42,7 +42,7 @@ const {
     <div class="flex-1 flex flex-col gap-6">
       <!-- Email with Magnetic Effect -->
       <button 
-        class="email-magnetic contact-link group/link w-full flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300"
+        class="email-magnetic contact-link group/link w-full flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300 plausible-event-name=Email+Copy"
         onclick="navigator.clipboard.writeText(this.querySelector('.email-text').textContent); this.querySelector('.copy-feedback').classList.add('show')"
         data-magnetic="true"
       >
@@ -67,7 +67,7 @@ const {
       <MagneticButton
         client:visible
         href={linkedin}
-        className="contact-link group/link w-full flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300"
+        className="contact-link group/link w-full flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300 plausible-event-name=LinkedIn+Open"
         strength={0.25}
         ariaLabel="LinkedIn profile"
         title="LinkedIn profile"
@@ -95,7 +95,7 @@ const {
       <MagneticButton
         client:visible
         href={github}
-        className="contact-link group/link w-full flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300"
+        className="contact-link group/link w-full flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300 plausible-event-name=GitHub+Open"
         strength={0.25}
         ariaLabel="GitHub profile"
         title="GitHub profile"
@@ -122,7 +122,7 @@ const {
       <MagneticButton
         client:visible
         href={itch}
-        className="contact-link group/link w-full flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300"
+        className="contact-link group/link w-full flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300 plausible-event-name=Itch+Open"
         strength={0.25}
         ariaLabel="Itch.io profile"
         title="Itch.io profile"
@@ -151,7 +151,7 @@ const {
       <MagneticButton
         client:visible
         href={x}
-        className="contact-link group/link w-full flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300"
+        className="contact-link group/link w-full flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300 plausible-event-name=X+Open"
         strength={0.25}
         ariaLabel="X profile"
         title="X profile"
@@ -178,7 +178,7 @@ const {
         href={resume}
         target="_blank"
         rel="noopener noreferrer"
-        class="contact-link group/link w-full flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300"
+        class="contact-link group/link w-full flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300 plausible-event-name=CV+Open"
       >
         <div class="icon-wrapper flex items-center justify-center w-10 h-10 rounded-xl bg-blue-accent/10 group-hover/link:bg-blue-accent/20 transition-colors duration-300 flex-shrink-0">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-accent">

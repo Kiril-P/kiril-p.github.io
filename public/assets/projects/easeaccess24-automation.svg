@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c1020"/>
+      <stop offset="0.55" stop-color="#151f35"/>
+      <stop offset="1" stop-color="#172a20"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6ee7b7"/>
+      <stop offset="1" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <g opacity=".22">
+    <circle cx="1030" cy="120" r="230" fill="#22c55e"/>
+    <circle cx="95" cy="660" r="260" fill="#2563eb"/>
+  </g>
+  <rect x="150" y="160" width="900" height="480" rx="34" fill="#070b14" stroke="#ffffff" stroke-opacity=".14" stroke-width="4"/>
+  <rect x="150" y="160" width="900" height="66" rx="34" fill="#ffffff" opacity=".06"/>
+  <circle cx="202" cy="193" r="10" fill="#ef4444"/>
+  <circle cx="234" cy="193" r="10" fill="#f59e0b"/>
+  <circle cx="266" cy="193" r="10" fill="#22c55e"/>
+  <g font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="34">
+    <text x="205" y="306" fill="#8fb5ff">$ ea24 env pull production</text>
+    <text x="205" y="370" fill="#b7f7d2">vercel linked</text>
+    <text x="205" y="430" fill="#b7f7d2">psono secrets synced</text>
+    <text x="205" y="490" fill="#7dd3fc">.env validated across services</text>
+    <text x="205" y="550" fill="#ffffff" opacity=".76">ready in 4.2s</text>
+  </g>
+  <path d="M735 355 H930 M850 275 L930 355 L850 435" fill="none" stroke="url(#line)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="150" y="720" fill="#e7fff5" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="800">developer productivity automation</text>
+</svg>

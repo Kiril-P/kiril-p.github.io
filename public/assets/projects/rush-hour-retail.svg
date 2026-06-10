@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101827"/>
+      <stop offset="0.55" stop-color="#123022"/>
+      <stop offset="1" stop-color="#3f2410"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <g opacity=".18" stroke="#ffffff" stroke-width="3">
+    <path d="M170 180H1040M170 280H1040M170 380H1040M170 480H1040M170 580H1040"/>
+    <path d="M220 140V640M380 140V640M540 140V640M700 140V640M860 140V640M1020 140V640"/>
+  </g>
+  <rect x="210" y="250" width="330" height="220" rx="28" fill="#0b111c" stroke="#ffffff" stroke-opacity=".18"/>
+  <path d="M260 325h205l-38 90H290z" fill="none" stroke="#fbbf24" stroke-width="16" stroke-linejoin="round"/>
+  <circle cx="305" cy="455" r="18" fill="#fbbf24"/>
+  <circle cx="420" cy="455" r="18" fill="#fbbf24"/>
+  <g fill="#34d399">
+    <rect x="650" y="250" width="68" height="68" rx="16"/>
+    <rect x="744" y="250" width="68" height="68" rx="16"/>
+    <rect x="838" y="250" width="68" height="68" rx="16"/>
+    <rect x="650" y="344" width="68" height="68" rx="16"/>
+    <rect x="744" y="344" width="68" height="68" rx="16"/>
+  </g>
+  <text x="124" y="118" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="50" font-weight="800">rush hour retail</text>
+  <text x="124" y="176" fill="#fde68a" font-family="Inter, Arial, sans-serif" font-size="27">3-4 day 3D time-management jam game</text>
+</svg>
