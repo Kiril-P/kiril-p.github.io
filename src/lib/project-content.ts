@@ -17,6 +17,327 @@ export interface ProjectContent {
 }
 
 export const projectContent: Record<string, ProjectContent> = {
+    'naiss-ride': {
+        slug: 'naiss-ride',
+        longDescription: `Naiss Ride is a public-safe case study for current production mobile engineering work inside a live startup environment. The focus is not private product disclosure; it is the engineering surface: shipping features across ride flows, social feed surfaces, media capture, gamification, authentication, payments, reliability, analytics, and release quality.
+
+The work demonstrates the kind of execution YC and technical teams look for: moving inside a real codebase, improving user-facing surfaces, keeping quality visible with observability, and contributing to a production release cadence without leaking private implementation details.`,
+        features: [
+            'Production React Native and Expo feature development across core mobile product surfaces',
+            'Ride, feed, camera, gamification, authentication, and payment flow contributions',
+            'Reliability and product observability using Sentry and PostHog',
+            'Quality work across unit and end-to-end testing with Jest and Detox',
+            'EAS build and release workflow exposure in a live startup app',
+            'Public-safe representation of private company work'
+        ],
+        technicalHighlights: [
+            'React Native / Expo / TypeScript mobile stack',
+            'Expo Router navigation patterns for app-scale flows',
+            'Zustand and NativeWind usage in production UI work',
+            'Convex-backed app architecture exposure',
+            'Error monitoring and product analytics tied to release confidence',
+            'Mobile QA mindset across feature implementation, visual polish, and regressions'
+        ],
+        architecture: [
+            {
+                title: 'Mobile Product Surface',
+                items: [
+                    'Feature work spans high-frequency user flows rather than isolated demos',
+                    'Navigation, state, analytics, and visual details are treated as one product system',
+                    'Private screens and repo internals are intentionally abstracted on the public portfolio'
+                ]
+            },
+            {
+                title: 'Reliability Loop',
+                items: [
+                    'Sentry for runtime visibility',
+                    'PostHog for product behavior signals',
+                    'Jest and Detox for confidence around unit and end-to-end paths',
+                    'EAS for builds and over-the-air release operations'
+                ]
+            }
+        ],
+        challenges: [
+            'Communicating real production responsibility without exposing private product details',
+            'Balancing feature velocity with mobile reliability and visual quality',
+            'Working across multiple app surfaces while preserving consistency',
+            'Contributing inside an existing startup engineering workflow'
+        ],
+        techStack: ['React Native', 'Expo', 'TypeScript', 'Expo Router', 'Zustand', 'NativeWind', 'Convex', 'Sentry', 'PostHog', 'Jest', 'Detox', 'EAS']
+    },
+
+    'easeaccess24-automation': {
+        slug: 'easeaccess24-automation',
+        longDescription: `EaseAccess24 Automation is a developer productivity and AI automation case study focused on replacing fragile environment-switching work with repeatable CLI flows. The core project automated .env synchronization and validation across staging and production contexts.
+
+The public value is the operating pattern: identify a repeated developer pain point, build a focused internal tool, integrate with existing infrastructure, and reduce context-switching overhead for the engineering team.`,
+        features: [
+            'Internal CLI commands for environment synchronization and validation',
+            'Automated staging and production .env switching',
+            'Integration with Vercel environment data',
+            'Integration with Psono-backed secret workflows',
+            'Developer-facing checks to catch incorrect local configuration',
+            'Built as internal productivity tooling rather than a public SaaS surface'
+        ],
+        technicalHighlights: [
+            'Command-line workflow design for a real engineering team',
+            'Environment integrity checks before developers run or deploy',
+            'External service integration with Vercel and secret management tooling',
+            'Automation-first approach to reducing manual setup errors',
+            'Public-safe framing of private internal tooling'
+        ],
+        architecture: [
+            {
+                title: 'CLI Workflow',
+                items: [
+                    'Pull the correct environment context',
+                    'Validate required variables locally',
+                    'Make incorrect staging/production setup harder to miss'
+                ]
+            },
+            {
+                title: 'Integration Layer',
+                items: [
+                    'Vercel-backed environment source',
+                    'Psono-backed secret access pattern',
+                    'Local .env output designed for developer speed and repeatability'
+                ]
+            }
+        ],
+        challenges: [
+            'Turning a manual operational workflow into a reliable tool',
+            'Keeping environment automation useful without making it risky',
+            'Designing CLI output that is fast to understand during development',
+            'Representing private developer tooling publicly without leaking sensitive details'
+        ],
+        techStack: ['CLI Tooling', 'TypeScript', 'Vercel', 'Psono', 'Environment Automation', 'Developer Experience']
+    },
+
+    'streamscope': {
+        slug: 'streamscope',
+        longDescription: `StreamScope is a real-time chat intelligence MVP for live streamers, built from a blank slate in 10 days and awarded 2nd place at IE Tech Venture Bootcamp 2026. The product direction was simple: help creators understand and manage fast-moving communities while the stream is happening.
+
+The project is strongest as a startup execution signal. It combines problem validation, product scoping, technical architecture, and full-stack MVP delivery under a compressed deadline.`,
+        features: [
+            'Real-time chat intelligence concept for live streamers',
+            'MVP shipped in 10 days under startup-style constraints',
+            'Community signal detection for fast-moving chat environments',
+            'Product scoped around creator workflow, not just raw analytics',
+            '2nd place at IE Tech Venture Bootcamp 2026',
+            'Public-safe summary of a private/collaborative repository'
+        ],
+        technicalHighlights: [
+            'Real-time data flow and dashboard thinking',
+            'Product architecture under time pressure',
+            'Rapid prioritization from idea to demo',
+            'Full-stack execution across product and technical delivery',
+            'Pitch-ready framing for judges and stakeholders'
+        ],
+        architecture: [
+            {
+                title: 'Signal Pipeline',
+                items: [
+                    'Ingest live chat activity',
+                    'Surface useful trends and moments',
+                    'Translate noisy message streams into creator-facing decisions'
+                ]
+            },
+            {
+                title: 'Startup Build Loop',
+                items: [
+                    'Validate problem and audience',
+                    'Choose the smallest credible MVP',
+                    'Build, demo, and pitch under a 10-day deadline'
+                ]
+            }
+        ],
+        challenges: [
+            'Keeping scope narrow enough to ship in 10 days',
+            'Turning noisy chat into useful creator signals',
+            'Balancing technical ambition with demo reliability',
+            'Communicating the product as a business, not only a dashboard'
+        ],
+        techStack: ['Real-Time Systems', 'Full-Stack MVP', 'Product Strategy', 'Dashboard UX', 'Startup Prototyping']
+    },
+
+    'chess-anomaly-detection': {
+        slug: 'chess-anomaly-detection',
+        longDescription: `Chess Anomaly Detection is a machine learning project for detecting unusual behavioral patterns in online chess. Lichess game data is reshaped into player-level records, behavioral and engine-accuracy features are engineered, and six unsupervised detectors are compared against synthetic anomaly injections.
+
+The goal is careful and defensible: identify statistically unusual behavior clusters for review, not declare definitive cheating labels. The strongest result was LOF with 0.971 test AUC on subtle synthetic injection, while an ensemble flagged 312 of 17,909 players for human review.`,
+        features: [
+            'Player-level behavioral feature engineering from chess game data',
+            'Six unsupervised anomaly detectors compared with shared validation',
+            'Synthetic anomaly injection for measurable evaluation',
+            'Majority-vote ensemble for review-oriented flagging',
+            'Precomputed results, charts, report, poster, and presentation deliverables',
+            '100/100 machine learning final project result'
+        ],
+        technicalHighlights: [
+            'LOF achieved 0.971 test AUC on subtle synthetic injection',
+            'Ensemble flagged 312 of 17,909 players for review',
+            'Models included LOF, Isolation Forest, One-Class SVM, Autoencoder, ACPLSubAutoencoder, and Z-score baseline',
+            'Feature importance, UMAP, ROC curves, model agreement, and learning curves documented',
+            'Unit tests verify feature engineering and validation logic'
+        ],
+        architecture: [
+            {
+                title: 'Data Pipeline',
+                items: [
+                    'Load raw chess game data',
+                    'Aggregate games into player-level records',
+                    'Engineer behavioral and engine-accuracy features',
+                    'Split and validate without leaking labels across phases'
+                ]
+            },
+            {
+                title: 'Modeling Layer',
+                items: [
+                    'Compare anomaly detectors under common evaluation',
+                    'Use synthetic injection to measure recall on subtle behaviors',
+                    'Combine model outputs through ensemble review logic'
+                ]
+            },
+            {
+                title: 'Interpretability',
+                items: [
+                    'Permutation importance for feature signal',
+                    'UMAP views for cluster inspection',
+                    'Model agreement analysis for review confidence'
+                ]
+            }
+        ],
+        challenges: [
+            'Avoiding overclaiming in a sensitive cheating-detection domain',
+            'Designing meaningful synthetic anomalies for evaluation',
+            'Comparing unsupervised models fairly',
+            'Making results understandable through charts and deliverables'
+        ],
+        techStack: ['Python', 'scikit-learn', 'PyTorch', 'Pandas', 'UMAP', 'SHAP', 'pytest', 'Jupyter']
+    },
+
+    'black-hole-render': {
+        slug: 'black-hole-render',
+        longDescription: `Black Hole Render is a cinematic procedural Three.js experiment built around shader-driven visuals, responsive quality profiles, and export-ready stills. It combines layered geometry, lensing, bloom, particles, orbiting bodies, and compact viewer controls.
+
+The project is a technical-art proof point: it shows taste, WebGL fluency, performance awareness, and the ability to wrap a visual experiment in practical controls and verification.`,
+        features: [
+            'Cinematic, high-energy, and minimal visual presets',
+            'Mobile and desktop adaptive quality profiles',
+            'PNG viewport export',
+            'Clean mode for higher-fidelity stills',
+            'WebGL fallback for unsupported hardware',
+            'Smoke tests for desktop render, mobile controls, and export'
+        ],
+        technicalHighlights: [
+            'Three.js scene with layered shader geometry',
+            'Screen-space lensing and bloom-driven presentation',
+            'Hidden-tab pause behavior',
+            'Resize handling for stable framing',
+            'Quality caps for high-density mobile screens'
+        ],
+        architecture: [
+            {
+                title: 'Render Pipeline',
+                items: [
+                    'Scene geometry and shader layers',
+                    'Postprocessing for bloom and stylized output',
+                    'Particle and orbiting body systems'
+                ]
+            },
+            {
+                title: 'Viewer Controls',
+                items: [
+                    'Preset switching',
+                    'Clean still-export mode',
+                    'Reset and export actions'
+                ]
+            }
+        ],
+        challenges: [
+            'Keeping a heavy visual scene responsive on mobile',
+            'Balancing cinematic quality with export and runtime controls',
+            'Providing graceful fallback when WebGL is unavailable'
+        ],
+        techStack: ['Three.js', 'Vite', 'TypeScript', 'WebGL', 'Shaders', 'Playwright']
+    },
+
+    'typing-wizard-duel': {
+        slug: 'typing-wizard-duel',
+        longDescription: `Typing Wizard Duel is a static browser prototype where spells are cast by typing exact multi-line incantations under pressure. The core loop is about precision, rhythm, and readable feedback: accuracy builds combo and guard, mistakes cause fizzle states, and a CPU opponent pushes the player with timed attacks.
+
+The project demonstrates lightweight game architecture without a framework, emphasizing feel, state management, and clear separation between typing, damage, UI, enemy behavior, events, and animation systems.`,
+        features: [
+            'Exact multi-line spell typing',
+            'Immediate character highlighting and mistake feedback',
+            'Combo meter, guard gains, HP bars, and fizzle states',
+            'Local CPU opponent with timed spell casting',
+            'Duel events that interrupt rhythm with short skill checks',
+            'Tutorial overlay, reduced motion, debug controls, and post-match stats'
+        ],
+        technicalHighlights: [
+            'Dependency-free static HTML/CSS/JavaScript implementation',
+            'Separated managers for typing, damage, UI, enemy AI, events, animation, and stats',
+            'Works from file:// and static Vercel deployment',
+            'Built around a readable global namespace rather than a build step'
+        ],
+        architecture: [
+            {
+                title: 'Game Systems',
+                items: [
+                    'TypingEngine for spell input',
+                    'DamageManager and ComboManager for combat outcomes',
+                    'EnemyAI and DuelEventManager for pressure and pacing',
+                    'UIManager and AnimationManager for feedback'
+                ]
+            }
+        ],
+        challenges: [
+            'Making typing feel like combat rather than a form field',
+            'Balancing opponent pressure and mistake recovery',
+            'Keeping the prototype dependency-free while maintaining structure'
+        ],
+        techStack: ['HTML', 'CSS', 'Vanilla JavaScript', 'Vercel']
+    },
+
+    'rush-hour-retail': {
+        slug: 'rush-hour-retail',
+        longDescription: `Rush Hour Retail is a chaotic 3D time-management game built for a short jam window. Players race through a hypermarket, collect generated shopping lists, choose between speed and capacity, and scan items at checkout before time runs out.
+
+The project is useful on the portfolio as a speed and iteration signal: it was built under a 3-4 day constraint, with extra time spent fixing optimization and frame-rate issues in an unfamiliar 3D workflow.`,
+        features: [
+            'Generated shopping lists and route optimization pressure',
+            'Cart versus run tradeoff for speed and capacity',
+            'Help desk marker system for item discovery',
+            'Progressive difficulty and high-score tracking',
+            'Reactive customer behavior',
+            'Submitted to Patch Notes v1.1'
+        ],
+        technicalHighlights: [
+            '3D game-jam workflow under severe time pressure',
+            'Performance triage for FPS spikes',
+            'Gameplay systems designed around seconds as currency',
+            'Browser-playable itch.io release'
+        ],
+        architecture: [
+            {
+                title: 'Jam Loop',
+                items: [
+                    'Generate a shopping target',
+                    'Route through store sections',
+                    'Balance speed, item capacity, and checkout timing',
+                    'Escalate pressure as the run progresses'
+                ]
+            }
+        ],
+        challenges: [
+            'Learning and shipping 3D gameplay under a short deadline',
+            'Optimizing frame-rate spikes enough for playability',
+            'Cutting scope while preserving the core time-management fantasy'
+        ],
+        techStack: ['Godot', '3D Gameplay', 'Game Jam', 'Optimization']
+    },
+
     'cleanr': {
         slug: 'cleanr',
         longDescription: `Cleanr is a production-ready mobile platform connecting users with professional cleaners for on-demand and scheduled apartment cleaning services. Built as a dual-app ecosystem, Cleanr features separate React Native applications for users and cleaners, creating an Uber-like experience for home cleaning.

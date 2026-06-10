@@ -7,6 +7,7 @@ interface Props {
   linkedin?: string;
   github?: string;
   itch?: string;
+  x?: string;
   resume?: string;
 }
 
@@ -15,6 +16,7 @@ const {
   linkedin = "https://linkedin.com/in/kiril-petrovski",
   github = "https://github.com/kiril-p",
   itch = "https://kirilp.itch.io/",
+  x = "https://x.com/pl1rik",
   resume = "#" 
 } = Astro.props;
 ---
@@ -145,6 +147,32 @@ const {
         </svg>
       </MagneticButton>
 
+      <!-- X with Magnetic Effect -->
+      <MagneticButton
+        client:visible
+        href={x}
+        className="contact-link group/link w-full flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-accent/40 hover:bg-blue-accent/10 transition-all duration-300"
+        strength={0.25}
+        ariaLabel="X profile"
+        title="X profile"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div class="icon-wrapper flex items-center justify-center w-10 h-10 rounded-xl bg-blue-accent/10 group-hover/link:bg-blue-accent/20 transition-colors duration-300 flex-shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-blue-accent">
+            <path d="M18.9 2h3.3l-7.3 8.3 8.6 11.7h-6.7l-5.2-6.9-6 6.9H2.3l7.8-8.9L1.9 2h6.9l4.7 6.3L18.9 2Zm-1.2 17.9h1.8L7.8 4H5.9l11.8 15.9Z"></path>
+          </svg>
+        </div>
+        <div class="flex-1 text-left min-w-0">
+          <div class="text-xs text-white/50 uppercase tracking-wider mb-1">X</div>
+          <div class="text-sm text-white/90 group-hover/link:text-blue-accent transition-colors duration-300">@pl1rik</div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/30 group-hover/link:text-blue-accent group-hover/link:translate-x-1 transition-all duration-300 flex-shrink-0">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </MagneticButton>
+
       <!-- Resume - Opens PDF in new tab -->
       <a 
         href={resume}
@@ -209,12 +237,13 @@ const {
   
   if (emailBtn) {
     emailBtn.addEventListener('mousemove', (e) => {
+      const pointer = e as MouseEvent;
       const rect = emailBtn.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
       
-      const deltaX = (e.clientX - centerX) * 0.15;
-      const deltaY = (e.clientY - centerY) * 0.15;
+      const deltaX = (pointer.clientX - centerX) * 0.15;
+      const deltaY = (pointer.clientY - centerY) * 0.15;
 
       gsap.to(emailBtn, {
         x: deltaX,

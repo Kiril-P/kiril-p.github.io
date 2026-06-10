@@ -256,7 +256,7 @@ body {
     box-shadow: 0 20px 40px rgba(37, 99, 235, 0.16), 0 8px 18px rgba(33, 37, 41, 0.08);
   }
 
-  /* Featured Exhibition: keep text over thumbnails */
+  /* Product Proof: keep text over thumbnails */
   #projects .bento-card img {
     opacity: 1 !important;
   }

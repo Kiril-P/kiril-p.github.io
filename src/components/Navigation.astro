@@ -170,13 +170,13 @@ import ThemeToggle from './ThemeToggle';
   // Smooth scroll for all nav links (handled by Lenis in MainLayout)
   // We just need to prevent default and let Lenis handle the scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
+    anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
       if (href && href.startsWith('#')) {
         e.preventDefault();
         const target = document.querySelector(href);
         if (target) {
-          const navHeight = document.querySelector('.nav-header')?.offsetHeight || 0;
+          const navHeight = (document.querySelector('.nav-header') as HTMLElement | null)?.offsetHeight || 0;
           const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
           
           // Use window.scrollTo which Lenis will intercept
@@ -190,7 +190,6 @@ import ThemeToggle from './ThemeToggle';
   });
 
   // Add scroll effect to nav
-  let lastScroll = 0;
   window.addEventListener('scroll', () => {
     const nav = document.querySelector('.nav-header');
     const currentScroll = window.pageYOffset;
@@ -200,7 +199,5 @@ import ThemeToggle from './ThemeToggle';
     } else {
       nav?.classList.remove('scrolled');
     }
-    
-    lastScroll = currentScroll;
   });
 </script>

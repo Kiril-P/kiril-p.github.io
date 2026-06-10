@@ -1,73 +1,151 @@
 /**
  * Project Configuration
- * Define which projects to feature in your Bento grid.
+ * Defines the curated portfolio order and public-safe metadata.
  */
 
 export interface CustomProject {
-  slug: string; // Unique URL identifier
+  slug: string;
   name: string;
   description: string;
-  html_url?: string; // External link (GitHub or Live Demo) - deprecated, use github_url or demo_url
-  github_url?: string; // GitHub repository link
-  demo_url?: string; // Live demo or playable link (e.g., itch.io)
-  website_url?: string; // Product website (e.g., company landing page)
+  html_url?: string;
+  github_url?: string;
+  demo_url?: string;
+  website_url?: string;
   language: string;
   category: 'professional' | 'university' | 'personal';
   sourceType: 'open-source' | 'closed-source' | 'proprietary';
   priority: number;
   stargazers_count?: number;
   tags?: string[];
-  thumbnail: string; // Primary image for Bento grid
-  gallery_images?: string[]; // Additional images for deep-dive page
-  video_url?: string; // YouTube loop URL
+  role?: string;
+  period?: string;
+  impact?: string;
+  status?: string;
+  confidential?: boolean;
+  group?: 'professional' | 'game-dev' | 'technical';
+  thumbnail?: string;
+  thumbnailFit?: 'cover' | 'contain';
+  thumbnailBackground?: string;
+  thumbnailPosition?: string;
+  gallery_images?: string[];
+  video_url?: string;
   hasInternalPage: boolean;
 }
 
 export type ProjectSource = CustomProject;
 
-// Featured Projects Configuration
-// Priority: Cleanr -> Polygon -> Chess -> Starburst -> Battleship
 export const featuredProjects: CustomProject[] = [
+  {
+    slug: 'naiss-ride',
+    name: 'Naiss Ride',
+    description: 'Public-safe case study of production mobile engineering across rides, feed, camera, gamification, auth, payments, reliability, and release quality.',
+    language: 'React Native',
+    category: 'professional',
+    sourceType: 'proprietary',
+    priority: 1,
+    role: 'Mobile Software Engineer',
+    period: 'June 2026 - Present',
+    impact: 'Shipping production features inside a live startup mobile app with observability, testing, and release discipline.',
+    status: 'Active startup work',
+    confidential: true,
+    group: 'professional',
+    tags: ['React Native', 'Expo', 'TypeScript', 'Convex', 'Sentry', 'PostHog'],
+    thumbnail: '/assets/projects/naiss-ride-logo.png',
+    thumbnailFit: 'contain',
+    thumbnailBackground: '#03E888',
+    hasInternalPage: true,
+  },
+  {
+    slug: 'easeaccess24-automation',
+    name: 'EaseAccess24 Automation',
+    description: 'Internal developer productivity and AI automation work, including environment tooling that turns fragile manual setup into repeatable CLI workflows.',
+    language: 'Automation',
+    category: 'professional',
+    sourceType: 'proprietary',
+    priority: 2,
+    role: 'Software Engineering Intern',
+    period: 'June 2026 - Present',
+    impact: 'Reduced environment-switching friction with Vercel and Psono-backed CLI commands for staging and production workflows.',
+    status: 'Active internship',
+    confidential: true,
+    group: 'professional',
+    tags: ['CLI', 'AI Automation', 'Vercel', 'Psono', 'Developer Experience'],
+    thumbnail: '/assets/projects/easeaccess24-logo.png',
+    thumbnailFit: 'contain',
+    hasInternalPage: true,
+  },
   {
     slug: 'cleanr',
     name: 'Cleanr',
-    description: 'Leading the development of a cloud-native SaaS platform for commercial cleaning management. Built with robust serverless architecture.',
+    description: 'Uber-like apartment-cleaning marketplace built as a dual mobile app ecosystem for users and cleaners.',
     website_url: 'https://www.getcleanr.io/',
-    language: 'Cloud/SaaS',
+    language: 'React Native',
     category: 'professional',
-    sourceType: 'closed-source', // Displays as "Closed Source"
-    priority: 1,
-    tags: ['SaaS', 'Cloud Native', 'Enterprise'],
+    sourceType: 'closed-source',
+    priority: 3,
+    role: 'Tech Lead & Full-Stack Developer',
+    period: 'March 2025 - April 2026',
+    impact: 'Led a 3-developer team across booking, matching, payments, maps, cancellation logic, and mobile release execution.',
+    status: 'Past startup build',
+    confidential: true,
+    group: 'professional',
+    tags: ['React Native', 'Expo', 'Firebase', 'Stripe', 'Google Maps'],
     thumbnail: '/assets/projects/cleanr pic.webp',
     video_url: 'https://youtu.be/81EEbJNf314',
     hasInternalPage: true,
   },
   {
-    slug: 'polygon-protocol',
-    name: 'Polygon Protocol',
-    description: 'A high-octane geometric roguelite built in Godot Engine. Evolve from a simple shape into a complex polygon weapon system.',
-    github_url: 'https://github.com/Kiril-P/Polygon-Protocol',
-    demo_url: 'https://kirilp.itch.io/polygon-protocol',
-    language: 'Godot',
-    category: 'personal',
+    slug: 'streamscope',
+    name: 'StreamScope',
+    description: 'Real-time chat intelligence MVP for live streamers, shipped from zero in 10 days and awarded 2nd place at IE Tech Venture Bootcamp 2026.',
+    language: 'Full Stack',
+    category: 'university',
+    sourceType: 'closed-source',
+    priority: 4,
+    role: 'Technical Lead',
+    period: '2026',
+    impact: 'Turned a startup-style problem into a deployed MVP under a compressed deadline.',
+    status: '2nd place',
+    confidential: true,
+    group: 'professional',
+    tags: ['Real-Time', 'Chat Intelligence', 'MVP', 'Product Strategy'],
+    hasInternalPage: true,
+  },
+  {
+    slug: 'chess-anomaly-detection',
+    name: 'Chess Anomaly Detection',
+    description: 'Machine learning system for behavioral anomaly detection in online chess, comparing six unsupervised detectors and an ensemble review workflow.',
+    github_url: 'https://github.com/Kiril-P/Final-Group-Project-Machine-Learning',
+    language: 'Python',
+    category: 'university',
     sourceType: 'open-source',
-    priority: 2,
-    stargazers_count: 0,
-    tags: ['Game Dev', 'Roguelite', 'Bullet Hell'],
-    thumbnail: '/assets/projects/polygonprotocol.webp',
-    video_url: 'https://youtu.be/Yu9m_tLXc84',
+    priority: 5,
+    role: 'ML Project Contributor',
+    period: '2026',
+    impact: 'LOF reached 0.971 test AUC on subtle synthetic injection; ensemble flagged 312 of 17,909 players for review.',
+    status: '100/100 ML project',
+    group: 'technical',
+    tags: ['Machine Learning', 'Anomaly Detection', 'Lichess', 'Python'],
+    thumbnail: '/assets/projects/chess-anomaly-detection.jpg',
+    thumbnailFit: 'cover',
+    thumbnailPosition: 'center',
+    gallery_images: ['/assets/projects/chess pic2.webp'],
     hasInternalPage: true,
   },
   {
     slug: 'chess-engine',
     name: 'Chess Engine',
-    description: 'Advanced chess engine implementing minimax algorithm with alpha-beta pruning. Features move validation, AI opponent, and game state management.',
+    description: 'Advanced chess engine implementing move validation, a GUI, turn switching, legal move highlighting, and bot play.',
     github_url: 'https://github.com/Kiril-P/ChessEngine',
     language: 'C++',
     category: 'university',
     sourceType: 'open-source',
-    priority: 3,
-    stargazers_count: 12,
+    priority: 6,
+    role: 'University Project Developer',
+    period: '2025',
+    impact: 'Built chess rules, GUI interaction, move highlighting, check/checkmate handling, and bot move logic.',
+    status: 'Algorithms project',
+    group: 'technical',
     tags: ['AI', 'Algorithms', 'C++'],
     thumbnail: '/assets/projects/chess pic1.webp',
     gallery_images: ['/assets/projects/chess pic2.webp'],
@@ -75,17 +153,41 @@ export const featuredProjects: CustomProject[] = [
     hasInternalPage: true,
   },
   {
+    slug: 'polygon-protocol',
+    name: 'Polygon Protocol',
+    description: 'Browser-playable geometric roguelite built in Godot for Mini Jam 202, centered on shape evolution, dash combat, bosses, and meta progression.',
+    github_url: 'https://github.com/Kiril-P/Polygon-Protocol',
+    demo_url: 'https://kirilp.itch.io/polygon-protocol',
+    language: 'Godot',
+    category: 'personal',
+    sourceType: 'open-source',
+    priority: 7,
+    role: 'Solo Developer',
+    period: '2026',
+    impact: 'Released on itch.io with browser play and desktop downloads.',
+    status: 'Mini Jam 202',
+    group: 'game-dev',
+    tags: ['Game Dev', 'Roguelite', 'Bullet Hell', 'GDScript'],
+    thumbnail: '/assets/projects/polygonprotocol.webp',
+    video_url: 'https://youtu.be/Yu9m_tLXc84',
+    hasInternalPage: true,
+  },
+  {
     slug: 'starburst',
-    name: 'Starburst',
-    description: 'High-performance browser-based bullet hell shooter. Optimized 60FPS rendering loop using HTML5 Canvas and vanilla JavaScript.',
+    name: 'StarBurst',
+    description: 'Phaser bullet hell with multiple ships, bosses, power-ups, progression updates, and browser-first arcade pacing.',
     github_url: 'https://github.com/Kiril-P/starburst',
     demo_url: 'https://kirilp.itch.io/starburst',
     language: 'JavaScript',
     category: 'personal',
     sourceType: 'open-source',
-    priority: 4,
-    stargazers_count: 5,
-    tags: ['Canvas', 'Game Dev', 'Performance'],
+    priority: 8,
+    role: 'Solo Developer',
+    period: '2025',
+    impact: 'Submitted to Bullet Hell Jam 6 and iterated with devlogs and player feedback.',
+    status: 'Bullet Hell Jam 6',
+    group: 'game-dev',
+    tags: ['Phaser', 'Bullet Hell', 'Canvas', 'Game Dev'],
     thumbnail: '/assets/projects/starburst1.webp',
     gallery_images: [
       '/assets/projects/starburst2.webp',
@@ -96,16 +198,40 @@ export const featuredProjects: CustomProject[] = [
     hasInternalPage: true,
   },
   {
+    slug: 'nomnomnow',
+    name: 'NomNomNow',
+    description: 'Serverless food delivery backend architecture using AWS Lambda, DynamoDB, API Gateway, Cognito, and real-time order workflow patterns.',
+    github_url: 'https://github.com/Kiril-P/Cloud-Computing-Final-Project',
+    demo_url: 'https://kpetrovski.me/Cloud-Computing-Final-Project/',
+    language: 'TypeScript',
+    category: 'university',
+    sourceType: 'open-source',
+    priority: 9,
+    role: 'Cloud Architecture Developer',
+    period: '2025',
+    impact: 'Designed a complete cloud-backed ordering system with serverless deployment and API architecture.',
+    status: 'University project',
+    group: 'technical',
+    tags: ['AWS', 'TypeScript', 'Serverless', 'APIs'],
+    thumbnail: '/assets/projects/nomnomnow pic.webp',
+    video_url: 'https://youtu.be/CGYAp0squuc',
+    hasInternalPage: true,
+  },
+  {
     slug: 'battleship',
     name: 'Battleship Multiplayer',
-    description: 'Networked multiplayer game built in C using low-level socket programming. Handles concurrent connections and game state synchronization.',
+    description: 'Networked multiplayer Battleship in C with POSIX sockets, custom binary protocol, threading, and terminal UI.',
     github_url: 'https://github.com/Kiril-P/Battleship-Multiplayer-Game',
     language: 'C',
     category: 'university',
     sourceType: 'open-source',
-    priority: 5,
-    stargazers_count: 8,
-    tags: ['Networking', 'C', 'Sockets'],
+    priority: 10,
+    role: 'Systems Programmer',
+    period: '2025',
+    impact: 'Built a LAN-playable client-server game with concurrent connection handling.',
+    status: 'Systems project',
+    group: 'technical',
+    tags: ['Networking', 'C', 'Sockets', 'Threads'],
     thumbnail: '/assets/projects/Battleship.webp',
     gallery_images: [
       '/assets/projects/Battleship (1).webp',
@@ -116,30 +242,18 @@ export const featuredProjects: CustomProject[] = [
     hasInternalPage: true,
   },
   {
-    // NomNomNow - Included for deep-dive access even if not in top 5 featured grid
-    slug: 'nomnomnow',
-    name: 'NomNomNow',
-    description: 'Serverless cloud computing project leveraging AWS Lambda and DynamoDB for scalable food delivery architecture.',
-    github_url: 'https://github.com/Kiril-P/Cloud-Computing-Final-Project',
-    demo_url: 'https://kpetrovski.me/Cloud-Computing-Final-Project/',
-    language: 'TypeScript',
-    category: 'university',
-    sourceType: 'open-source',
-    priority: 6,
-    tags: ['AWS', 'Serverless', 'Cloud'],
-    thumbnail: '/assets/projects/nomnomnow pic.webp',
-    video_url: 'https://youtu.be/CGYAp0squuc',
-    hasInternalPage: true,
-  },
-  {
-    // Solitaire - Included for deep-dive access
     slug: 'solitaire',
     name: 'Solitaire',
     description: 'Classic card game implementation with drag-and-drop mechanics and win-state detection.',
     language: 'Java',
     category: 'university',
     sourceType: 'open-source',
-    priority: 7,
+    priority: 11,
+    role: 'University Project Developer',
+    period: '2025',
+    impact: 'Implemented card movement, rules, and GUI interaction for a complete playable solitaire project.',
+    status: 'Java GUI project',
+    group: 'game-dev',
     tags: ['Java', 'GUI', 'Logic'],
     thumbnail: '/assets/projects/solitaire.webp',
     gallery_images: [

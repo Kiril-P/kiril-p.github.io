@@ -9,14 +9,31 @@ import ContactForm from '../components/ContactForm.astro';
 import Footer from '../components/Footer.astro';
 import BackgroundSwirls from '../components/BackgroundSwirls.astro';
 import NetworkGlobe from '../components/NetworkGlobe';
-import { Star, Lock, Github, Globe, ArrowUpRight } from 'lucide-react';
+import { Lock, Github, ArrowUpRight, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays the same for API
+const projectGroups = [
+	{
+		title: 'Professional Products',
+		description: 'Startup work, internships, and product engineering shipped in real organizations.',
+		projects: repos.filter((repo) => repo.group === 'professional'),
+	},
+	{
+		title: 'Game Dev',
+		description: 'Playable games, jam submissions, and interactive systems.',
+		projects: repos.filter((repo) => repo.group === 'game-dev'),
+	},
+	{
+		title: 'Technical Projects',
+		description: 'ML, systems, cloud, and algorithmic projects with deeper engineering proof.',
+		projects: repos.filter((repo) => repo.group === 'technical'),
+	},
+].filter((group) => group.projects.length > 0);
 ---
 
 <MainLayout 
-	title="Kiril Petrovski - Full Stack Developer | React Native & AI Products" 
-	description="Computer Science & AI student at IE University. Full-stack developer building mobile apps with React Native, Firebase, and Stripe. Experience with AI-powered products and modern web technologies. Currently working on production-ready applications."
+	title="Kiril Petrovski - CS & AI Student | Mobile Engineer & AI Product Builder" 
+	description="CS & AI student at IE University building production mobile systems, AI automation, and fast-shipped product experiments across startups, ML, and interactive software."
 >
 	<BackgroundSwirls />
 	<Navigation />
@@ -38,7 +55,7 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 							<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
 							<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
 						</span>
-						<span class="text-xs font-semibold text-green-400">Available for Summer 2026 Internships</span>
+							<span class="text-xs font-semibold text-green-400">Available for Summer 2027 Internships</span>
 					</div>
 					<div class="h-4 w-px bg-green-500/20"></div>
 					<div class="flex items-center gap-1.5 text-xs text-white/50">
@@ -61,7 +78,7 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 			</h1>
 			<p class="max-w-xl text-lg text-white/60 leading-relaxed mb-10 overflow-hidden relative z-10">
 				<span class="hero-desc block">
-					Full-stack developer building mobile & AI-driven products. Currently developing production apps with React Native, Firebase, and Stripe. CS & AI student at IE University.
+					CS & AI student building production mobile systems, AI automation, and fast-shipped product experiments. Currently working across startup mobile engineering, developer tooling, and ML-backed products.
 				</span>
 			</p>
 
@@ -102,92 +119,132 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 			</div>
 		</section>
 
-		<!-- Bento Grid Section -->
+		<!-- Project Showcase Section -->
 		<section id="projects" class="py-24 featured-exhibition">
-			<div class="flex items-center justify-between mb-12">
-				<h2 class="text-2xl font-bold">Featured Exhibition</h2>
-				<div class="hidden md:flex items-center gap-2 text-sm text-white/40">
-					<span class="w-2 h-2 rounded-full bg-green-400"></span> Open Source
-					<span class="w-2 h-2 rounded-full bg-red-400 ml-4"></span> Closed Source
-				</div>
-			</div>
-			
-			<div class="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[300px]">
-				{repos.slice(0, 6).map((repo, index) => {
-					// Layout Logic: First 2 items are large (Hero)
-					const isLarge = index === 0 || index === 1;
-					return (
-						<a 
-							href={`/projects/${repo.slug}`}
-							class={`bento-card group relative overflow-hidden rounded-3xl bg-premium-gray border border-white/5 flex flex-col justify-end p-6 ${
-								index === 0 ? 'md:col-span-8 md:row-span-2' : 
-								index === 1 ? 'md:col-span-4 md:row-span-2' : 
-								'md:col-span-4'
-							}`}
-						>
-							<!-- Background Image -->
-							<div class="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-105">
-								<img 
-									src={repo.thumbnail} 
-									alt={repo.name} 
-									loading="lazy"
-									decoding="async"
-									class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-500"
-								/>
-								<div class="project-overlay absolute inset-0 bg-gradient-to-t from-premium-black/40 via-transparent to-transparent"></div>
+			<div class="space-y-14">
+				{projectGroups.map((group) => (
+					<div class="project-lane">
+						<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-5">
+							<div>
+								<h3 class="text-lg md:text-xl font-semibold text-white">{group.title}</h3>
+								<p class="text-sm text-white/45 mt-1">{group.description}</p>
 							</div>
-							
-							<!-- Border glow effect -->
-							<div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: inset 0 0 50px rgba(59, 130, 246, 0.2);"></div>
-							
-							<!-- Language Badge -->
-							<div class="absolute top-4 left-4 z-20">
-								<div class="language-badge inline-flex items-center px-3 py-1.5 rounded-full bg-blue-accent/10 border border-blue-accent/20 backdrop-blur-md">
-									<span class="text-xs font-medium text-blue-accent">
-										{repo.language}
-									</span>
-								</div>
+							<div class="flex items-center gap-2">
+								<button
+									type="button"
+									class="project-lane-control hidden md:inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 transition hover:border-blue-accent/40 hover:bg-blue-accent/15 hover:text-white"
+									data-scroll-lane="previous"
+									aria-label={`Scroll ${group.title} left`}
+								>
+									<ChevronLeft className="w-4 h-4" />
+								</button>
+								<button
+									type="button"
+									class="project-lane-control hidden md:inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 transition hover:border-blue-accent/40 hover:bg-blue-accent/15 hover:text-white"
+									data-scroll-lane="next"
+									aria-label={`Scroll ${group.title} right`}
+								>
+									<ChevronRight className="w-4 h-4" />
+								</button>
+								<div class="text-xs uppercase tracking-widest text-white/30">Scroll horizontally</div>
 							</div>
-							
-							<!-- Source Badge -->
-							<div class="absolute top-4 right-4 z-20">
-								{repo.sourceType === 'open-source' ? (
-									<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 backdrop-blur-md">
-										<Github className="w-3.5 h-3.5 text-green-400" />
-										<span class="text-xs font-medium text-green-400">Open Source</span>
+						</div>
+
+						<div class="project-scroll flex gap-4 overflow-x-auto snap-x snap-mandatory py-10 -mx-6 px-6">
+							{group.projects.map((repo) => (
+								<a 
+									href={`/projects/${repo.slug}`}
+									class="bento-card project-card group block relative min-w-[280px] sm:min-w-[360px] lg:min-w-[420px] h-[320px] snap-start"
+								>
+									<div class="project-card-shell relative h-full overflow-hidden rounded-3xl bg-premium-gray border border-white/5 flex flex-col justify-end p-6">
+										<div class="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-105">
+											{repo.thumbnail ? (
+												<div
+													class={`w-full h-full ${repo.thumbnailFit === 'contain' && !repo.thumbnailBackground ? 'bg-white' : ''}`}
+													style={repo.thumbnailBackground ? `background-color: ${repo.thumbnailBackground};` : undefined}
+												>
+													<img 
+														src={repo.thumbnail} 
+														alt={repo.name} 
+														loading="lazy"
+														decoding="async"
+														style={repo.thumbnailPosition ? `object-position: ${repo.thumbnailPosition};` : undefined}
+														class={`project-card-image w-full h-full transition-opacity duration-500 ${
+															repo.thumbnailFit === 'contain'
+																? `object-contain p-10 ${repo.thumbnailBackground ? 'opacity-100' : 'opacity-95'}`
+																: 'object-cover opacity-60'
+														}`}
+													/>
+												</div>
+											) : (
+												<div class="w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.28),transparent_32%),linear-gradient(135deg,rgba(15,23,42,0.95),rgba(17,24,39,0.85))]">
+													<div class="absolute inset-0 opacity-30" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 34px 34px;"></div>
+													<div class="absolute inset-0 flex items-center justify-center p-8 text-center">
+														<div>
+															<div class="text-xs uppercase tracking-[0.28em] text-blue-accent/70 mb-3">{repo.language}</div>
+															<div class="text-3xl font-bold text-white/80">{repo.name}</div>
+														</div>
+													</div>
+												</div>
+											)}
+											<div class="project-overlay absolute inset-0 bg-gradient-to-t from-premium-black via-premium-black/25 to-transparent"></div>
+										</div>
+										
+										<div class="border-glow absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500" style="box-shadow: inset 0 0 50px rgba(59, 130, 246, 0.2);"></div>
+										
+										<div class="absolute top-4 left-4 z-20">
+											<div class="language-badge inline-flex items-center px-3 py-1.5 rounded-full bg-blue-accent/10 border border-blue-accent/20 backdrop-blur-md">
+												<span class="text-xs font-medium text-blue-accent">{repo.language}</span>
+											</div>
+										</div>
+										
+										<div class="absolute top-4 right-4 z-20">
+											{repo.confidential ? (
+												<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 backdrop-blur-md">
+													<ShieldCheck className="w-3.5 h-3.5 text-cyan-300" />
+													<span class="text-xs font-medium text-cyan-300">Public-Safe</span>
+												</div>
+											) : repo.sourceType === 'open-source' ? (
+												<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 backdrop-blur-md">
+													<Github className="w-3.5 h-3.5 text-green-400" />
+													<span class="text-xs font-medium text-green-400">Open Source</span>
+												</div>
+											) : repo.sourceType === 'closed-source' ? (
+												<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 backdrop-blur-md">
+													<Lock className="w-3.5 h-3.5 text-red-400" />
+													<span class="text-xs font-medium text-red-400">Closed Source</span>
+												</div>
+											) : (
+												<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 backdrop-blur-md">
+													<Lock className="w-3.5 h-3.5 text-orange-400" />
+													<span class="text-xs font-medium text-orange-400">Proprietary</span>
+												</div>
+											)}
+										</div>
+										
+										<div class="relative z-10 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+											<div class="flex justify-between items-end mb-2 gap-4">
+												<div>
+													<h3 class="project-title font-bold text-white text-2xl transition-colors duration-300">{repo.name}</h3>
+													{repo.status && (
+														<div class="mt-1 text-xs uppercase tracking-wider text-blue-accent/80">{repo.status}</div>
+													)}
+												</div>
+												<div class="p-2 rounded-full bg-white/5 border border-white/10 group-hover:bg-blue-accent group-hover:border-blue-accent transition-colors duration-300 shrink-0">
+													<ArrowUpRight className="project-action-icon w-5 h-5 text-white" />
+												</div>
+											</div>
+											
+											<p class="project-desc text-white/60 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
+												{repo.impact || repo.description}
+											</p>
+										</div>
 									</div>
-								) : repo.sourceType === 'closed-source' ? (
-									<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 backdrop-blur-md">
-										<Lock className="w-3.5 h-3.5 text-red-400" />
-										<span class="text-xs font-medium text-red-400">Closed Source</span>
-									</div>
-								) : (
-									<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 backdrop-blur-md">
-										<Lock className="w-3.5 h-3.5 text-orange-400" />
-										<span class="text-xs font-medium text-orange-400">Proprietary</span>
-									</div>
-								)}
-							</div>
-							
-							<div class="relative z-10 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-								<div class="flex justify-between items-end mb-2">
-									<div>
-										<h3 class={`project-title font-bold text-white transition-colors duration-300 ${isLarge ? 'text-3xl' : 'text-xl'}`}>
-											{repo.name}
-										</h3>
-									</div>
-									<div class="p-2 rounded-full bg-white/5 border border-white/10 group-hover:bg-blue-accent group-hover:border-blue-accent transition-colors duration-300">
-										<ArrowUpRight className="project-action-icon w-5 h-5 text-white" />
-									</div>
-								</div>
-								
-								<p class="project-desc text-white/60 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
-									{repo.description}
-								</p>
-							</div>
-						</a>
-					);
-				})}
+								</a>
+							))}
+						</div>
+					</div>
+				))}
 			</div>
 		</section>
 
@@ -201,13 +258,14 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 					<TechStack />
 				</div>
 				<div class="md:col-span-1">
-					<ContactCard 
-						email="kirilpetrovski2005@gmail.com"
-						linkedin="https://linkedin.com/in/kiril-petrovski"
-						github="https://github.com/kiril-p"
-						itch="https://kirilp.itch.io/"
-						resume="/Kiril-Petrovski-CV.pdf"
-					/>
+						<ContactCard 
+							email="kirilpetrovski2005@gmail.com"
+							linkedin="https://linkedin.com/in/kiril-petrovski"
+							github="https://github.com/kiril-p"
+							itch="https://kirilp.itch.io/"
+							x="https://x.com/pl1rik"
+							resume="/Kiril-Petrovski-CV.pdf"
+						/>
 				</div>
 			</div>
 		</section>
@@ -219,13 +277,67 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 
 <style>
 	/* Premium hover animations for Bento cards */
-	.bento-card {
-		transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.4s ease;
+	.project-scroll {
+		scrollbar-width: thin;
+		scrollbar-color: rgba(59, 130, 246, 0.45) rgba(255, 255, 255, 0.06);
+		scroll-padding-inline: 1.5rem;
+		overscroll-behavior-x: contain;
 	}
 
-	.bento-card:hover {
-		transform: scale(1.02) translateY(-4px);
-		border-color: rgba(59, 130, 246, 0.3);
+	.project-scroll::-webkit-scrollbar {
+		height: 10px;
+	}
+
+	.project-scroll::-webkit-scrollbar-track {
+		background: rgba(255, 255, 255, 0.06);
+		border-radius: 999px;
+	}
+
+	.project-scroll::-webkit-scrollbar-thumb {
+		background: rgba(59, 130, 246, 0.45);
+		border-radius: 999px;
+	}
+
+	.bento-card {
+		will-change: transform, opacity;
+	}
+
+	.project-card {
+		z-index: 1;
+	}
+
+	.project-card-shell {
+		transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+		transform-origin: center center;
+		will-change: transform;
+	}
+
+	.project-card:hover,
+	.project-card:focus-visible {
+		z-index: 40;
+	}
+
+	.project-card:hover .project-card-shell,
+	.project-card:focus-visible .project-card-shell {
+		transform: translateY(-14px) scale(1.08);
+		border-color: rgba(59, 130, 246, 0.55);
+		box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(59, 130, 246, 0.28);
+	}
+
+	.project-card:hover .border-glow,
+	.project-card:focus-visible .border-glow {
+		opacity: 1;
+		box-shadow: inset 0 0 70px rgba(59, 130, 246, 0.32);
+	}
+
+	.project-card:hover .project-card-image,
+	.project-card:focus-visible .project-card-image {
+		opacity: 0.78;
+	}
+
+	.project-card:hover .project-card-image.object-contain,
+	.project-card:focus-visible .project-card-image.object-contain {
+		opacity: 1;
 	}
 
 	.bento-card:hover .gradient-overlay {
@@ -296,6 +408,15 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 		transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
 	}
 
+	@media (prefers-reduced-motion: reduce) {
+		.project-card-shell,
+		.project-card:hover .project-card-shell,
+		.project-card:focus-visible .project-card-shell {
+			transition: none;
+			transform: none;
+		}
+	}
+
 	/* Typing cursor animation */
 	.typing-cursor {
 		display: inline-block;
@@ -347,7 +468,7 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 		y: 40,
 		opacity: 0,
 		duration: 0.8
-	  }, "-=0.55")
+	  }, "-=0.45")
 	  .from(".hero-cta a", { 
 		opacity: 0, 
 		y: 24, 
@@ -358,12 +479,12 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 
 	// Typewriter effect for roles
 	const roles = [
-		"Full Stack Developer",
-		"Mobile App Developer",
-		"CS & AI Student",
-		"React Native Engineer",
+		"Mobile Engineer",
+		"AI Product Builder",
+		"Startup Operator",
+		"ML Systems Builder",
 		"Game Developer",
-		"Building the Future"
+		"Fast Shipper"
 	];
 
 	let roleIndex = 0;
@@ -428,6 +549,31 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 		},
 		duration: 1,
 		ease: "back.out(1.2)" // Adds a subtle bounce effect
+	});
+
+	document.querySelectorAll(".project-lane").forEach((lane) => {
+		const scroller = lane.querySelector(".project-scroll");
+		if (!(scroller instanceof HTMLElement)) return;
+
+		scroller.addEventListener("wheel", (event) => {
+			const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY);
+			if (horizontalIntent || event.deltaY === 0) return;
+
+			event.preventDefault();
+			window.scrollBy({ top: event.deltaY, left: 0, behavior: "auto" });
+		}, { passive: false });
+
+		lane.querySelectorAll("[data-scroll-lane]").forEach((button) => {
+			if (!(button instanceof HTMLButtonElement)) return;
+
+			button.addEventListener("click", () => {
+				const direction = button.dataset.scrollLane === "previous" ? -1 : 1;
+				scroller.scrollBy({
+					left: direction * scroller.clientWidth * 0.8,
+					behavior: "smooth",
+				});
+			});
+		});
 	});
 
 	// About Section - All cards animate together like Tech Stack

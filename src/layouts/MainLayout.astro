@@ -22,7 +22,7 @@ const { title, description = "Kiril-P // Software Engineer Portfolio" } = Astro.
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
 		<meta name="author" content="Kiril Petrovski" />
-		<meta name="keywords" content="Kiril Petrovski, Software Engineer, Full Stack Developer, Computer Science, AI, Web Development, React, TypeScript, Python, Game Development, Portfolio" />
+		<meta name="keywords" content="Kiril Petrovski, Mobile Software Engineer, CS AI Student, AI Product Builder, React Native, TypeScript, Python, Machine Learning, Startup Engineer, Game Development, Portfolio" />
 		
 		<!-- Favicon -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -57,26 +57,27 @@ const { title, description = "Kiril-P // Software Engineer Portfolio" } = Astro.
 				"@context": "https://schema.org",
 				"@type": "Person",
 				"name": "Kiril Petrovski",
-				"jobTitle": "Full Stack Developer & Cloud Solutions Engineer",
-				"description": "Computer Science & AI student specializing in full-stack development, cloud-based solutions on AWS, Azure, and Google Cloud Platform",
+				"jobTitle": "Mobile Software Engineer & AI Product Builder",
+				"description": "Computer Science & AI student building production mobile systems, AI automation, and fast-shipped product experiments",
 				"url": "https://kpetrovski.me",
 				"sameAs": [
 					"https://github.com/kiril-p",
 					"https://linkedin.com/in/kiril-petrovski",
-					"https://kirilp.itch.io"
+					"https://kirilp.itch.io",
+					"https://x.com/pl1rik"
 				],
 				"knowsAbout": [
-					"Full Stack Development",
-					"Cloud Computing",
-					"Cloud Architecture",
-					"AWS",
-					"Azure",
-					"Google Cloud Platform",
+					"Mobile Software Engineering",
+					"AI Automation",
+					"Startup Product Engineering",
 					"TypeScript",
 					"React",
+					"React Native",
+					"Expo",
 					"Python",
-					"Web Development",
-					"Artificial Intelligence"
+					"Machine Learning",
+					"Artificial Intelligence",
+					"Game Development"
 				],
 				"alumniOf": {
 					"@type": "EducationalOrganization",
@@ -117,7 +118,6 @@ const { title, description = "Kiril-P // Software Engineer Portfolio" } = Astro.
 		gestureOrientation: 'vertical',
 		smoothWheel: true,
 		wheelMultiplier: 0.9, // Lower multiplier reduces the "travel" distance per scroll
-		smoothTouch: false,
 		touchMultiplier: 3.0,
 		infinite: false,
 	});
@@ -133,11 +133,7 @@ const { title, description = "Kiril-P // Software Engineer Portfolio" } = Astro.
 	// Disable lag smoothing for better performance
 	gsap.ticker.lagSmoothing(0);
 
-	// Optional: Stop Lenis when GSAP animations are running
-	// This prevents conflicts during ScrollTrigger animations
-	lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
-		// You can add custom scroll callbacks here if needed
-	});
+	// Keep Lenis and ScrollTrigger synchronized through the listener above.
 </script>
 
 <style is:global>

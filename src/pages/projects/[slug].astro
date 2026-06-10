@@ -2,7 +2,7 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 import { featuredProjects } from '../../lib/projects-config';
 import { projectContent } from '../../lib/project-content';
-import { ArrowLeft, Github, Globe, Lock, Rocket, Zap, Code2, Layers, AlertTriangle, Wrench } from 'lucide-react';
+import { ArrowLeft, Github, Globe, Lock, Rocket, Zap, Code2, Layers, AlertTriangle, Wrench, ShieldCheck } from 'lucide-react';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 import BackgroundSwirls from '../../components/BackgroundSwirls.astro';
@@ -43,7 +43,14 @@ const statusConfig = {
 };
 
 const status = statusConfig[project.sourceType] || statusConfig['open-source'];
-const StatusIcon = status.icon;
+const displayStatus = project.confidential ? {
+  label: 'Public-Safe Case Study',
+  color: 'text-cyan-300',
+  bg: 'bg-cyan-500/10',
+  border: 'border-cyan-500/20',
+  icon: ShieldCheck
+} : status;
+const DisplayStatusIcon = displayStatus.icon;
 ---
 
 <MainLayout title={`${project.name} | Kiril Petrovski`} description={project.description}>
@@ -56,15 +63,15 @@ const StatusIcon = status.icon;
       <!-- Back Navigation -->
       <a href="/#projects" class="inline-flex items-center gap-2 text-white/50 hover:text-blue-accent transition-colors mb-8 group">
         <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-        <span>Back to Exhibition</span>
+        <span>Back to Projects</span>
       </a>
 
       <!-- Header Section -->
       <header class="mb-16">
         <div class="flex flex-wrap items-center gap-4 mb-6">
-          <div class={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border ${status.bg} ${status.border} ${status.color}`}>
-            <StatusIcon className="w-4 h-4" />
-            <span class="text-xs font-medium uppercase tracking-wider">{status.label}</span>
+          <div class={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border ${displayStatus.bg} ${displayStatus.border} ${displayStatus.color}`}>
+            <DisplayStatusIcon className="w-4 h-4" />
+            <span class="text-xs font-medium uppercase tracking-wider">{displayStatus.label}</span>
           </div>
           <span class="text-white/30">|</span>
           <span class="text-blue-accent font-mono">{project.language}</span>
@@ -78,6 +85,34 @@ const StatusIcon = status.icon;
 
         <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">{project.name}</h1>
         <p class="text-xl text-white/60 max-w-3xl leading-relaxed">{project.description}</p>
+
+        <div class="grid sm:grid-cols-3 gap-3 mt-8 max-w-4xl">
+          {project.role && (
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <div class="text-xs uppercase tracking-widest text-white/40 mb-1">Role</div>
+              <div class="text-sm text-white/85">{project.role}</div>
+            </div>
+          )}
+          {project.period && (
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <div class="text-xs uppercase tracking-widest text-white/40 mb-1">Period</div>
+              <div class="text-sm text-white/85">{project.period}</div>
+            </div>
+          )}
+          {project.status && (
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <div class="text-xs uppercase tracking-widest text-white/40 mb-1">Signal</div>
+              <div class="text-sm text-white/85">{project.status}</div>
+            </div>
+          )}
+        </div>
+
+        {project.impact && (
+          <div class="mt-6 max-w-4xl rounded-2xl bg-blue-accent/5 border border-blue-accent/20 p-5">
+            <div class="text-xs uppercase tracking-widest text-blue-accent/70 mb-2">Why it matters</div>
+            <p class="text-white/70 leading-relaxed">{project.impact}</p>
+          </div>
+        )}
 
         <div class="flex flex-wrap gap-4 mt-8">
           {project.github_url && project.sourceType === 'open-source' && (
@@ -128,13 +163,35 @@ const StatusIcon = status.icon;
             </div>
         ) : (
             <div class="absolute inset-0">
-                 <img 
-                    src={project.thumbnail} 
-                    alt={project.name} 
-                    decoding="async"
-                    fetchpriority="high"
-                    class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" 
-                 />
+                 {project.thumbnail ? (
+                   <div
+                     class={`w-full h-full ${project.thumbnailFit === 'contain' && !project.thumbnailBackground ? 'bg-white' : ''}`}
+                     style={project.thumbnailBackground ? `background-color: ${project.thumbnailBackground};` : undefined}
+                   >
+                     <img 
+                        src={project.thumbnail} 
+                        alt={project.name} 
+                        decoding="async"
+                        fetchpriority="high"
+                        style={project.thumbnailPosition ? `object-position: ${project.thumbnailPosition};` : undefined}
+                        class={`w-full h-full group-hover:scale-105 transition-transform duration-700 ${
+                          project.thumbnailFit === 'contain'
+                            ? `object-contain p-12 ${project.thumbnailBackground ? 'opacity-100' : 'opacity-95'}`
+                            : 'object-cover opacity-90'
+                        }`} 
+                     />
+                   </div>
+                 ) : (
+                   <div class="w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.28),transparent_32%),linear-gradient(135deg,rgba(15,23,42,0.95),rgba(17,24,39,0.85))]">
+                     <div class="absolute inset-0 opacity-30" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 42px 42px;"></div>
+                     <div class="absolute inset-0 flex items-center justify-center p-8 text-center">
+                       <div>
+                         <div class="text-xs uppercase tracking-[0.32em] text-blue-accent/70 mb-4">{project.language}</div>
+                         <div class="text-4xl md:text-6xl font-bold text-white/85">{project.name}</div>
+                       </div>
+                     </div>
+                   </div>
+                 )}
                  <div class="absolute inset-0 bg-gradient-to-t from-premium-black/30 via-transparent to-transparent"></div>
             </div>
         )}

@@ -12,7 +12,6 @@ import {
   Smartphone, 
   Target, 
   GitBranch, 
-  Container, 
   Cloud, 
   Flame, 
   Zap, 
@@ -34,16 +33,17 @@ const technologies = {
     { name: 'Astro', icon: Rocket, color: '#ff5d01' },
     { name: 'Next.js', icon: Triangle, color: '#000000' },
     { name: 'React Native', icon: Smartphone, color: '#61dafb' },
+    { name: 'Expo', icon: Smartphone, color: '#ffffff' },
     { name: 'Godot', icon: Target, color: '#478cbf' },
   ],
   tools: [
     { name: 'Git', icon: GitBranch, color: '#f05032' },
-    { name: 'Docker', icon: Container, color: '#2496ed' },
+    { name: 'Vercel', icon: Triangle, color: '#ffffff' },
+    { name: 'Convex', icon: Zap, color: '#ee342f' },
     { name: 'AWS', icon: Cloud, color: '#ff9900' },
-    { name: 'Google Cloud', icon: Cloud, color: '#4285f4' },
-    { name: 'Azure', icon: Cloud, color: '#0078d4' },
     { name: 'Firebase', icon: Flame, color: '#ffca28' },
-    { name: 'Supabase', icon: Zap, color: '#3ecf8e' },
+    { name: 'Sentry', icon: Target, color: '#8b5cf6' },
+    { name: 'PostHog', icon: Monitor, color: '#f59e0b' },
     { name: 'Stripe', icon: CreditCard, color: '#635bff' },
   ],
 };
@@ -110,20 +110,20 @@ const technologies = {
       <h4 class="text-xs uppercase tracking-widest text-blue-accent/60 mb-3 font-mono">Core Competencies</h4>
       <div class="grid grid-cols-2 gap-3">
         <div class="competency-item group/comp p-3 rounded-xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
-          <div class="text-xs font-medium text-white/90 mb-1 group-hover/comp:text-blue-accent transition-colors duration-300">Full-Stack Development</div>
-          <div class="text-xs text-white/50">End-to-end web solutions</div>
+	          <div class="text-xs font-medium text-white/90 mb-1 group-hover/comp:text-blue-accent transition-colors duration-300">Mobile Product Engineering</div>
+	          <div class="text-xs text-white/50">React Native, Expo, releases</div>
         </div>
         <div class="competency-item group/comp p-3 rounded-xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
-          <div class="text-xs font-medium text-white/90 mb-1 group-hover/comp:text-blue-accent transition-colors duration-300">Cloud Architecture</div>
-          <div class="text-xs text-white/50">AWS, Azure, GCP</div>
+	          <div class="text-xs font-medium text-white/90 mb-1 group-hover/comp:text-blue-accent transition-colors duration-300">AI Automation</div>
+	          <div class="text-xs text-white/50">CLI tools, workflows</div>
         </div>
         <div class="competency-item group/comp p-3 rounded-xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
-          <div class="text-xs font-medium text-white/90 mb-1 group-hover/comp:text-blue-accent transition-colors duration-300">Game Development</div>
-          <div class="text-xs text-white/50">Interactive experiences</div>
+	          <div class="text-xs font-medium text-white/90 mb-1 group-hover/comp:text-blue-accent transition-colors duration-300">Fast MVP Execution</div>
+	          <div class="text-xs text-white/50">10-day builds, demos</div>
         </div>
         <div class="competency-item group/comp p-3 rounded-xl bg-white/5 border border-white/10 hover:border-blue-accent/30 transition-all duration-300">
-          <div class="text-xs font-medium text-white/90 mb-1 group-hover/comp:text-blue-accent transition-colors duration-300">AI Integration</div>
-          <div class="text-xs text-white/50">Smart applications</div>
+	          <div class="text-xs font-medium text-white/90 mb-1 group-hover/comp:text-blue-accent transition-colors duration-300">ML Systems</div>
+	          <div class="text-xs text-white/50">Anomaly detection, evals</div>
         </div>
       </div>
     </div>
@@ -156,12 +156,13 @@ const technologies = {
   
   techBadges.forEach((badge) => {
     badge.addEventListener('mousemove', (e) => {
+      const pointer = e as MouseEvent;
       const rect = badge.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
       
-      const deltaX = (e.clientX - centerX) * 0.2;
-      const deltaY = (e.clientY - centerY) * 0.2;
+      const deltaX = (pointer.clientX - centerX) * 0.2;
+      const deltaY = (pointer.clientY - centerY) * 0.2;
 
       gsap.to(badge, {
         x: deltaX,

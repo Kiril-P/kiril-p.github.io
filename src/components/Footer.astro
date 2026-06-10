@@ -11,7 +11,7 @@ const currentYear = new Date().getFullYear();
       <div>
         <h3 class="text-lg font-bold mb-4">Kiril Petrovski</h3>
         <p class="text-sm text-white/50 leading-relaxed">
-          Full-stack developer specializing in cloud solutions. CS & AI student at IE University, Madrid. Building scalable applications on AWS, Azure, and Google Cloud.
+          CS & AI student at IE University building production mobile systems, AI automation, and fast-shipped product experiments across startups, ML, and interactive software.
         </p>
       </div>
 
@@ -71,9 +71,9 @@ const currentYear = new Date().getFullYear();
             </svg>
           </MagneticButton>
           
-          <MagneticButton
-            client:visible
-            href="https://kirilp.itch.io/"
+	          <MagneticButton
+	            client:visible
+	            href="https://kirilp.itch.io/"
             className="footer-icon flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:border-blue-accent/40 hover:text-blue-accent transition-all duration-300"
             strength={0.3}
             ariaLabel="Itch.io profile"
@@ -86,10 +86,25 @@ const currentYear = new Date().getFullYear();
               <path d="M8 21h8"></path>
               <path d="M12 17v4"></path>
               <path d="m9 8 3 3 3-3"></path>
-            </svg>
-          </MagneticButton>
-          
-          <MagneticButton
+	            </svg>
+	          </MagneticButton>
+
+	          <MagneticButton
+	            client:visible
+	            href="https://x.com/pl1rik"
+	            className="footer-icon flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:border-blue-accent/40 hover:text-blue-accent transition-all duration-300"
+	            strength={0.3}
+	            ariaLabel="X profile"
+	            title="X profile"
+	            target="_blank"
+	            rel="noopener noreferrer"
+	          >
+	            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+	              <path d="M18.9 2h3.3l-7.3 8.3 8.6 11.7h-6.7l-5.2-6.9-6 6.9H2.3l7.8-8.9L1.9 2h6.9l4.7 6.3L18.9 2Zm-1.2 17.9h1.8L7.8 4H5.9l11.8 15.9Z"></path>
+	            </svg>
+	          </MagneticButton>
+	          
+	          <MagneticButton
             client:visible
             href="mailto:kirilpetrovski2005@gmail.com"
             className="footer-icon flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:border-blue-accent/40 hover:text-blue-accent transition-all duration-300"
