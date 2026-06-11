@@ -16,25 +16,25 @@ const repos = await getProjectsFromConfig('kiril-p'); // GitHub username stays t
 const projectGroups = [
 	{
 		title: 'Professional Products',
-		description: 'Startup work, internships, and product engineering shipped in real organizations.',
+		description: 'Real product work across startups, internships, and shipped user-facing systems.',
 		projects: repos.filter((repo) => repo.group === 'professional'),
 	},
 	{
 		title: 'Technical Projects',
-		description: 'ML, systems, cloud, and algorithmic projects with deeper engineering proof.',
+		description: 'ML, data, systems, and cloud projects that show the engineering underneath.',
 		projects: repos.filter((repo) => repo.group === 'technical'),
 	},
 	{
 		title: 'Game Dev',
-		description: 'Playable games, jam submissions, and interactive systems.',
+		description: 'Playable experiments where systems thinking meets feel, feedback, and pacing.',
 		projects: repos.filter((repo) => repo.group === 'game-dev'),
 	},
 ].filter((group) => group.projects.length > 0);
 ---
 
 <MainLayout 
-	title="Kiril Petrovski - CS & AI Student | Mobile Engineer & AI Product Builder" 
-	description="CS & AI student at IE University building production mobile systems, AI automation, and fast-shipped product experiments across startups, ML, and interactive software."
+	title="Kiril Petrovski - CS & AI Student | Mobile Engineer & Product Builder" 
+	description="CS & AI student at IE University building mobile products, AI workflows, startup MVPs, ML systems, and interactive software with real users in mind."
 >
 	<BackgroundSwirls />
 	<Navigation />
@@ -79,7 +79,7 @@ const projectGroups = [
 			</h1>
 			<p class="max-w-xl text-lg text-white/60 leading-relaxed mb-10 overflow-hidden relative z-10">
 				<span class="hero-desc block">
-					CS & AI student building production mobile systems, AI automation, and fast-shipped product experiments. Currently working across startup mobile engineering, developer tooling, and ML-backed products.
+					CS & AI student at IE University building mobile products, AI workflows, and fast prototypes with real users in mind. Currently working across startup mobile engineering, developer tooling, and ML-backed product experiments.
 				</span>
 			</p>
 
@@ -128,7 +128,7 @@ const projectGroups = [
 			<div class="space-y-14">
 				{projectGroups.map((group) => (
 					<div class="project-lane">
-						<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-5">
+						<div class="project-lane-heading flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-5">
 							<div>
 								<h3 class="text-lg md:text-xl font-semibold text-white">{group.title}</h3>
 								<p class="text-sm text-white/60 mt-1">{group.description}</p>
@@ -534,26 +534,111 @@ const projectGroups = [
 		typeRole();
 	});
 
-	// Project Grid Animations - Each project falls individually with proper scroll trigger
-	gsap.set("#projects a", { opacity: 1, y: 0 }); // Ensure cards are visible by default
-	
-	gsap.from("#projects a", {
-		scrollTrigger: {
-			trigger: "#projects",
-			start: "top 60%", // Trigger later so you see the animation
-			toggleActions: "play none none none",
-			once: true // Only animate once, don't reset on scroll
-		},
-		y: 80,
-		opacity: 0,
-		stagger: {
-			amount: 0.6,
-			from: "start",
-			each: 0.12 // Each card waits 0.12s after the previous
-		},
-		duration: 1,
-		ease: "back.out(1.2)" // Adds a subtle bounce effect
-	});
+	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+	const revealOnce = (trigger: Element | null, play: () => void, rootMargin = "0px 0px -18% 0px") => {
+		if (!trigger || !("IntersectionObserver" in window)) {
+			play();
+			return;
+		}
+
+		let hasPlayed = false;
+		let frame = 0;
+		let interval = 0;
+		let observer: IntersectionObserver | null = null;
+		const playNow = () => {
+			if (hasPlayed) return;
+
+			hasPlayed = true;
+			observer?.disconnect();
+			window.removeEventListener("scroll", queueCheck);
+			window.removeEventListener("resize", queueCheck);
+			cancelAnimationFrame(frame);
+			clearInterval(interval);
+			play();
+		};
+		const checkViewport = () => {
+			frame = 0;
+			const rect = trigger.getBoundingClientRect();
+
+			if (rect.top < window.innerHeight * 0.84 && rect.bottom > 0) {
+				playNow();
+			}
+		};
+		const queueCheck = () => {
+			if (!frame) frame = requestAnimationFrame(checkViewport);
+		};
+
+		observer = new IntersectionObserver((entries) => {
+			if (!entries.some((entry) => entry.isIntersecting)) return;
+
+			playNow();
+		}, {
+			rootMargin,
+			threshold: 0.01
+		});
+
+		observer.observe(trigger);
+		window.addEventListener("scroll", queueCheck, { passive: true });
+		window.addEventListener("resize", queueCheck);
+		interval = window.setInterval(checkViewport, 250);
+		queueCheck();
+	};
+
+	if (!prefersReducedMotion) {
+		gsap.set("#projects .project-lane-heading", { autoAlpha: 0, y: 34 });
+		gsap.set("#projects .project-card", { autoAlpha: 0, y: 72, scale: 0.985 });
+
+		document.querySelectorAll("#projects .project-lane").forEach((lane) => {
+			const heading = lane.querySelector(".project-lane-heading");
+			const cards = lane.querySelectorAll(".project-card");
+
+			const laneTl = gsap.timeline({
+				paused: true,
+				defaults: { ease: "power3.out" }
+			});
+
+			if (heading) {
+				laneTl.to(heading, {
+					autoAlpha: 1,
+					y: 0,
+					duration: 0.62
+				});
+			}
+
+			if (cards.length) {
+				laneTl.to(cards, {
+					autoAlpha: 1,
+					y: 0,
+					scale: 1,
+					stagger: {
+						each: 0.09,
+						from: "start"
+					},
+					duration: 0.82,
+					ease: "back.out(1.15)"
+				}, heading ? "-=0.22" : 0);
+			}
+
+			revealOnce(lane, () => laneTl.play(), "0px 0px -16% 0px");
+		});
+	}
+
+	// Personal intro cards - same reveal language as the project and contact surfaces
+	if (!prefersReducedMotion) {
+		gsap.set("#meet article", { autoAlpha: 0, y: 56, scale: 0.98 });
+
+		const meetReveal = gsap.to("#meet article", {
+			paused: true,
+			y: 0,
+			autoAlpha: 1,
+			scale: 1,
+			stagger: 0.12,
+			duration: 0.85,
+			ease: "power3.out"
+		});
+
+		revealOnce(document.querySelector("#meet"), () => meetReveal.play(), "0px 0px -18% 0px");
+	}
 
 	document.querySelectorAll(".project-lane").forEach((lane) => {
 		const scroller = lane.querySelector(".project-scroll");
@@ -580,37 +665,86 @@ const projectGroups = [
 		});
 	});
 
-	// About Section - All cards animate together like Tech Stack
-	gsap.set("#about .grid > div", { opacity: 1, y: 0 });
-	
-	gsap.from("#about .grid > div", {
-		scrollTrigger: {
-			trigger: "#about",
-			start: "top 80%",
-			toggleActions: "play none none none",
-			once: true // Only animate once, don't reset on scroll
-		},
-		y: 60,
-		opacity: 0,
-		stagger: 0.15,
-		duration: 0.9,
-		ease: "back.out(1.1)"
-	});
+	if (!prefersReducedMotion) {
+		gsap.set("#about .about-reveal", { autoAlpha: 0, y: 54, scale: 0.985 });
+		gsap.set("#about .about-card-reveal", { autoAlpha: 0, y: 30 });
+		gsap.set("#about .timeline-line", { autoAlpha: 0, scaleY: 0, transformOrigin: "top center" });
+		gsap.set("#about .timeline-node", { autoAlpha: 0, scale: 0.45 });
+		gsap.set("#about .timeline-content", { autoAlpha: 0, x: 26, y: 16 });
+
+		document.querySelectorAll("#about .about-reveal").forEach((section) => {
+			const cards = section.querySelectorAll(".about-card-reveal");
+			const sectionTl = gsap.timeline({
+				paused: true,
+				defaults: { ease: "power3.out" }
+			});
+
+			sectionTl.to(section, {
+				autoAlpha: 1,
+				y: 0,
+				scale: 1,
+				duration: 0.78
+			});
+
+			if (cards.length) {
+				sectionTl.to(cards, {
+					autoAlpha: 1,
+					y: 0,
+					stagger: 0.08,
+					duration: 0.62
+				}, "-=0.28");
+			}
+
+			revealOnce(section, () => sectionTl.play(), "0px 0px -14% 0px");
+		});
+
+		// History tree - line draws down while nodes and entries resolve in sequence.
+		const historyTl = gsap.timeline({
+			paused: true,
+			defaults: { ease: "power3.out" }
+		});
+
+		historyTl
+			.to("#about .timeline-line", {
+				scaleY: 1,
+				autoAlpha: 1,
+				stagger: 0.09,
+				duration: 0.48,
+				ease: "power2.out"
+			})
+			.to("#about .timeline-node", {
+				scale: 1,
+				autoAlpha: 1,
+				stagger: 0.08,
+				duration: 0.38,
+				ease: "back.out(1.9)"
+			}, "-=0.45")
+			.to("#about .timeline-content", {
+				x: 0,
+				y: 0,
+				autoAlpha: 1,
+				stagger: 0.08,
+				duration: 0.62
+			}, "-=0.42");
+
+		revealOnce(document.querySelector("#about .timeline"), () => historyTl.play(), "0px 0px -16% 0px");
+	}
 
 	// Tech Stack & Contact Section - Fall down together
-	gsap.set("#contact > div > *", { opacity: 1, y: 0 }); // Ensure cards are visible by default
-	
-	gsap.from("#contact > div > *", {
-		scrollTrigger: {
-			trigger: "#contact",
-			start: "top 80%",
-			toggleActions: "play none none none",
-			once: true // Only animate once, don't reset on scroll
-		},
-		y: 60,
-		opacity: 0,
-		stagger: 0.15,
-		duration: 0.9,
-		ease: "back.out(1.1)"
-	});
+	if (!prefersReducedMotion) {
+		gsap.set("#contact > div > *", { autoAlpha: 0, y: 60 });
+
+		const contactReveal = gsap.to("#contact > div > *", {
+			paused: true,
+			y: 0,
+			autoAlpha: 1,
+			stagger: 0.15,
+			duration: 0.9,
+			ease: "back.out(1.1)"
+		});
+
+		revealOnce(document.querySelector("#contact"), () => contactReveal.play(), "0px 0px -16% 0px");
+	}
+
+	requestAnimationFrame(() => ScrollTrigger.refresh());
 </script>

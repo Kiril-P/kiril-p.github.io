@@ -6,19 +6,19 @@ const currentWork = [
     company: 'Naiss Ride Company',
     role: 'Mobile Software Engineer',
     period: 'June 2026 - Present',
-    summary: 'Engineering production React Native / Expo features across ride flows, feed, camera, gamification, auth, payments, reliability, analytics, testing, and release workflows.',
+    summary: 'Shipping React Native / Expo features across ride flows, feed, camera, gamification, auth, payments, analytics, testing, and release workflows in a live startup app.',
   },
   {
     company: 'EaseAccess24',
     role: 'Software Engineering Intern',
     period: 'June 2026 - Present',
-    summary: 'Building developer productivity and AI automation tooling, including CLI workflows for staging and production environment switching with Vercel and Psono integrations.',
+    summary: 'Building developer productivity and AI workflow tooling, including CLI flows that make staging and production environment switches less fragile.',
   },
   {
     company: 'Cleanr + StreamScope',
     role: 'Startup product builds',
     period: '2025 - 2026',
-    summary: 'Led Cleanr mobile product execution and shipped StreamScope from zero in 10 days, earning 2nd place at IE Tech Venture Bootcamp 2026.',
+    summary: 'Led Cleanr mobile product execution and helped ship StreamScope from zero in 10 days, earning 2nd place at IE Tech Venture Bootcamp 2026.',
   },
 ];
 
@@ -28,7 +28,7 @@ const experience = [
     role: 'Mobile Software Engineer',
     period: 'June 2026 - Present',
     location: 'Madrid, Spain',
-    summary: 'Engineering production features across ride flows, feed, camera, gamification, auth, and payments in a live React Native / Expo / TypeScript app.',
+    summary: 'Shipping production features across ride flows, feed, camera, gamification, auth, and payments in a live React Native / Expo / TypeScript app.',
     current: true,
   },
   {
@@ -36,7 +36,7 @@ const experience = [
     role: 'Software Engineering Intern',
     period: 'June 2026 - Present',
     location: 'Remote',
-    summary: 'Building developer productivity and AI automation workflows that reduce fragile manual setup and speed up engineering context switches.',
+    summary: 'Building developer productivity and AI workflow tools that reduce fragile setup and make engineering context switches faster.',
     current: true,
   },
   {
@@ -44,7 +44,7 @@ const experience = [
     role: 'Tech Lead & Full-Stack Developer',
     period: 'March 2025 - April 2026',
     location: 'Madrid, Spain',
-    summary: 'Led a three-developer team building an Uber-like apartment-cleaning marketplace with React Native, Expo, Firebase, Stripe, and Google Maps.',
+    summary: 'Led a three-developer team building a dual-sided apartment-cleaning marketplace with React Native, Expo, Firebase, Stripe, and Google Maps.',
   },
   {
     company: 'Kanamoh Solutions',
@@ -90,31 +90,31 @@ const beyondCode = [
 ---
 
 <section id="about" class="py-24" aria-labelledby="about-heading">
-  <div class="mb-14 grid gap-6 lg:grid-cols-[0.72fr_1fr] lg:items-end">
+  <div class="about-reveal mb-14 grid gap-6 lg:grid-cols-[0.72fr_1fr] lg:items-end">
     <div>
       <p class="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-blue-accent/80">About me</p>
-      <h2 id="about-heading" class="text-4xl font-extrabold tracking-tight text-white md:text-5xl">The longer version.</h2>
+      <h2 id="about-heading" class="text-4xl font-extrabold tracking-tight text-white md:text-5xl">The fuller story.</h2>
     </div>
     <p class="max-w-3xl text-base leading-relaxed text-white/60 lg:justify-self-end">
-      I&apos;m a Computer Science & Artificial Intelligence student at IE University in Madrid, expected to graduate in May 2028. I build production mobile systems, AI automation, startup MVPs, games, and technical experiments, with a bias toward shipping things people can actually use.
+      I&apos;m a Computer Science & Artificial Intelligence student at IE University in Madrid, expected to graduate in May 2028. I build mobile products, AI workflows, startup MVPs, games, and technical experiments with a bias toward useful systems, fast learning, and work that survives outside a demo.
     </p>
   </div>
 
   <div class="space-y-16">
-    <section aria-labelledby="current-work-heading" class="rounded-3xl border border-white/10 bg-premium-gray/55 p-6 md:p-8">
+    <section aria-labelledby="current-work-heading" class="about-reveal rounded-3xl border border-white/10 bg-premium-gray/55 p-6 md:p-8">
       <div class="mb-7 flex items-center gap-3">
         <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-accent/25 bg-blue-accent/10 text-blue-accent">
           <Briefcase className="h-5 w-5" />
         </div>
         <div>
-          <h3 id="current-work-heading" class="text-2xl font-bold text-white">Current Work</h3>
-          <p class="text-sm text-white/50">What I&apos;m actively building or recently shipped.</p>
+          <h3 id="current-work-heading" class="text-2xl font-bold text-white">What I&apos;m building now</h3>
+          <p class="text-sm text-white/50">Current work across startup products, internal tools, and shipped experiments.</p>
         </div>
       </div>
 
       <div class="grid gap-4 lg:grid-cols-3">
         {currentWork.map((item) => (
-          <article class="rounded-2xl border border-white/10 bg-white/[0.035] p-5 transition duration-300 hover:border-blue-accent/35 hover:bg-blue-accent/10">
+          <article class="about-card-reveal rounded-2xl border border-white/10 bg-white/[0.035] p-5 transition duration-300 hover:border-blue-accent/35 hover:bg-blue-accent/10">
             <p class="text-xs uppercase tracking-[0.2em] text-blue-accent/70">{item.period}</p>
             <h4 class="mt-3 text-lg font-semibold text-white">{item.role}</h4>
             <p class="mt-1 text-sm text-white/50">{item.company}</p>
@@ -124,24 +124,27 @@ const beyondCode = [
       </div>
     </section>
 
-    <section aria-labelledby="timeline-heading">
-      <div class="mb-8 flex items-center gap-3">
+    <section aria-labelledby="timeline-heading" class="about-reveal">
+      <div class="history-heading mb-8 flex items-center gap-3">
         <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-accent/25 bg-blue-accent/10 text-blue-accent">
           <Target className="h-5 w-5" />
         </div>
         <div>
-          <h3 id="timeline-heading" class="text-2xl font-bold text-white">Experience Timeline</h3>
-          <p class="text-sm text-white/50">A clearer path through the work, without hiding it in a scroll box.</p>
+          <h3 id="timeline-heading" class="text-2xl font-bold text-white">Proof over time</h3>
+          <p class="text-sm text-white/50">The path from early technical support to live product engineering.</p>
         </div>
       </div>
 
       <ol class="timeline space-y-7">
-        {experience.map((item) => (
+        {experience.map((item, index) => (
           <li class="timeline-item relative pl-12">
-            <div class="absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-xl border border-blue-accent/30 bg-blue-accent/10 text-xs font-bold text-blue-accent">
+            {index < experience.length - 1 && (
+              <span class="timeline-line absolute left-[15px] top-[42px] bottom-[-28px] w-px origin-top bg-gradient-to-b from-blue-accent/40 to-blue-accent/0" aria-hidden="true"></span>
+            )}
+            <div class="timeline-node absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-xl border border-blue-accent/30 bg-blue-accent/10 text-xs font-bold text-blue-accent">
               {item.company.split(' ')[0].slice(0, 2).toUpperCase()}
             </div>
-            <article class="border-b border-white/10 pb-7">
+            <article class="timeline-content border-b border-white/10 pb-7">
               <div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
                 <div>
                   <div class="flex flex-wrap items-center gap-2">
@@ -164,14 +167,14 @@ const beyondCode = [
     </section>
 
     <section class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-      <div class="rounded-3xl border border-white/10 bg-premium-gray/55 p-6 md:p-8">
+      <div class="about-reveal rounded-3xl border border-white/10 bg-premium-gray/55 p-6 md:p-8">
         <div class="mb-6 flex items-center gap-3">
           <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-accent/25 bg-blue-accent/10 text-blue-accent">
             <Target className="h-5 w-5" />
           </div>
           <div>
             <h3 class="text-2xl font-bold text-white">Beyond Code</h3>
-            <p class="text-sm text-white/50">The parts that shape how I work.</p>
+            <p class="text-sm text-white/50">The habits that keep the work sharp.</p>
           </div>
         </div>
 
@@ -179,7 +182,7 @@ const beyondCode = [
           {beyondCode.map((item) => {
             const Icon = item.icon;
             return (
-              <div class="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
+              <div class="about-card-reveal rounded-2xl border border-white/10 bg-white/[0.035] p-4">
                 <Icon className={`mb-3 h-6 w-6 ${item.color}`} />
                 <h4 class="text-sm font-semibold text-white">{item.label}</h4>
                 <p class="mt-1 text-xs leading-relaxed text-white/50">{item.detail}</p>
@@ -188,7 +191,7 @@ const beyondCode = [
           })}
         </div>
 
-        <div class="mt-5 rounded-2xl border border-blue-accent/20 bg-blue-accent/5 p-4">
+        <div class="about-card-reveal mt-5 rounded-2xl border border-blue-accent/20 bg-blue-accent/5 p-4">
           <h4 class="mb-2 text-sm font-semibold text-blue-accent">Volunteer Work</h4>
           <ul class="space-y-1 text-xs leading-relaxed text-white/60">
             <li>FIFA World Cup Qatar 2022: flag bearer</li>
@@ -198,30 +201,30 @@ const beyondCode = [
         </div>
       </div>
 
-      <div class="rounded-3xl border border-white/10 bg-premium-gray/55 p-6 md:p-8">
+      <div class="about-reveal rounded-3xl border border-white/10 bg-premium-gray/55 p-6 md:p-8">
         <div class="mb-6 flex items-center gap-3">
           <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-accent/25 bg-blue-accent/10 text-blue-accent">
             <GraduationCap className="h-5 w-5" />
           </div>
           <div>
             <h3 class="text-2xl font-bold text-white">Education</h3>
-            <p class="text-sm text-white/50">The technical foundation behind the product work.</p>
+            <p class="text-sm text-white/50">The foundation behind the product and systems work.</p>
           </div>
         </div>
 
         <div class="space-y-6">
-          <article>
+          <article class="about-card-reveal">
             <div class="flex flex-wrap items-center gap-2">
               <h4 class="text-lg font-semibold text-white">Bachelor&apos;s in Computer Science & AI</h4>
               <span class="rounded-full border border-green-500/30 bg-green-500/10 px-2 py-0.5 text-xs text-green-400">Current</span>
             </div>
             <p class="mt-1 text-sm text-white/50">IE University, Madrid - 2024 to 2028 expected</p>
             <p class="mt-3 text-sm leading-relaxed text-white/60">
-              Focused on software engineering, machine learning, algorithms, and product-oriented technical execution. ML final project: chess behavioral anomaly detection, 100/100.
+              Focused on software engineering, machine learning, algorithms, and product-oriented technical execution. ML final project: behavioral anomaly detection in online chess, 100/100.
             </p>
           </article>
 
-          <article class="border-t border-white/10 pt-6">
+          <article class="about-card-reveal border-t border-white/10 pt-6">
             <h4 class="text-lg font-semibold text-white">International Baccalaureate Diploma</h4>
             <p class="mt-1 text-sm text-white/50">SEK International School, Qatar - 2022 to 2024</p>
             <p class="mt-3 text-sm leading-relaxed text-white/60">
@@ -229,7 +232,7 @@ const beyondCode = [
             </p>
           </article>
 
-          <div class="border-t border-white/10 pt-6">
+          <div class="about-card-reveal border-t border-white/10 pt-6">
             <h4 class="mb-3 text-xs uppercase tracking-[0.22em] text-white/50">Certifications & Signals</h4>
             <div class="flex flex-wrap gap-2">
               <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/60">AWS Educate Compute - Oct 2025</span>
@@ -244,17 +247,7 @@ const beyondCode = [
 </section>
 
 <style>
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: 15px;
-    top: 42px;
-    bottom: -28px;
-    width: 1px;
-    background: linear-gradient(to bottom, rgba(59, 130, 246, 0.36), rgba(59, 130, 246, 0));
-  }
-
-  .timeline-item:last-child::before {
-    display: none;
+  .timeline-line {
+    transform: scaleY(1);
   }
 </style>

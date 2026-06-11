@@ -3,65 +3,72 @@ import { Camera, Dumbbell, MapPin, Mountain, Rocket, Sparkles } from 'lucide-rea
 
 const signals = [
   {
-    label: 'Builder',
+    label: 'Production mobile',
     icon: Sparkles,
   },
   {
-    label: 'Madrid / IE',
+    label: 'AI workflows',
     icon: MapPin,
   },
   {
-    label: 'Startup energy',
+    label: '10-day MVP',
     icon: Rocket,
   },
   {
-    label: 'Basketball + running',
+    label: '2nd place venture bootcamp',
     icon: Dumbbell,
   },
 ];
 
 const storyCards = [
   {
-    kicker: 'Before the work',
-    title: 'Hey, I\'m Kiril.',
-    body: 'I\'m a CS & AI student in Madrid building startup mobile products, AI automation, games, and technical experiments. I like the full loop: find a real problem, ship something usable, learn from it, and tighten the system.',
+    kicker: 'Startup builder',
+    title: 'Kiril Petrovski.',
+    body: 'I am a CS & AI student at IE University who likes building where the pressure is real: production React Native at Naiss Ride, developer tooling at EaseAccess24, Cleanr marketplace leadership, and StreamScope shipped in 10 days to 2nd place at IE Tech Venture Bootcamp 2026.',
     image: '/assets/about/kiril-matura.jpg',
     alt: 'Kiril Petrovski',
-    badge: 'Madrid-based builder',
+    badge: 'CS + AI @ IE',
     icon: MapPin,
     imageClass: 'object-[42%_40%]',
     imageSide: 'left',
     showSignals: true,
   },
   {
-    kicker: 'Outside the editor',
-    title: 'Curious by default.',
-    body: 'I like places and problems that make me look closer. That same instinct shows up in how I build: observe, test, adjust, and keep moving.',
+    kicker: 'Product instinct',
+    title: 'Find the real problem.',
+    body: 'I am drawn to messy problems: creator chat overload, fragile developer workflows, EV rollout planning, and the gap between a clever demo and a product someone would actually use. My default loop is simple: listen closely, narrow the scope, ship, and learn.',
     image: '/assets/about/kiril-candid.png',
     alt: 'Kiril Petrovski photographing a mountain landscape',
-    badge: 'Photo + travel',
+    badge: 'User-first product sense',
     icon: Camera,
     imageClass: 'object-[72%_54%]',
     imageSide: 'right',
     showSignals: false,
   },
   {
-    kicker: 'Training mindset',
-    title: 'Competitive rhythm.',
-    body: 'Basketball, running, and snowboarding keep me sharp outside code. I like the simple loop of reps, feedback, and visible progress.',
+    kicker: 'Operating style',
+    title: 'High-rep execution.',
+    body: 'I have led a 3-developer mobile build, shipped inside existing startup codebases, and built serious technical projects from ML anomaly detection to networked C games. I like momentum, ownership, reliable demos, and the unglamorous work after version one.',
     image: '/assets/about/kiril-snowboard.jpg',
     alt: 'Kiril Petrovski snowboarding',
-    badge: 'Sport + momentum',
+    badge: 'Ownership + pace',
     icon: Mountain,
     imageClass: 'object-[50%_41%]',
     imageSide: 'left',
     showSignals: false,
   },
 ];
+
+const photoCards = storyCards.slice(1).map((card) => ({
+  ...card,
+  imageClass: card.title === 'Find the real problem.' ? 'object-[66%_50%]' : 'object-[50%_43%]',
+}));
 ---
 
 <section id="meet" class="py-10 md:py-14" aria-labelledby="meet-heading">
-  <div class="grid gap-5">
+  <h2 id="meet-heading" class="sr-only">Personal introduction</h2>
+
+  <div class="grid gap-5 lg:hidden">
     {storyCards.map((card, index) => {
       const Icon = card.icon;
       const imageOrder = card.imageSide === 'right' ? 'md:order-2' : '';
@@ -100,7 +107,7 @@ const storyCards = [
             <div class={`flex flex-col justify-center py-1 ${copyOrder}`}>
               <p class="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-blue-accent/80">{card.kicker}</p>
               {index === 0 ? (
-                <h2 id="meet-heading" class="mb-4 text-3xl font-extrabold tracking-tight text-white md:text-4xl">{card.title}</h2>
+                <h3 class="mb-4 text-3xl font-extrabold tracking-tight text-white md:text-4xl">{card.title}</h3>
               ) : (
                 <h3 class="text-2xl font-bold tracking-tight text-white md:text-3xl">{card.title}</h3>
               )}
@@ -124,5 +131,86 @@ const storyCards = [
         </article>
       );
     })}
+  </div>
+
+  <div class="hidden gap-4 lg:grid lg:grid-cols-[1.12fr_0.88fr]">
+    <article class="group relative overflow-hidden rounded-3xl border border-white/10 bg-premium-gray/60 p-5 transition duration-300 hover:border-blue-accent/30 hover:bg-premium-gray/70 md:p-6 lg:flex lg:items-stretch">
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_0%,rgba(59,130,246,0.16),transparent_34%)] opacity-0 transition duration-300 group-hover:opacity-100"></div>
+      <div class="relative z-10 grid items-center gap-5 md:grid-cols-[0.42fr_0.58fr] lg:h-full lg:flex-1 lg:grid-cols-[0.52fr_0.48fr] lg:items-center lg:gap-8">
+        <div class="relative h-[285px] overflow-hidden rounded-2xl border border-white/10 bg-premium-black md:h-[350px] lg:h-[390px] xl:h-[410px]">
+          <img
+            src={storyCards[0].image}
+            alt={storyCards[0].alt}
+            loading="lazy"
+            decoding="async"
+            class="absolute inset-0 h-full w-full object-cover object-[37%_56%] transition duration-500 group-hover:scale-[1.035]"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-premium-black/45 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4">
+            <div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-premium-black/55 px-3.5 py-2 text-[11px] uppercase tracking-[0.22em] text-white/70 backdrop-blur-md">
+              <span class="h-2 w-2 rounded-full bg-blue-accent"></span>
+              {storyCards[0].badge}
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:flex lg:flex-col lg:justify-center">
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-blue-accent/80">{storyCards[0].kicker}</p>
+          <h3 class="mb-4 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+            {storyCards[0].title}
+          </h3>
+          <p class="max-w-2xl text-base leading-relaxed text-white/70">
+            {storyCards[0].body}
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-2.5">
+            {signals.map((signal) => {
+              const Icon = signal.icon;
+              return (
+                <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.045] px-3.5 py-2 text-xs font-semibold text-white/70 transition duration-300 hover:border-blue-accent/35 hover:bg-blue-accent/10 hover:text-white">
+                  <Icon className="h-3.5 w-3.5 text-blue-accent" />
+                  {signal.label}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="grid gap-4">
+      {photoCards.map((card) => {
+        const Icon = card.icon;
+        return (
+          <article class="group relative overflow-hidden rounded-3xl border border-white/10 bg-premium-gray/55 p-4 transition duration-300 hover:border-blue-accent/30 hover:bg-premium-gray/70">
+            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_12%,rgba(59,130,246,0.12),transparent_30%)] opacity-0 transition duration-300 group-hover:opacity-100"></div>
+            <div class="relative z-10 grid gap-4 sm:grid-cols-[0.48fr_0.52fr] lg:grid-cols-[0.44fr_0.56fr]">
+              <div class="relative h-[215px] overflow-hidden rounded-2xl border border-white/10 bg-premium-black sm:h-full sm:min-h-[220px]">
+                <img
+                  src={card.image}
+                  alt={card.alt}
+                  loading="lazy"
+                  decoding="async"
+                  class={`absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.035] ${card.imageClass}`}
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-premium-black/50 via-transparent to-transparent"></div>
+                <div class="absolute bottom-3 left-3">
+                  <div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-premium-black/55 px-3 py-1.5 text-[10px] uppercase tracking-[0.2em] text-white/70 backdrop-blur-md">
+                    <Icon className="h-3 w-3 text-blue-accent" />
+                    {card.badge}
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-col justify-center py-1">
+                <p class="mb-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-blue-accent/75">{card.kicker}</p>
+                <h3 class="text-xl font-bold tracking-tight text-white">{card.title}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-white/60">{card.body}</p>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
   </div>
 </section>
