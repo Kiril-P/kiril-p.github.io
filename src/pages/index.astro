@@ -74,7 +74,7 @@ const projectGroups = [
 			<h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter leading-tight mb-8 overflow-hidden relative z-10">
 				<span class="hero-title block">Kiril Petrovski //</span>
 				<span class="hero-title block text-white/30">
-					<span id="typed-text"></span><span class="typing-cursor">|</span>
+					<span id="typed-text">Mobile Engineer</span><span class="typing-cursor">|</span>
 				</span>
 			</h1>
 			<p class="max-w-xl text-lg text-white/60 leading-relaxed mb-10 overflow-hidden relative z-10">
@@ -492,7 +492,9 @@ const projectGroups = [
 	];
 
 	let roleIndex = 0;
-	let charIndex = 0;
+	// Start one char before the end of roles[0] so the first tick completes the SSR default word,
+	// then pauses. Keeps the heading non-blank before hydration and avoids a re-type flicker.
+	let charIndex = roles[roleIndex].length - 1;
 	let isDeleting = false;
 	let typingSpeed = 100;
 
