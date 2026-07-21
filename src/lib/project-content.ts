@@ -19,16 +19,17 @@ export interface ProjectContent {
 export const projectContent: Record<string, ProjectContent> = {
     'naiss-ride': {
         slug: 'naiss-ride',
-        longDescription: `naiss ride is a public-safe case study for current production mobile engineering work inside a live startup environment. The focus is not private product disclosure; it is the engineering surface: shipping features across ride flows, social feed surfaces, media capture, gamification, authentication, payments, reliability, analytics, and release quality.
+        longDescription: `naiss ride is a live social-carpooling app on iOS and Android, rated 4.6/5 on the App Store. This is a public-safe case study of the production mobile engineering behind it: shipping features across ride flows, social feed surfaces, media capture, gamification, authentication, payments, reliability, analytics, and release quality.
 
-The work demonstrates the kind of execution YC and technical teams look for: moving inside a real codebase, improving user-facing surfaces, keeping quality visible with observability, and contributing to a production release cadence without leaking private implementation details.`,
+The work reflects real production ownership: building and leading a flexible rewards & ranking engine, a full camera-capture revamp, and a distance/streak XP system, while shipping 40+ tickets into a near-weekly release cadence - all without leaking private implementation details.`,
         features: [
-            'Production React Native and Expo feature development across core mobile product surfaces',
-            'Ride, feed, camera, gamification, authentication, and payment flow contributions',
+            'Live social-carpooling app on iOS & Android, rated 4.6/5 on the App Store',
+            'Built and lead a flexible rewards & ranking engine',
+            'Shipped a full camera-capture revamp',
+            'Built a distance and streak-based XP system',
+            '40+ tickets shipped into a near-weekly release cadence',
             'Reliability and product observability using Sentry and PostHog',
-            'Quality work across unit and end-to-end testing with Jest and Detox',
-            'EAS build and release workflow exposure in a live startup app',
-            'Public-safe representation of private company work'
+            'Unit and end-to-end testing with Jest and Detox'
         ],
         technicalHighlights: [
             'React Native / Expo / TypeScript mobile stack',
