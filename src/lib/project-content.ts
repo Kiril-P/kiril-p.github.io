@@ -69,49 +69,50 @@ The work reflects real production ownership: building and leading a flexible rew
 
     'easeaccess24-automation': {
         slug: 'easeaccess24-automation',
-        longDescription: `EaseAccess24 Automation is a developer productivity and AI automation case study focused on replacing fragile environment-switching work with repeatable CLI flows. The core project automated .env synchronization and validation across staging and production contexts.
+        longDescription: `EaseAccess24 is where I do AI and developer-productivity engineering across several internal products. The largest is an internal intelligence system (WorkBrain): a self-hosted Slack + Gemini service - Docker, BullMQ, PostgreSQL, and Redis - that turns meeting recordings into structured summaries and validated Jira sprint digests, surfaced in a Next.js dashboard.
 
-The public value is the operating pattern: identify a repeated developer pain point, build a focused internal tool, integrate with existing infrastructure, and reduce context-switching overhead for the engineering team.`,
+Alongside it I built a Shopify app (Remix, Prisma, App Bridge; 5 of 7 phases, verified on a live dev store), the VivaTech 2026 landing page (Next.js, with a live accessibility checker), and an internal env CLI (Vercel) that replaced manual .env sharing for a 12-person engineering team.`,
         features: [
-            'Internal CLI commands for environment synchronization and validation',
-            'Automated staging and production .env switching',
-            'Integration with Vercel environment data',
-            'Integration with Psono-backed secret workflows',
-            'Developer-facing checks to catch incorrect local configuration',
-            'Built as internal productivity tooling rather than a public SaaS surface'
+            'Internal intelligence system (WorkBrain): self-hosted Slack + Gemini service on Docker, BullMQ, PostgreSQL, and Redis',
+            'Meeting recordings turned into structured summaries and validated Jira sprint digests',
+            'Next.js dashboard surfacing the generated summaries and digests',
+            'Shopify app (Remix, Prisma, App Bridge) - 5 of 7 phases, verified on a live dev store',
+            'VivaTech 2026 landing page (Next.js) with a live accessibility checker',
+            'Internal env CLI (Vercel) replacing manual .env sharing for a 12-person team'
         ],
         technicalHighlights: [
-            'Command-line workflow design for a real engineering team',
-            'Environment integrity checks before developers run or deploy',
-            'External service integration with Vercel and secret management tooling',
-            'Automation-first approach to reducing manual setup errors',
+            'Self-hosted service orchestration with Docker and BullMQ job queues',
+            'Gemini-driven summarization with validation before Jira sprint digests',
+            'PostgreSQL and Redis for durable state and background processing',
+            'Next.js dashboard and landing-page delivery with an accessibility checker',
             'Public-safe framing of private internal tooling'
         ],
         architecture: [
             {
-                title: 'CLI Workflow',
+                title: 'Intelligence System',
                 items: [
-                    'Pull the correct environment context',
-                    'Validate required variables locally',
-                    'Make incorrect staging/production setup harder to miss'
+                    'Slack ingestion of meeting recordings via a self-hosted service',
+                    'Gemini processing into structured summaries and Jira sprint digests',
+                    'BullMQ queues with PostgreSQL and Redis for durable background jobs',
+                    'Next.js dashboard for reviewing generated output'
                 ]
             },
             {
-                title: 'Integration Layer',
+                title: 'Env CLI',
                 items: [
-                    'Vercel-backed environment source',
-                    'Psono-backed secret access pattern',
-                    'Local .env output designed for developer speed and repeatability'
+                    'Pull the correct environment context from Vercel',
+                    'Validate required variables locally before run or deploy',
+                    'Replace manual .env sharing across a 12-person team'
                 ]
             }
         ],
         challenges: [
-            'Turning a manual operational workflow into a reliable tool',
-            'Keeping environment automation useful without making it risky',
-            'Designing CLI output that is fast to understand during development',
-            'Representing private developer tooling publicly without leaking sensitive details'
+            'Turning noisy meeting recordings into summaries teams can trust',
+            'Validating AI output before it becomes a Jira sprint digest',
+            'Shipping several internal products in parallel without dropping quality',
+            'Representing private internal tooling publicly without leaking sensitive details'
         ],
-        techStack: ['CLI Tooling', 'TypeScript', 'Vercel', 'Psono', 'Environment Automation', 'Developer Experience']
+        techStack: ['Next.js', 'TypeScript', 'Gemini', 'Docker', 'BullMQ', 'PostgreSQL', 'Redis', 'Remix', 'Prisma', 'Vercel']
     },
 
     'streamscope': {
