@@ -319,7 +319,7 @@ The goal is careful and defensible: identify statistically unusual behavior clus
         slug: 'black-hole-render',
         longDescription: `Black Hole Render is a cinematic procedural Three.js experiment built around shader-driven visuals, responsive quality profiles, and export-ready stills. It combines layered geometry, lensing, bloom, particles, orbiting bodies, and compact viewer controls.
 
-The project is a technical-art proof point: it shows taste, WebGL fluency, performance awareness, and the ability to wrap a visual experiment in practical controls and verification.`,
+It pairs the visual experiment with practical controls - presets, a clean still-export mode, and a WebGL fallback - plus smoke tests across desktop render, mobile controls, and export.`,
         features: [
             'Cinematic, high-energy, and minimal visual presets',
             'Mobile and desktop adaptive quality profiles',
