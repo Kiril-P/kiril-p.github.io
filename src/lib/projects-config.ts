@@ -157,7 +157,7 @@ export const featuredProjects: CustomProject[] = [
     role: 'Backend Automation Developer',
     period: '2026',
     impact: 'Live AI receptionist (getaura.lu) that secured 2 enterprise clients; handles voice-agent tool calls, webhook reliability, onboarding email, and calendar scheduling.',
-    status: 'Private AI automation',
+    status: 'Live - 2 enterprise clients',
     confidential: true,
     group: 'professional',
     tags: ['Vapi.ai', 'Express', 'Postmark', 'Google Calendar', 'Webhooks'],
