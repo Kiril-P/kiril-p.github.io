@@ -37,7 +37,7 @@ export type ProjectSource = CustomProject;
 export const featuredProjects: CustomProject[] = [
   {
     slug: 'naiss-ride',
-    name: 'Naiss Ride',
+    name: 'naiss ride',
     description: 'Public-safe case study of mobile engineering inside a live startup app: rides, feed, camera, gamification, auth, payments, reliability, and release quality.',
     language: 'React Native',
     category: 'professional',

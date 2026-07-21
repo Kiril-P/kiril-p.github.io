@@ -19,7 +19,7 @@ export interface ProjectContent {
 export const projectContent: Record<string, ProjectContent> = {
     'naiss-ride': {
         slug: 'naiss-ride',
-        longDescription: `Naiss Ride is a public-safe case study for current production mobile engineering work inside a live startup environment. The focus is not private product disclosure; it is the engineering surface: shipping features across ride flows, social feed surfaces, media capture, gamification, authentication, payments, reliability, analytics, and release quality.
+        longDescription: `naiss ride is a public-safe case study for current production mobile engineering work inside a live startup environment. The focus is not private product disclosure; it is the engineering surface: shipping features across ride flows, social feed surfaces, media capture, gamification, authentication, payments, reliability, analytics, and release quality.
 
 The work demonstrates the kind of execution YC and technical teams look for: moving inside a real codebase, improving user-facing surfaces, keeping quality visible with observability, and contributing to a production release cadence without leaking private implementation details.`,
         features: [
