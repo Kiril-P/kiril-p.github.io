@@ -211,9 +211,9 @@ The project is strongest as a data-to-strategy signal. It turns raw infrastructu
 
     'aura-voice-assistant': {
         slug: 'aura-voice-assistant',
-        longDescription: `AURA Voice Assistant is a private AI automation webhook service built around Vapi.ai tool calls. The backend receives structured voice-agent actions, returns a quick success response so the call experience does not stall, then completes the real work in the background.
+        longDescription: `AURA AI Receptionist is an AI automation webhook service built around Vapi.ai tool calls. The backend receives structured voice-agent actions, returns a quick success response so the call experience does not stall, then completes the real work in the background.
 
-The public value is practical AI integration. Instead of a chatbot demo, AURA connects a voice assistant to transactional onboarding email through Postmark and calendar scheduling through Google Calendar, with secrets and service credentials isolated through environment configuration.`,
+The public value is practical AI integration. Now live at getaura.lu with 2 enterprise clients secured, AURA connects a Vapi voice agent to transactional onboarding email through Postmark and calendar scheduling through Google Calendar, with secrets and service credentials isolated through environment configuration.`,
         features: [
             'Express webhook endpoint for Vapi.ai tool-call payloads',
             'Immediate JSON response path to avoid blocking the voice assistant',

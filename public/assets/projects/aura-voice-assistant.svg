@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1000" role="img" aria-labelledby="title desc">
-  <title id="title">AURA Voice Assistant architecture</title>
+  <title id="title">AURA AI Receptionist architecture</title>
   <desc id="desc">A webhook automation flow connecting Vapi voice calls to Postmark email and Google Calendar actions.</desc>
   <defs>
     <radialGradient id="bgGlow" cx="50%" cy="22%" r="70%">
@@ -33,7 +33,7 @@
   </g>
   <g transform="translate(120 110)">
     <text x="0" y="0" fill="#93c5fd" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="7">AI VOICE AUTOMATION</text>
-    <text x="0" y="96" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="92" font-weight="800">AURA Voice Assistant</text>
+    <text x="0" y="96" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="92" font-weight="800">AURA AI Receptionist</text>
     <text x="0" y="150" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="30">Vapi webhook service for onboarding email and calendar actions.</text>
   </g>
   <g transform="translate(135 340)" filter="url(#softShadow)">
